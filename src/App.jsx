@@ -12,8 +12,18 @@ const Vision = lazy(() => import('./components/Vision.jsx'));
 const Testimonials = lazy(() => import('./components/Testimonials.jsx'));
 const Contact = lazy(() => import('./components/Contact.jsx'));
 
+const navItems = [
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#journey', label: 'Journey' },
+  { href: '#contact', label: 'Contact' },
+];
+
 function App() {
   const [isDark, setIsDark] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -30,17 +40,62 @@ function App() {
   }, [isDark]);
 
   useEffect(() => {
+    const elements = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elements.forEach((element) => observer.observe(element));
     setLoaded(true);
+    return () => observer.disconnect();
   }, []);
 
   const toggleTheme = () => setIsDark((current) => !current);
+  const toggleMenu = () => setMenuOpen((current) => !current);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <div className={`app-shell ${loaded ? 'page-loaded' : ''}`}>
-      <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle light and dark mode">
-        {isDark ? '☀️ Light Mode' : '🌑 Dark Mode'}
-      </button>
+      <header className="site-header" data-reveal>
+        <div className="container header-inner">
+          <a href="#home" className="brand-link" onClick={closeMenu}>
+            DA
+          </a>
+          <nav className={`site-nav ${menuOpen ? 'open' : ''}`} aria-label="Primary navigation">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} onClick={closeMenu}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div className="header-actions">
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+              {isDark ? 'Light' : 'Dark'}
+            </button>
+            <button
+              className={`nav-toggle ${menuOpen ? 'open' : ''}`}
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+        </div>
+      </header>
+
       <Hero />
+
       <main>
         <Suspense fallback={<div className="skeleton-loader">Loading premium content…</div>}>
           <About />
