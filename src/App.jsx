@@ -77,9 +77,6 @@ function App() {
             ))}
           </nav>
           <div className="header-actions">
-            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-              {isDark ? 'Light' : 'Dark'}
-            </button>
             <button
               className={`nav-toggle ${menuOpen ? 'open' : ''}`}
               onClick={toggleMenu}
@@ -109,6 +106,21 @@ function App() {
         </Suspense>
       </main>
       <Footer />
+      <button className="theme-toggle-fixed" onClick={toggleTheme} aria-label="Toggle theme">
+        <span className="sr-only">Toggle theme</span>
+        {isDark ? 'Light' : 'Dark'}
+      </button>
+      <div className="site-background" aria-hidden>
+        <div className="bg-grid"></div>
+        <div className="bg-motion">
+          <span className="motion-line" style={{'--i': 0}}></span>
+          <span className="motion-line" style={{'--i': 1}}></span>
+          <span className="motion-line" style={{'--i': 2}}></span>
+          <span className="motion-line" style={{'--i': 3}}></span>
+          <span className="motion-line" style={{'--i': 4}}></span>
+          <span className="motion-line" style={{'--i': 5}}></span>
+        </div>
+      </div>
     </div>
   );
 }

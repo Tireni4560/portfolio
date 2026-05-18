@@ -4,9 +4,9 @@ function Hero() {
       <div className="container hero-grid">
         <div className="hero-copy" data-reveal>
           <span className="eyebrow">Frontend engineer for premium digital products</span>
-          <h1>Designing futuristic business web experiences with polished motion.</h1>
+          <h1>Designing digital systems that help businesses convert, scale, and perform</h1>
           <p>
-            I’m Daniel Adeleye — I build high-end, responsive sites that combine sharp visual systems with performance-first architecture.
+            I build refined, responsive web solutions focused on clarity, performance, and business impact.
           </p>
           <div className="hero-actions">
             <a href="#projects" className="button button-primary">Explore Work</a>
