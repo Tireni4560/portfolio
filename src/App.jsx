@@ -1,46 +1,57 @@
-import { useEffect } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import Hero from './components/Hero.jsx';
-import About from './components/About.jsx';
-import Skills from './components/Skills.jsx';
-import Projects from './components/Projects.jsx';
-import Journey from './components/Journey.jsx';
-import Services from './components/Services.jsx';
-import Vision from './components/Vision.jsx';
-import Testimonials from './components/Testimonials.jsx';
-import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import './styles/global.css';
+
+const About = lazy(() => import('./components/About.jsx'));
+const Skills = lazy(() => import('./components/Skills.jsx'));
+const Projects = lazy(() => import('./components/Projects.jsx'));
+const Journey = lazy(() => import('./components/Journey.jsx'));
+const Services = lazy(() => import('./components/Services.jsx'));
+const Vision = lazy(() => import('./components/Vision.jsx'));
+const Testimonials = lazy(() => import('./components/Testimonials.jsx'));
+const Contact = lazy(() => import('./components/Contact.jsx'));
 
 function App() {
-  useEffect(() => {
-    const elements = document.querySelectorAll('[data-reveal]');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+  const [isDark, setIsDark] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
-    elements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem('portfolio-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setIsDark(storedTheme ? storedTheme === 'dark' : prefersDark);
   }, []);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle('light-mode', !isDark);
+    root.classList.toggle('dark-mode', isDark);
+    window.localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  const toggleTheme = () => setIsDark((current) => !current);
+
   return (
-    <div className="app-shell">
+    <div className={`app-shell ${loaded ? 'page-loaded' : ''}`}>
+      <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle light and dark mode">
+        {isDark ? '☀️ Light Mode' : '🌑 Dark Mode'}
+      </button>
       <Hero />
       <main>
-        <About />
-        <Skills />
-        <Projects />
-        <Journey />
-        <Services />
-        <Vision />
-        <Testimonials />
-        <Contact />
+        <Suspense fallback={<div className="skeleton-loader">Loading premium content…</div>}>
+          <About />
+          <Skills />
+          <Projects />
+          <Journey />
+          <Services />
+          <Vision />
+          <Testimonials />
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </div>

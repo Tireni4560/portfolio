@@ -28,7 +28,7 @@ function About() {
             </div>
             <div className="stats-grid">
               <div>
-                <strong>4+</strong>
+                <strong>40+</strong>
                 <span>Projects built</span>
               </div>
               <div>

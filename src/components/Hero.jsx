@@ -3,24 +3,29 @@ function Hero() {
     <section id="home" className="section hero-section">
       <div className="container hero-grid">
         <div className="hero-copy" data-reveal>
-          <span className="eyebrow">Frontend Developer · Business-first Web Experiences</span>
-          <h1>Creating premium web products that look polished and perform at scale.</h1>
+          <span className="eyebrow">Frontend engineer for premium digital products</span>
+          <h1>Designing futuristic business web experiences with polished motion.</h1>
           <p>
-            I’m Daniel Adeleye — a frontend-focused builder shaping modern, responsive digital experiences for business and growth.
+            I’m Daniel Adeleye — I build high-end, responsive sites that combine sharp visual systems with performance-first architecture.
           </p>
           <div className="hero-actions">
-            <a href="#projects" className="button button-primary">View Projects</a>
-            <a href="#contact" className="button button-secondary">Let’s Work Together</a>
-            <a href="mailto:hello@danieladeleye.com" className="button button-tertiary">Contact Me</a>
+            <a href="#projects" className="button button-primary">Explore Work</a>
+            <a href="#contact" className="button button-secondary">Start a Project</a>
+            <a href="mailto:hello@danieladeleye.com" className="button button-tertiary">Email Me</a>
+          </div>
+          <div className="hero-chips">
+            <span className="hero-chip">Glassmorphism UI</span>
+            <span className="hero-chip">Motion-driven flow</span>
+            <span className="hero-chip">Performance tuned</span>
           </div>
           <div className="hero-details">
             <div>
-              <span>Startup Ambition</span>
-              <p>Building modern frontend systems with strong product and business focus.</p>
+              <span>Business clarity</span>
+              <p>Bring product-driven digital experiences to startups and brands with premium frontends.</p>
             </div>
             <div>
-              <span>Security Growth</span>
-              <p>Growing into scalable systems and secure web experiences.</p>
+              <span>Future-ready</span>
+              <p>Build interfaces that scale visually and keep interactions smooth across devices.</p>
             </div>
           </div>
         </div>

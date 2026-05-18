@@ -1,16 +1,16 @@
-:root {
+﻿:root {
   color-scheme: dark;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --bg: #050816;
-  --surface: rgba(12, 23, 45, 0.92);
-  --surface-strong: rgba(15, 25, 47, 0.96);
-  --panel: rgba(15, 23, 42, 0.85);
-  --text: #f5f7fb;
-  --muted: #97a6c0;
-  --accent: #5f8cff;
-  --accent-2: #6bd7ff;
-  --border: rgba(255, 255, 255, 0.08);
-  --shadow: 0 35px 120px rgba(2, 10, 30, 0.35);
+  --bg: #03060f;
+  --surface: rgba(10, 16, 36, 0.88);
+  --surface-strong: rgba(6, 11, 25, 0.96);
+  --panel: rgba(15, 23, 42, 0.82);
+  --text: #eef2ff;
+  --muted: #9bb4d5;
+  --accent: #65c7ff;
+  --accent-2: #6d8bff;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
 }
 
 * {
@@ -24,8 +24,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, rgba(95, 140, 255, 0.15), transparent 30%),
-    linear-gradient(180deg, #071024 0%, #050816 100%);
+  background: radial-gradient(circle at top, rgba(101, 199, 255, 0.2), transparent 28%),
+    linear-gradient(180deg, #060b18 0%, #02040a 100%);
   color: var(--text);
   line-height: 1.7;
 }
@@ -92,7 +92,7 @@ button {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.05fr 0.95fr;
   gap: 3rem;
   align-items: center;
 }
@@ -136,24 +136,26 @@ button {
 
 .hero-details {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .hero-details div {
-  background: rgba(10, 18, 34, 0.8);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
-  padding: 1.2rem 1.35rem;
-  border-radius: 1rem;
+  padding: 1.3rem 1.4rem;
+  border-radius: 1.5rem;
+  backdrop-filter: blur(18px);
 }
 
 .hero-details span {
   color: var(--accent);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .hero-details p {
-  margin: 0.65rem 0 0;
+  margin: 0.75rem 0 0;
   color: var(--muted);
 }
 
@@ -164,12 +166,21 @@ button {
 
 .hero-card {
   position: relative;
-  width: min(100%, 420px);
+  width: min(100%, 460px);
   border-radius: 2rem;
   overflow: hidden;
   box-shadow: var(--shadow);
-  border: 1px solid rgba(103, 118, 255, 0.12);
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(8, 18, 38, 0.9));
+  border: 1px solid rgba(103, 118, 255, 0.14);
+  background: linear-gradient(180deg, rgba(11, 19, 41, 0.95), rgba(6, 12, 28, 0.98));
+}
+
+.hero-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(103, 118, 255, 0.24), transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(107, 215, 255, 0.16), transparent 22%);
+  pointer-events: none;
 }
 
 .hero-image-frame {
@@ -183,23 +194,41 @@ button {
   height: auto;
   object-fit: cover;
   display: block;
-  transform: translateY(0);
-  transition: transform 0.75s ease;
+  transform: scale(1);
+  transition: transform 0.85s ease;
 }
 
 .hero-card:hover img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .hero-gradient {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(95, 140, 255, 0.25), transparent 36%),
-    radial-gradient(circle at bottom right, rgba(107, 215, 255, 0.16), transparent 25%);
   pointer-events: none;
 }
 
-.about-grid {
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.about-grid,
+.contact-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 2rem;
@@ -210,7 +239,11 @@ button {
   max-width: 720px;
 }
 
-.about-copy p {
+.about-copy p,
+.vision-copy p,
+.service-card p,
+.testimonial-card p,
+.timeline-item p {
   color: var(--muted);
   line-height: 1.75;
   margin-bottom: 1.5rem;
@@ -221,24 +254,41 @@ button {
   gap: 1rem;
 }
 
+.profile-card,
+.stats-grid div,
+.skill-card,
+.project-card,
+.service-card,
+.testimonial-card,
+.contact-form-card,
+.vision-card {
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid var(--border);
+  border-radius: 1.75rem;
+  padding: 2rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  transition: transform 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease, background 0.32s ease;
+  backdrop-filter: blur(20px);
+}
+
+.profile-card {
+  min-height: 13rem;
+}
+
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 1rem;
 }
 
 .stats-grid div {
-  background: rgba(10, 18, 34, 0.8);
-  border: 1px solid var(--border);
-  padding: 1.2rem 1.35rem;
-  border-radius: 1rem;
-  text-align: center;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .stats-grid strong {
   display: block;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--accent);
   margin-bottom: 0.5rem;
 }
@@ -267,24 +317,19 @@ button {
 .service-card,
 .testimonial-card,
 .contact-form-card,
-.vision-card,
 .profile-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 1.75rem;
-  padding: 2rem;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(0);
 }
 
 .skill-card:hover,
 .project-card:hover,
 .service-card:hover,
 .testimonial-card:hover,
-.contact-form-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(95, 140, 255, 0.22);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.22);
+.contact-form-card:hover,
+.profile-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(95, 140, 255, 0.26);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.22);
 }
 
 .skill-card-head {
@@ -298,14 +343,14 @@ button {
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(95, 140, 255, 0.4), rgba(107, 215, 255, 0.3));
+  background: linear-gradient(135deg, rgba(95, 140, 255, 0.45), rgba(107, 215, 255, 0.3));
   box-shadow: 0 0 0 8px rgba(95, 140, 255, 0.06);
   animation: pulse 4s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.06); }
 }
 
 .skill-card h3,
@@ -339,9 +384,21 @@ button {
 }
 
 .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 18rem;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top left, rgba(95, 140, 255, 0.1), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(107, 215, 255, 0.08), transparent 20%);
 }
 
 .project-card-top {
@@ -350,6 +407,8 @@ button {
   gap: 1rem;
   align-items: flex-start;
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .project-label {
@@ -362,6 +421,8 @@ button {
 .project-card p {
   color: var(--muted);
   margin: 0 0 1.4rem;
+  position: relative;
+  z-index: 1;
 }
 
 .project-stack {
@@ -369,6 +430,8 @@ button {
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .project-stack span {
@@ -383,6 +446,8 @@ button {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .button {
@@ -404,12 +469,13 @@ button {
 .button-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: #030712;
+  box-shadow: 0 20px 50px rgba(64, 148, 255, 0.22);
 }
 
 .button-secondary {
   background: rgba(255, 255, 255, 0.08);
   color: var(--text);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .button-tertiary,
@@ -545,7 +611,7 @@ button {
 }
 
 .form-status {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   font-size: 0.98rem;
 }
 
@@ -609,9 +675,51 @@ button {
   transform: translateY(0);
 }
 
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(circle at top right, rgba(95, 140, 255, 0.18), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(103, 118, 255, 0.1), transparent 22%),
+    linear-gradient(180deg, #040611 0%, #050816 100%);
+  transition: background 0.35s ease;
+}
+
+.page-loaded {
+  opacity: 1;
+  transform: none;
+}
+
+.app-shell:not(.page-loaded) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 30;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(8, 12, 28, 0.82);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.95rem 1.2rem;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.16);
+}
+
+.skeleton-loader {
+  min-height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+
 @media (max-width: 1024px) {
   .hero-grid,
   .contact-grid,
+  .about-grid,
   .services-grid,
   .testimonials-grid,
   .skills-grid {
@@ -636,14 +744,85 @@ button {
     flex-direction: column;
   }
 
+  .hero-details {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
   .service-card,
   .testimonial-card,
   .project-card,
-  .skill-card {
+  .skill-card,
+  .contact-form-card {
     padding: 1.5rem;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
   }
+
+  .theme-toggle {
+    right: 1rem;
+    top: 1rem;
+  }
+}
+
+html.light-mode {
+  color-scheme: light;
+}
+
+html.light-mode body {
+  background: radial-gradient(circle at top left, rgba(175, 200, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, #f6f8ff 0%, #e6ebff 100%);
+  color: #111827;
+}
+
+html.light-mode .app-shell {
+  background: radial-gradient(circle at top right, rgba(109, 168, 255, 0.2), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(94, 155, 255, 0.12), transparent 22%),
+    linear-gradient(180deg, #f4f7ff 0%, #dfe7ff 100%);
+}
+
+html.light-mode :root {
+  --bg: #f8fbff;
+  --surface: rgba(255, 255, 255, 0.86);
+  --surface-strong: rgba(255, 255, 255, 0.94);
+  --panel: rgba(255, 255, 255, 0.85);
+  --text: #09141d;
+  --muted: #5c6d86;
+  --accent: #2d7cff;
+  --accent-2: #1f8cff;
+  --accent-soft: rgba(45, 124, 255, 0.18);
+  --border: rgba(15, 23, 42, 0.08);
+  --shadow: 0 35px 120px rgba(25, 35, 75, 0.12);
+}
+
+html.light-mode .hero-details div,
+html.light-mode .profile-card,
+html.light-mode .skill-card,
+html.light-mode .project-card,
+html.light-mode .service-card,
+html.light-mode .testimonial-card,
+html.light-mode .contact-form-card,
+html.light-mode .vision-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+html.light-mode .button-secondary,
+html.light-mode .button-tertiary,
+html.light-mode .button-outline,
+html.light-mode .contact-form input,
+html.light-mode .contact-form textarea,
+html.light-mode .contact-quicklinks a {
+  background: rgba(15, 28, 60, 0.08);
+}
+
+html.light-mode .theme-toggle {
+  background: rgba(255, 255, 255, 0.88);
+  color: #09141d;
+  border-color: rgba(16, 24, 40, 0.12);
 }

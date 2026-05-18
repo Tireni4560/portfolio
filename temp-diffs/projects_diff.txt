@@ -1,0 +1,13 @@
+﻿diff --git a/src/components/Projects.jsx b/src/components/Projects.jsx
+index d0d337c..62e9a47 100644
+--- a/src/components/Projects.jsx
++++ b/src/components/Projects.jsx
+@@ -26,7 +26,7 @@ function Projects() {
+               <div className="project-actions">
+                 <a href={project.liveLink} target="_blank" rel="noreferrer" className="button button-outline">Live Preview</a>
+                 {project.github && (
+-                  <a href={project.github} target="_blank" rel="noreferrer" className="button button-secondary">GitHub</a>
++                  <a href={project.github} target="_blank" rel="noreferrer" className="button button-secondary">View Code</a>
+                 )}
+               </div>
+             </article>

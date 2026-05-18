@@ -26,7 +26,7 @@ function Projects() {
               <div className="project-actions">
                 <a href={project.liveLink} target="_blank" rel="noreferrer" className="button button-outline">Live Preview</a>
                 {project.github && (
-                  <a href={project.github} target="_blank" rel="noreferrer" className="button button-secondary">GitHub</a>
+                  <a href={project.github} target="_blank" rel="noreferrer" className="button button-secondary">View Code</a>
                 )}
               </div>
             </article>

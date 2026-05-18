@@ -59,24 +59,24 @@ function Contact() {
         </div>
 
         <div className="contact-form-card">
-          <form onSubmit={handleSubmit} className="contact-form">
+          <form onSubmit={handleSubmit} className="contact-form" noValidate>
             <label>
               Name
-              <input name="name" type="text" value={form.name} onChange={handleChange} placeholder="Your name" />
+              <input name="name" type="text" value={form.name} onChange={handleChange} placeholder="Your name" required />
             </label>
             <label>
               Email
-              <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="you@example.com" />
+              <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="you@example.com" required />
             </label>
             <label>
               Message
-              <textarea name="message" rows="5" value={form.message} onChange={handleChange} placeholder="Tell me about your project."></textarea>
+              <textarea name="message" rows="5" value={form.message} onChange={handleChange} placeholder="Tell me about your project." required></textarea>
             </label>
             <button type="submit" className="button button-primary" disabled={submitting}>
               {submitting ? 'Sending...' : 'Send Message'}
             </button>
             {status.message && (
-              <p className={`form-status ${status.type === 'success' ? 'status-success' : 'status-error'}`}>
+              <p aria-live="polite" className={`form-status ${status.type === 'success' ? 'status-success' : 'status-error'}`}>
                 {status.message}
               </p>
             )}
