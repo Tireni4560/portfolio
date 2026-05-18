@@ -12,8 +12,7 @@ function Footer() {
           <a href="#contact">Contact</a>
         </div>
         <div className="footer-socials">
-          <a href="https://twitter.com/" target="_blank" rel="noreferrer">X</a>
-          <a href="mailto:hello@danieladeleye.com">Email</a>
+          <a href="https://x.com/danieladeleye_" target="_blank" rel="noreferrer">X</a>
         </div>
       </div>
       <p className="footer-note">© {new Date().getFullYear()} Daniel Adeleye. Built for modern business-focused web experiences.</p>

@@ -52,10 +52,7 @@ function Contact() {
             description="Send a quick message, share your idea, or request a frontend product discussion."
             small="Contact"
           />
-          <div className="contact-quicklinks">
-            <a href="https://twitter.com/" target="_blank" rel="noreferrer">X / Twitter</a>
-            <a href="mailto:hello@danieladeleye.com">hello@danieladeleye.com</a>
-          </div>
+
         </div>
 
         <div className="contact-form-card">
