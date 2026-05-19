@@ -36,6 +36,10 @@ body {
   line-height: 1.7;
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -113,6 +117,24 @@ button {
 .site-nav a:hover {
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 24px rgba(101, 199, 255, 0.12);
+}
+
+.site-nav a.active {
+  color: var(--accent);
+}
+
+.site-nav a.active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -0.3rem;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0.9;
+  box-shadow: 0 0 16px rgba(101, 199, 255, 0.22);
 }
 
 .header-actions {
@@ -209,13 +231,24 @@ button {
 
 .hero-section {
   padding-top: 7rem;
-  padding-bottom: 8rem;
+  padding-bottom: 7rem;
   position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(101, 199, 255, 0.08), transparent 16%),
+    radial-gradient(circle at 90% 10%, rgba(107, 215, 255, 0.06), transparent 18%);
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 3.5rem;
   align-items: center;
 }
@@ -261,7 +294,12 @@ button {
 }
 
 .hero-actions .button {
-  min-width: 170px;
+  min-width: 160px;
+  flex: 1 1 auto;
+}
+
+.hero-actions .button.button-tertiary {
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .hero-details {
@@ -480,8 +518,12 @@ button {
   gap: 1.5rem;
 }
 
-.skills-grid {
+.projects-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skills-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .skill-card,
@@ -895,25 +937,30 @@ button {
 }
 
 .contact-copy .section-header {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1rem;
 }
 
-.contact-quicklinks {
-  display: grid;
-  gap: 0.9rem;
+.contact-note {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.97rem;
+  line-height: 1.75;
 }
 
-.contact-quicklinks a {
-  color: var(--text);
-  padding: 1rem 1.2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
+.contact-note a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.contact-note a:hover {
+  color: var(--accent-2);
 }
 
 .contact-form-card {
   padding: 2rem;
 }
+
 
 .contact-form {
   display: grid;
@@ -1067,6 +1114,16 @@ button {
   overflow: hidden;
 }
 
+.site-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 12% 12%, rgba(101, 199, 255, 0.08), transparent 18%),
+    radial-gradient(circle at 82% 22%, rgba(107, 215, 255, 0.06), transparent 16%);
+  opacity: 0.45;
+}
+
 .bg-grid {
   position: absolute;
   inset: 0;
@@ -1106,7 +1163,7 @@ button {
   0% { transform: translateX(-6%) translateY(0) rotate(0.001deg); }
   50% { transform: translateX(6%) translateY(0.25rem) rotate(0.001deg); }
   100% { transform: translateX(-6%) translateY(0) rotate(0.001deg); }
-}}
+}
 
 /* keep background subtle in light mode */
 html.light-mode .bg-grid { opacity: 0.04; }
@@ -1362,8 +1419,7 @@ html.light-mode .button-secondary,
 html.light-mode .button-tertiary,
 html.light-mode .button-outline,
 html.light-mode .contact-form input,
-html.light-mode .contact-form textarea,
-html.light-mode .contact-quicklinks a {
+html.light-mode .contact-form textarea {
   background: rgba(15, 28, 60, 0.08);
 }
 

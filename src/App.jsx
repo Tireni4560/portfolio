@@ -24,6 +24,7 @@ const navItems = [
 function App() {
   const [isDark, setIsDark] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('#home');
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -38,6 +39,27 @@ function App() {
     root.classList.toggle('dark-mode', isDark);
     window.localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
   }, [isDark]);
+
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', menuOpen);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { threshold: 0.33, rootMargin: '-20% 0px -55% 0px' }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const elements = document.querySelectorAll('[data-reveal]');
@@ -71,7 +93,13 @@ function App() {
           </a>
           <nav className={`site-nav ${menuOpen ? 'open' : ''}`} aria-label="Primary navigation">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} onClick={closeMenu}>
+              <a
+                key={item.href}
+                href={item.href}
+                className={activeSection === item.href ? 'active' : ''}
+                aria-current={activeSection === item.href ? 'page' : undefined}
+                onClick={closeMenu}
+              >
                 {item.label}
               </a>
             ))}

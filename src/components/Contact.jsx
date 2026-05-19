@@ -52,7 +52,9 @@ function Contact() {
             description="Send a quick message, share your idea, or request a frontend product discussion."
             small="Contact"
           />
-
+          <p className="contact-note">
+            Prefer a faster reply? Connect on <a href="https://x.com/danieladeleye_" target="_blank" rel="noreferrer">X</a>.
+          </p>
         </div>
 
         <div className="contact-form-card">

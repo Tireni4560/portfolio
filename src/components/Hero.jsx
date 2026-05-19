@@ -4,19 +4,14 @@ function Hero() {
       <div className="container hero-grid">
         <div className="hero-copy" data-reveal>
           <span className="eyebrow">Frontend engineer for premium digital products</span>
-          <h1>Designing digital systems that help businesses convert, scale, and perform</h1>
+          <h1>Designing modern digital experiences with clarity, performance, and precision.</h1>
           <p>
-            I build refined, responsive web solutions focused on clarity, performance, and business impact.
+            I build responsive, polished, and performance-focused web interfaces designed for businesses, products, and modern digital experiences.
           </p>
           <div className="hero-actions">
-            <a href="#projects" className="button button-primary">Explore Work</a>
-            <a href="#contact" className="button button-secondary">Start a Project</a>
-            <a href="mailto:hello@danieladeleye.com" className="button button-tertiary">Email Me</a>
-          </div>
-          <div className="hero-chips">
-            <span className="hero-chip">Glassmorphism UI</span>
-            <span className="hero-chip">Motion-driven flow</span>
-            <span className="hero-chip">Performance tuned</span>
+            <a href="#projects" className="button button-primary">View Projects</a>
+            <a href="#contact" className="button button-secondary">Contact Me</a>
+            <a href="#contact" className="button button-tertiary">Let's Work Together</a>
           </div>
           <div className="hero-details">
             <div>
