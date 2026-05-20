@@ -1,7 +1,6 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
 import Hero from './components/Hero.jsx';
 import Footer from './components/Footer.jsx';
-import './styles/global.css';
 
 const About = lazy(() => import('./components/About.jsx'));
 const Skills = lazy(() => import('./components/Skills.jsx'));
@@ -25,6 +24,15 @@ function App() {
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen);
   }, [menuOpen]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.history.scrollRestoration = 'manual';
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
