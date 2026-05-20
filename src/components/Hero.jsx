@@ -6,7 +6,7 @@ function Hero() {
           <span className="eyebrow">Frontend engineer &amp; product builder</span>
           <h1>Premium digital products built with clarity, performance, and intentional design.</h1>
           <p>
-            I build responsive, production-ready interfaces for ambitious teams and founders. Strong frontend architecture meets thoughtful product design—no unnecessary effects, just polish that ships.
+            I build responsive, production-ready interfaces for ambitious teams and founders. Strong frontend architecture meets thoughtful product design no unnecessary effects, just polish that ships.
           </p>
           <div className="hero-actions">
             <a href="#projects" className="button button-primary">View recent work</a>

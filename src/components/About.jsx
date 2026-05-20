@@ -14,7 +14,7 @@ function About() {
             I'm Daniel Adeleye, a frontend engineer specializing in building premium digital products with intentional design, strong structure, and long-term usability in mind.
           </p>
           <p>
-            Since 2022, I've evolved from foundational interface work into building product-ready systems—shipping responsive, scalable frontends that support business growth across every device.
+            Since 2022, I've evolved from foundational interface work into building product-ready systems, shipping responsive, scalable frontends that support business growth across every device.
           </p>
           <p>
             My focus is on high-performance frontend architecture that feels effortless to use, scales cleanly as products grow, and maintains polish across all contexts.

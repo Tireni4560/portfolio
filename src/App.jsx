@@ -4,6 +4,7 @@ import Footer from './components/Footer.jsx';
 import './styles/global.css';
 
 const About = lazy(() => import('./components/About.jsx'));
+const Skills = lazy(() => import('./components/Skills.jsx'));
 const Projects = lazy(() => import('./components/Projects.jsx'));
 const Journey = lazy(() => import('./components/Journey.jsx'));
 const Contact = lazy(() => import('./components/Contact.jsx'));
@@ -44,23 +45,48 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const elements = document.querySelectorAll('[data-reveal]');
+    const revealCallback = (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          try { obs.unobserve(entry.target); } catch (e) {}
+        }
+      });
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
-            observer.unobserve(entry.target);
+    const observer = new IntersectionObserver(revealCallback, { threshold: 0.18 });
+
+    const observeElement = (el) => {
+      if (!el || el._observed) return;
+      el._observed = true;
+      observer.observe(el);
+    };
+
+    // Observe initial elements
+    const elements = document.querySelectorAll('[data-reveal]');
+    elements.forEach((element) => observeElement(element));
+
+    // Watch for newly added nodes (lazy-loaded components)
+    const mo = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType !== 1) return;
+          if (node.matches && node.matches('[data-reveal]')) observeElement(node);
+          if (node.querySelectorAll) {
+            const nested = node.querySelectorAll('[data-reveal]');
+            nested.forEach((n) => observeElement(n));
           }
         });
-      },
-      { threshold: 0.18 }
-    );
+      });
+    });
 
-    elements.forEach((element) => observer.observe(element));
+    mo.observe(document.body, { childList: true, subtree: true });
+
     setLoaded(true);
-    return () => observer.disconnect();
+    return () => {
+      try { observer.disconnect(); } catch (e) {}
+      try { mo.disconnect(); } catch (e) {}
+    };
   }, []);
 
   const toggleMenu = () => setMenuOpen((current) => !current);
@@ -107,6 +133,7 @@ function App() {
       <main>
         <Suspense fallback={<div className="skeleton-loader">Loading premium content…</div>}>
           <About />
+          <Skills />
           <Projects />
           <Journey />
           <Contact />

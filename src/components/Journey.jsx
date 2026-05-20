@@ -15,7 +15,7 @@ function Journey() {
       <div className="container">
         <SectionHeader
           title="A progression built on learning, shipping, and growth."
-          description="From first principles through production systems—tracking the evolution of a frontend engineer building toward ambitious products."
+          description="From first principles through production systems, tracking the evolution of a frontend engineer building toward ambitious products."
           small="Journey"
         />
         <div className="journey-grid">
