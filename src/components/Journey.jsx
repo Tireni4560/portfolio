@@ -7,7 +7,7 @@ const milestones = [
   { year: '2025', title: 'Expanding into systems', description: 'Architecting scalable frontend systems, backend integration, and exploring performance and security foundations.' },
 ];
 
-const today = { year: 'Today', title: 'Building toward the next level', description: 'Creating sustainable, secure products that support ambitious founders and long-term technological vision.' };
+const today = { year: 'Today', title: 'Building towards the next level', description: 'Creating sustainable, secure products that support ambitious founders and long-term technological vision.' };
 
 function Journey() {
   return (

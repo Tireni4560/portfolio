@@ -1,12 +1,11 @@
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import Hero from './components/Hero.jsx';
 import Footer from './components/Footer.jsx';
-
-const About = lazy(() => import('./components/About.jsx'));
-const Skills = lazy(() => import('./components/Skills.jsx'));
-const Projects = lazy(() => import('./components/Projects.jsx'));
-const Journey = lazy(() => import('./components/Journey.jsx'));
-const Contact = lazy(() => import('./components/Contact.jsx'));
+import About from './components/About.jsx';
+import Skills from './components/Skills.jsx';
+import Projects from './components/Projects.jsx';
+import Journey from './components/Journey.jsx';
+import Contact from './components/Contact.jsx';
 
 const navItems = [
   { href: '#home', label: 'Home' },
@@ -19,7 +18,6 @@ const navItems = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
-  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen);
@@ -90,7 +88,6 @@ function App() {
 
     mo.observe(document.body, { childList: true, subtree: true });
 
-    setLoaded(true);
     return () => {
       try { observer.disconnect(); } catch (e) {}
       try { mo.disconnect(); } catch (e) {}
@@ -101,12 +98,12 @@ function App() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <div className={`app-shell ${loaded ? 'page-loaded' : ''}`}>
+    <div className="app-shell">
       <header className="site-header" data-reveal>
         <div className="container header-inner">
           <a href="#home" className="brand-link" onClick={closeMenu}>
             <span className="brand-mark">DA</span>
-            <span className="brand-text">Daniel Adeleye</span>
+            
           </a>
 
           <nav className={`site-nav ${menuOpen ? 'open' : ''}`} aria-label="Primary navigation">
@@ -139,13 +136,11 @@ function App() {
       <Hero />
 
       <main>
-        <Suspense fallback={<div className="skeleton-loader">Loading premium content…</div>}>
           <About />
           <Skills />
           <Projects />
           <Journey />
           <Contact />
-        </Suspense>
       </main>
 
       <Footer />

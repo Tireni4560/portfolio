@@ -28,7 +28,7 @@ function Hero() {
           <div className="hero-panel-card">
             <div className="hero-profile">
               <div className="hero-profile-image">
-                <img src="/images/Daniel.jpg" alt="Portrait of Daniel Adeleye" />
+                <img src="/images/Daniel.jpg" alt="Portrait of Daniel Adeleye" loading="eager" decoding="async" />
               </div>
               <div>
                 <p className="hero-profile-label">Daniel Adeleye</p>
