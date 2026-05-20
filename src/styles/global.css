@@ -27,6 +27,19 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -121,15 +134,36 @@ button {
   color: var(--text);
   padding: 0.85rem 1rem;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
   position: relative;
 }
 
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.35rem;
+  width: 36%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0.6);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
 .site-nav a:hover {
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 24px rgba(101, 199, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.site-nav a:hover::after,
+.site-nav a.active::after {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
 }
 
 .site-nav a.active {
@@ -896,26 +930,28 @@ button {
   border: none;
   border-radius: 999px;
   padding: 1rem 1.4rem;
-  transition: all 0.3s ease;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease, color 0.28s ease;
   font-weight: 600;
   letter-spacing: 0.01em;
   position: relative;
   overflow: hidden;
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 
 .button::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent);
+  background: radial-gradient(circle at center, rgba(255,255,255,0.12), transparent 65%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
 .button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.22);
 }
 
 .button:hover::before {
@@ -1311,13 +1347,65 @@ button {
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(20px);
   transition: opacity 0.85s ease, transform 0.85s ease;
 }
 
 .reveal-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+[data-reveal] > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+
+[data-reveal].reveal-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projects-section.reveal-visible .project-card,
+.journey-section.reveal-visible .journey-card,
+.about-section.reveal-visible .about-sidebar > *,
+.contact-section.reveal-visible .contact-copy,
+.contact-section.reveal-visible .contact-form-card {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.projects-section.reveal-visible .project-card:nth-child(1) { animation: fadeInUp 0.75s ease forwards; animation-delay: 0.12s; }
+.projects-section.reveal-visible .project-card:nth-child(2) { animation: fadeInUp 0.75s ease forwards; animation-delay: 0.18s; }
+.projects-section.reveal-visible .project-card:nth-child(3) { animation: fadeInUp 0.75s ease forwards; animation-delay: 0.24s; }
+.projects-section.reveal-visible .project-card:nth-child(4) { animation: fadeInUp 0.75s ease forwards; animation-delay: 0.3s; }
+
+.journey-section.reveal-visible .journey-card:nth-child(1) { animation: fadeInUp 0.7s ease forwards; animation-delay: 0.12s; }
+.journey-section.reveal-visible .journey-card:nth-child(2) { animation: fadeInUp 0.7s ease forwards; animation-delay: 0.18s; }
+.journey-section.reveal-visible .journey-card:nth-child(3) { animation: fadeInUp 0.7s ease forwards; animation-delay: 0.24s; }
+.journey-section.reveal-visible .journey-card:nth-child(4) { animation: fadeInUp 0.7s ease forwards; animation-delay: 0.3s; }
+
+.about-section.reveal-visible .about-sidebar > * {
+  animation: fadeInUp 0.75s ease forwards;
+  animation-delay: calc(0.12s + (var(--about-index, 0) * 0.06s));
+}
+
+.about-section.reveal-visible .about-sidebar > *:nth-child(1) { animation-delay: 0.12s; }
+.about-section.reveal-visible .about-sidebar > *:nth-child(2) { animation-delay: 0.18s; }
+.about-section.reveal-visible .about-sidebar > *:nth-child(3) { animation-delay: 0.24s; }
+
+.contact-section.reveal-visible .contact-copy,
+.contact-section.reveal-visible .contact-form-card {
+  animation: fadeInUp 0.75s ease forwards;
+}
+
+.contact-section.reveal-visible .contact-copy { animation-delay: 0.12s; }
+.contact-section.reveal-visible .contact-form-card { animation-delay: 0.18s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .app-shell {
@@ -1328,6 +1416,35 @@ button {
     radial-gradient(circle at bottom left, rgba(103, 118, 255, 0.1), transparent 22%),
     linear-gradient(180deg, #040611 0%, #050816 100%);
   transition: background 0.35s ease;
+}
+
+.app-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+.app-shell::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 18% 18%, rgba(101, 199, 255, 0.06), transparent 18%),
+    radial-gradient(circle at 82% 24%, rgba(107, 215, 255, 0.04), transparent 15%);
+  opacity: 0.32;
+  animation: subtleDrift 28s ease-in-out infinite alternate;
+}
+
+@keyframes subtleDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(10px, -10px) scale(1.01); }
 }
 
 .page-loaded {
