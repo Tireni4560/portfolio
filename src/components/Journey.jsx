@@ -1,21 +1,21 @@
 import SectionHeader from './SectionHeader';
 
 const milestones = [
-  { year: '2022', title: 'Started learning development', description: 'Began the journey with HTML, CSS, and layout fundamentals while building project prototypes.' },
-  { year: '2023', title: 'Completed core frontend foundations', description: 'Created polished responsive interfaces and began exploring React and business-facing UI patterns.' },
-  { year: '2024', title: 'Built multiple frontend products', description: 'Delivered portfolio demos and product-focused interfaces for modern business experiences.' },
-  { year: '2025', title: 'Improving fundamentals and systems', description: 'Rebuilt interfaces with stronger architecture while expanding backend, APIs, and security awareness.' },
+  { year: '2022', title: 'Started with fundamentals', description: 'Built the foundation with HTML, CSS, and responsive layout design. Created first project prototypes.' },
+  { year: '2023', title: 'Mastered core frontend', description: 'Shipped polished, responsive interfaces. Explored React patterns and business UI best practices.' },
+  { year: '2024', title: 'Built multiple products', description: 'Delivered product-ready interfaces and full-stack project experiences with focus on polish and scale.' },
+  { year: '2025', title: 'Expanding into systems', description: 'Architecting scalable frontend systems, backend integration, and exploring performance and security foundations.' },
 ];
 
-const today = { year: 'Today', title: 'Growing toward scalable systems', description: 'Focusing on secure, sustainable products that support startups and long-term product ambition.' };
+const today = { year: 'Today', title: 'Building toward the next level', description: 'Creating sustainable, secure products that support ambitious founders and long-term technological vision.' };
 
 function Journey() {
   return (
     <section id="journey" className="section journey-section" data-reveal>
       <div className="container">
         <SectionHeader
-          title="Experience & growth over time"
-          description="A milestone-driven progression that emphasizes learning, execution, and long-term product direction."
+          title="A progression built on learning, shipping, and growth."
+          description="From first principles through production systems—tracking the evolution of a frontend engineer building toward ambitious products."
           small="Journey"
         />
         <div className="journey-grid">

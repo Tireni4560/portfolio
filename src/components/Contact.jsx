@@ -48,28 +48,28 @@ function Contact() {
       <div className="container contact-grid">
         <div className="contact-copy">
           <SectionHeader
-            title="Let’s build something meaningful together."
-            description="Send a quick message, share your idea, or request a frontend product discussion."
+            title="Ready to discuss your next digital product."
+            description="Send a message if you're building something worth building, or want to explore frontend and product strategy together."
             small="Contact"
           />
           <p className="contact-note">
-            Prefer a faster reply? Connect on <a href="https://x.com/danieladeleye_" target="_blank" rel="noreferrer">X</a>.
+            For immediate questions, reach out on <a href="https://x.com/danieladeleye_" target="_blank" rel="noreferrer">X</a> or <a href="https://wa.me/2349063626099" target="_blank" rel="noreferrer">WhatsApp</a>.
           </p>
         </div>
 
         <div className="contact-form-card">
           <form onSubmit={handleSubmit} className="contact-form" noValidate>
             <label>
-              Name
+              Full name
               <input name="name" type="text" value={form.name} onChange={handleChange} placeholder="Your name" required />
             </label>
             <label>
-              Email
-              <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="you@example.com" required />
+              Email address
+              <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="your@email.com" required />
             </label>
             <label>
-              Message
-              <textarea name="message" rows="5" value={form.message} onChange={handleChange} placeholder="Tell me about your project." required></textarea>
+              Project details
+              <textarea name="message" rows="5" value={form.message} onChange={handleChange} placeholder="What are you building? What's your vision?" required></textarea>
             </label>
             <button type="submit" className="button button-primary" disabled={submitting}>
               {submitting ? 'Sending...' : 'Send Message'}
