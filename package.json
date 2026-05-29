@@ -1,5 +1,6 @@
 {
   "name": "daniel-adeleye-portfolio",
+  "type": "module",
   "private": true,
   "version": "1.0.0",
   "description": "A premium portfolio website for Daniel Adeleye.",
@@ -9,11 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
+    "framer-motion": "^12.40.0",
+    "lenis": "^1.3.23",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.0",
     "vite": "^5.4.1"
   }
 }
