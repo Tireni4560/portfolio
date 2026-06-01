@@ -1,143 +1,106 @@
-import { motion, useReducedMotion } from 'framer-motion';
-import SectionHeader from './SectionHeader';
-
-const focusAreas = [
-  'Responsive product interfaces for digital-first businesses and startups',
-  'Modern UI systems with intentional hierarchy and structure',
-  'Production-ready builds that stay polished across all devices',
-];
-
-const toolkit = ['React', 'JavaScript', 'CSS Architecture', 'Responsive Design', 'Frontend Systems', 'Product UI'];
-
-const stats = [
-  { value: '4+', label: 'production projects' },
-  { value: '3 yrs', label: 'frontend focus' },
-  { value: 'Growing', label: 'systems expertise' },
-];
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 function About() {
-  const prefersReducedMotion = useReducedMotion();
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: 28 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 0.1, 0.25, 1],
-      }
-    },
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
-  };
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <section id="about" className="section about-section" data-reveal>
-      <div className="container about-grid">
-        <motion.div
-          className="about-copy"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={fadeUp}
-        >
-          <SectionHeader
-            title="A product-first frontend practice built for scalability and polish."
-            description="I combine interface craftsmanship, responsive systems architecture, and performance-focused engineering for teams building the next generation of products."
-            small="About"
-          />
-          
-          <motion.p
-            variants={fadeUp}
-            custom={1}
-          >
-            I'm Daniel Adeleye, a frontend engineer specializing in building premium digital products with intentional design, strong structure, and long-term usability in mind.
-          </motion.p>
-          
-          <motion.p
-            variants={fadeUp}
-            custom={2}
-          >
-            Since 2022, I've evolved from foundational interface work into building product-ready systems, shipping responsive, scalable frontends that support business growth across every device.
-          </motion.p>
-          
-          <motion.p
-            variants={fadeUp}
-            custom={3}
-          >
-            My focus is on high-performance frontend architecture that feels effortless to use, scales cleanly as products grow, and maintains polish across all contexts.
-          </motion.p>
-        </motion.div>
+    <section id="about" className="section" data-reveal>
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">01 — About</span>
+        </div>
 
-        <motion.aside 
-          className="about-sidebar"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
-        >
+        <div className="about-grid">
+          {/* Left Column - Text Content */}
           <motion.div
-            className="profile-card"
-            variants={fadeUp}
+            className="about-text"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span>What I create</span>
-            <ul className="about-focus-list">
-              {focusAreas.map((item) => (
-                <motion.li 
-                  key={item}
-                  whileHover={!prefersReducedMotion ? { x: 4 } : undefined}
-                  transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                >
-                  {item}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+            <blockquote className="about-pullquote">
+              I care less about what technology I'm using and more about whether
+              the product I'm building is worth someone's attention.
+            </blockquote>
 
-          <motion.div
-            className="skill-card about-skill-card"
-            variants={fadeUp}
-          >
-            <span>Core expertise</span>
-            <div className="skill-pill-grid">
-              {toolkit.map((item) => (
-                <motion.span 
-                  key={item}
-                  whileHover={!prefersReducedMotion ? { scale: 1.05, y: -2 } : undefined}
-                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                >
-                  {item}
-                </motion.span>
-              ))}
+            <div className="about-body">
+              <p>
+                I'm a frontend developer based in Nigeria with a product-builder mindset.
+                I've spent the last few years shipping web interfaces that don't just look good —
+                they serve a real purpose for the people who use them.
+              </p>
+
+              <p>
+                Outside of client work, I'm building Tirenify, a product I believe has
+                real market potential. That experience has changed how I approach every project —
+                I now think about retention, conversion, and business logic the same way I think
+                about component architecture.
+              </p>
             </div>
           </motion.div>
 
+          {/* Right Column - Photo with Floating Stats */}
           <motion.div
-            className="stats-grid about-stats-grid"
-            variants={fadeUp}
+            className="about-visual"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            {stats.map((stat) => (
-              <motion.div 
-                key={stat.label}
-                whileHover={!prefersReducedMotion ? { y: -3, scale: 1.03 } : undefined}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            <div className="about-photo-wrapper">
+              <div className="about-photo">
+                {!imageLoaded && (
+                  <div className="about-photo-placeholder">
+                    DA
+                  </div>
+                )}
+                <img
+                  src="/images/Daniel.jpg"
+                  alt="Daniel Adeleye"
+                  loading="lazy"
+                  onLoad={() => setImageLoaded(true)}
+                  style={{ opacity: imageLoaded ? 1 : 0 }}
+                />
+              </div>
+
+              {/* Floating Stat Cards */}
+              <motion.div
+                className="stat-card stat-card-1"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2, ease: [0.34, 1.56, 0.64, 1] }}
               >
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
+                <span className="number">3+</span>
+                <span className="label">Years Building</span>
               </motion.div>
-            ))}
+
+              <motion.div
+                className="stat-card stat-card-2"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.32, ease: [0.34, 1.56, 0.64, 1] }}
+              >
+                <span className="number">4</span>
+                <span className="label">Products Shipped</span>
+              </motion.div>
+
+              <motion.div
+                className="stat-card stat-card-3"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.44, ease: [0.34, 1.56, 0.64, 1] }}
+              >
+                <span className="number">Tirenify</span>
+                <span className="label">Current Venture</span>
+              </motion.div>
+            </div>
           </motion.div>
-        </motion.aside>
+        </div>
       </div>
     </section>
   );

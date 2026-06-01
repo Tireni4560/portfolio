@@ -1,74 +1,60 @@
-import { useEffect, useMemo, useState, useRef } from 'react';
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useEffect, useState, useRef, useMemo } from 'react';
+import { AnimatePresence, motion, useScroll, useReducedMotion } from 'framer-motion';
 import Lenis from 'lenis';
-import Hero from './components/Hero.jsx';
-import Footer from './components/Footer.jsx';
-import About from './components/About.jsx';
-import Skills from './components/Skills.jsx';
-import Projects from './components/Projects.jsx';
-import Journey from './components/Journey.jsx';
-import Contact from './components/Contact.jsx';
+import LoadingScreen from './components/LoadingScreen';
+import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Founder from './components/Founder';
+import Process from './components/Process';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 const navItems = [
-  { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Work' },
-  { href: '#journey', label: 'Journey' },
+  { href: '#founder', label: 'Founder' },
+  { href: '#process', label: 'Process' },
   { href: '#contact', label: 'Contact' },
 ];
-
-const backgroundLines = [0, 1, 2, 3, 4];
 
 function App() {
   const prefersReducedMotion = useReducedMotion();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [loadingComplete, setLoadingComplete] = useState(false);
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
-  const [lenisInstance, setLenisInstance] = useState(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const appRef = useRef(null);
 
-  const { scrollY } = useScroll();
-  const parallaxY = useTransform(scrollY, [0, 1000], [0, -50]);
-  const parallaxX = useTransform(scrollY, [0, 1000], [0, 30]);
-
-  const backgroundDots = useMemo(
-    () => [
-      { left: '12%', top: '18%', size: 260, delay: 0 },
-      { left: '78%', top: '14%', size: 220, delay: 0.8 },
-      { left: '82%', top: '68%', size: 280, delay: 1.4 },
-      { left: '18%', top: '76%', size: 180, delay: 1.1 },
-    ],
-    []
-  );
+  const { scrollY, scrollYProgress } = useScroll();
 
   // Initialize Lenis smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.25,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
+      smoothWheel: true,
     });
 
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
-    setLenisInstance(lenis);
 
-    return () => {
-      lenis.destroy();
-    };
+    return () => lenis.destroy();
   }, []);
+
+  // Scroll progress
+  useEffect(() => {
+    return scrollYProgress.onChange((progress) => {
+      setScrollProgress(progress);
+    });
+  }, [scrollYProgress]);
 
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen);
@@ -77,10 +63,7 @@ function App() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    window.history.scrollRestoration = 'manual';
-    if (!window.location.hash) window.scrollTo(0, 0);
-
-    const handleScroll = () => setIsScrolled(window.scrollY > 18);
+    const handleScroll = () => setIsScrolled(window.scrollY > 80);
     const handlePointerMove = (event) => {
       setCursor({ x: event.clientX, y: event.clientY, visible: true });
     };
@@ -99,6 +82,7 @@ function App() {
     };
   }, []);
 
+  // Active section detection
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
 
@@ -117,12 +101,14 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  // Scroll reveal observer
   useEffect(() => {
     const revealObserver = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
+            entry.target.classList.add('data-revealed');
+            entry.target.dataset.revealed = 'true';
             obs.unobserve(entry.target);
           }
         });
@@ -157,12 +143,29 @@ function App() {
     e.preventDefault();
     closeMenu();
     const element = document.querySelector(href);
-    if (element && lenisInstance) {
-      lenisInstance.scrollTo(element);
-    } else if (element) {
+    if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const handleLoadingComplete = () => {
+    setLoadingComplete(true);
+  };
+
+  // Background orbs configuration
+  const backgroundOrbs = useMemo(
+    () => [
+      { left: '12%', top: '18%', size: 260, delay: 0 },
+      { left: '78%', top: '14%', size: 220, delay: 0.8 },
+      { left: '82%', top: '68%', size: 280, delay: 1.4 },
+      { left: '18%', top: '76%', size: 180, delay: 1.1 },
+    ],
+    []
+  );
+
+  if (!loadingComplete) {
+    return <LoadingScreen onComplete={handleLoadingComplete} />;
+  }
 
   return (
     <div className="app-shell" ref={appRef}>
@@ -171,17 +174,17 @@ function App() {
         <div className="bg-grid" />
         <div className="bg-noise" />
         <div className="bg-mesh" />
-        
+
         <div className="bg-orbs">
-          {backgroundDots.map((dot, index) => (
+          {backgroundOrbs.map((orb, index) => (
             <motion.div
-              key={`${dot.left}-${dot.top}-${index}`}
+              key={`${orb.left}-${orb.top}-${index}`}
               className="bg-orb"
               style={{
-                left: dot.left,
-                top: dot.top,
-                width: dot.size,
-                height: dot.size,
+                left: orb.left,
+                top: orb.top,
+                width: orb.size,
+                height: orb.size,
               }}
               animate={
                 prefersReducedMotion
@@ -198,23 +201,7 @@ function App() {
                 repeat: Infinity,
                 repeatType: 'mirror',
                 ease: 'easeInOut',
-                delay: dot.delay,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="bg-motion">
-          {backgroundLines.map((line) => (
-            <motion.span
-              key={line}
-              className="motion-line"
-              style={{ top: `${12 + line * 16}%` }}
-              animate={prefersReducedMotion ? { x: 0 } : { x: ['-8%', '8%', '-8%'] }}
-              transition={{
-                duration: 32 + line * 4,
-                repeat: Infinity,
-                ease: 'easeInOut',
+                delay: orb.delay,
               }}
             />
           ))}
@@ -240,13 +227,25 @@ function App() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
+        {/* Scroll Progress Bar */}
+        <motion.div
+          className="scroll-progress"
+          style={{ scaleX: scrollProgress }}
+          aria-hidden="true"
+        />
+
         <div className="container header-inner">
-          <a href="#home" className="brand-link" onClick={(e) => handleNavClick(e, '#home')} aria-label="Go to home">
-            <span className="brand-mark">DA</span>
-            <span className="brand-text">Daniel Adeleye</span>
+          <a
+            href="#home"
+            className="brand-link"
+            onClick={(e) => handleNavClick(e, '#home')}
+            aria-label="Go to home"
+          >
+            Daniel Adeleye
           </a>
 
-          <nav className={`site-nav ${menuOpen ? 'open' : ''}`} aria-label="Primary navigation">
+          {/* Desktop Navigation */}
+          <nav className="site-nav" aria-label="Primary navigation">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -258,8 +257,16 @@ function App() {
                 {item.label}
               </a>
             ))}
+            <a
+              href="#contact"
+              className="nav-cta"
+              onClick={(e) => handleNavClick(e, '#contact')}
+            >
+              Let's Talk
+            </a>
           </nav>
 
+          {/* Mobile Menu Toggle */}
           <button
             className={`nav-toggle ${menuOpen ? 'open' : ''}`}
             onClick={toggleMenu}
@@ -273,31 +280,65 @@ function App() {
         </div>
       </motion.header>
 
+      {/* Mobile Navigation Overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            <motion.div
+              className="mobile-nav-overlay open"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
+            >
+              {navItems.map((item, index) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  className={activeSection === item.href ? 'active' : ''}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: { delay: index * 0.06 },
+                  }}
+                >
+                  {item.label}
+                </motion.a>
+              ))}
+              <div className="mobile-nav-social" style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem' }}>
+                <a href="https://github.com/Tireni4560" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/danieladeleye" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer">Twitter</a>
+              </div>
+            </motion.div>
+            <motion.button
+              className="mobile-backdrop"
+              aria-label="Close navigation menu"
+              onClick={closeMenu}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+          </>
+        )}
+      </AnimatePresence>
+
       {/* Main Content */}
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
-        <Skills />
         <Projects />
-        <Journey />
+        <Skills />
+        <Founder />
+        <Process />
         <Contact />
       </main>
 
       <Footer />
-
-      {/* Mobile Menu Backdrop */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.button
-            className="mobile-backdrop"
-            aria-label="Close navigation menu"
-            onClick={closeMenu}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 }

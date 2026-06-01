@@ -1,132 +1,136 @@
-import { motion, useReducedMotion } from 'framer-motion';
-import { skills } from '../data/skills';
-import SectionHeader from './SectionHeader';
+import { motion } from 'framer-motion';
 
-// Icon components for skill categories
-const SkillIcons = {
-  'Frontend Focus': (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-      <polyline points="16 18 22 12 16 6"></polyline>
-      <polyline points="8 6 2 12 8 18"></polyline>
-    </svg>
-  ),
-  'Product & Systems': (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-      <line x1="8" y1="21" x2="16" y2="21"></line>
-      <line x1="12" y1="17" x2="12" y2="21"></line>
-    </svg>
-  ),
-};
+const skillCategories = [
+  {
+    name: 'Frontend',
+    icon: (
+      <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+    ),
+    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'HTML/CSS'],
+  },
+  {
+    name: 'Backend',
+    icon: (
+      <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    ),
+    skills: ['Node.js', 'Express', 'REST APIs', 'PostgreSQL', 'Supabase', 'Firebase'],
+  },
+  {
+    name: 'Design',
+    icon: (
+      <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M14.31 8l5.74 9.94" />
+        <path d="M9.69 8h11.48" />
+        <path d="M7.38 12l5.74-9.94" />
+        <path d="M9.69 16L3.95 6.06" />
+        <path d="M14.31 16H2.83" />
+        <path d="M16.62 12l-5.74 9.94" />
+      </svg>
+    ),
+    skills: ['Figma', 'UI/UX', 'Component Systems', 'Responsive Design', 'Design Tokens'],
+  },
+  {
+    name: 'Tools',
+    icon: (
+      <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+      </svg>
+    ),
+    skills: ['Git', 'Vercel', 'Vite', 'VS Code', 'Lenis', 'Performance Auditing'],
+  },
+];
+
+const marqueeRow1 = ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Figma', 'Node.js', 'Supabase'];
+const marqueeRow2 = ['GSAP', 'Vite', 'PostgreSQL', 'Git', 'Vercel', 'REST APIs', 'Firebase', 'Lenis'];
 
 function Skills() {
-  const prefersReducedMotion = useReducedMotion();
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 28 },
-    visible: (index) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 0.1, 0.25, 1],
-        delay: prefersReducedMotion ? 0 : index * 0.1,
-      },
-    }),
-  };
-
-  const listItemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: (index) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.4,
-        delay: index * 0.05,
-      },
-    }),
-  };
-
   return (
-    <section id="skills" className="section skills-section" data-reveal>
+    <section id="skills" className="section" data-reveal>
       <div className="container">
-        <SectionHeader
-          title="Tech skills and frontend toolkit."
-          description="A balanced stack built for polished interfaces, responsive systems, and business-ready web experiences."
-          small="Skills"
-        />
+        <div className="section-header">
+          <span className="section-label">03 — Stack</span>
+          <h2>What I build with.</h2>
+        </div>
 
+        {/* Categorized Skills Grid */}
         <div className="skills-grid">
-          {skills.map((category, index) => (
+          {skillCategories.map((category, categoryIndex) => (
             <motion.div
-              key={category.title}
-              className="skill-card"
-              custom={index}
-              initial="hidden"
-              whileInView="visible"
+              key={category.name}
+              className="skill-category"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              variants={cardVariants}
-              whileHover={!prefersReducedMotion ? { y: -6, transition: { duration: 0.3 } } : undefined}
-              transition={{ type: 'spring', stiffness: 160, damping: 18 }}
+              transition={{
+                duration: 0.5,
+                delay: categoryIndex * 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
-              <div className="skill-card-head">
-                <div className="skill-icon" aria-hidden="true">
-                  {SkillIcons[category.title]}
-                </div>
-                <h3>{category.title}</h3>
+              <div className="skill-category-header">
+                {category.icon}
+                <span className="skill-category-title">{category.name}</span>
               </div>
 
-              <motion.ul
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-              >
-                {category.items.map((item, itemIndex) => (
-                  <motion.li 
-                    key={item} 
-                    custom={itemIndex}
-                    variants={listItemVariants}
-                    whileHover={!prefersReducedMotion ? { x: 4 } : undefined}
-                    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              <div className="skill-tags">
+                {category.skills.map((skill, skillIndex) => (
+                  <motion.span
+                    key={skill}
+                    className="skill-tag"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.3,
+                      delay: categoryIndex * 0.1 + skillIndex * 0.025,
+                      ease: [0.34, 1.56, 0.64, 1],
+                    }}
+                    whileHover={{
+                      borderColor: 'var(--border-accent)',
+                      y: -1,
+                      transition: { duration: 0.15 },
+                    }}
                   >
-                    {item}
-                  </motion.li>
+                    {skill}
+                  </motion.span>
                 ))}
-              </motion.ul>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Additional Skills Visualization */}
-        <motion.div 
-          className="skills-visualization"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          <div className="skills-flow">
-            {['Design Systems', 'Component Architecture', 'Performance', 'Accessibility', 'Animation', 'Testing'].map((skill, index) => (
-              <motion.div
-                key={skill}
-                className="skill-flow-item"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: index * 0.08,
-                  type: 'spring',
-                  stiffness: 200,
-                  damping: 15
-                }}
-                whileHover={!prefersReducedMotion ? { scale: 1.1, y: -4 } : undefined}
-              >
-                {skill}
-              </motion.div>
+        {/* Horizontal Marquee */}
+        <div className="skills-marquee" aria-hidden="true">
+          <div className="marquee-row marquee-row-1">
+            {[...marqueeRow1, ...marqueeRow1].map((item, i) => (
+              <span key={`${item}-${i}`} className="marquee-item">
+                {i > 0 && i % marqueeRow1.length === 0 && (
+                  <span className="marquee-separator">·</span>
+                )}
+                {item}
+              </span>
             ))}
           </div>
-        </motion.div>
+          <div className="marquee-row marquee-row-2">
+            {[...marqueeRow2, ...marqueeRow2].map((item, i) => (
+              <span key={`${item}-${i}`} className="marquee-item">
+                {i > 0 && i % marqueeRow2.length === 0 && (
+                  <span className="marquee-separator">·</span>
+                )}
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

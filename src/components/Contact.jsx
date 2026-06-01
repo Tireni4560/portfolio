@@ -1,242 +1,157 @@
-import { useState } from 'react';
-import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
-import SectionHeader from './SectionHeader';
-
-const initialForm = { name: '', email: '', message: '' };
-const socialLinks = [
-  { label: 'X / Twitter', href: 'https://x.com/danieladeleye_' },
-  { label: 'WhatsApp', href: 'https://wa.me/2349063626099' },
-];
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useRef, useState } from 'react';
 
 function Contact() {
-  const prefersReducedMotion = useReducedMotion();
-  const [form, setForm] = useState(initialForm);
-  const [status, setStatus] = useState({ type: '', message: '' });
-  const [submitting, setSubmitting] = useState(false);
-  const [focusedField, setFocusedField] = useState(null);
+  const buttonRef = useRef(null);
+  const [isHovering, setIsHovering] = useState(false);
 
-  const fadeUp = {
-    hidden: { opacity: 0, y: 28 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 0.1, 0.25, 1],
-      }
-    },
-  };
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+  const springConfig = { stiffness: 150, damping: 15 };
+  const targetX = useSpring(mouseX, springConfig);
+  const targetY = useSpring(mouseY, springConfig);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleMouseMove = (e) => {
+    if (!buttonRef.current) return;
 
-    if (!form.name || !form.email || !form.message) {
-      setStatus({ type: 'error', message: 'Please complete all fields before sending your message.' });
-      return;
+    const rect = buttonRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Calculate distance from center, clamp to max offset
+    const maxOffset = 15;
+    let dx = e.clientX - centerX;
+    let dy = e.clientY - centerY;
+
+    // Normalize and clamp
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const maxDistance = 120;
+
+    if (distance > 0 && distance < maxDistance) {
+      const factor = Math.min(distance / maxDistance, 1);
+      dx = (dx / distance) * maxOffset * factor;
+      dy = (dy / distance) * maxOffset * factor;
+    } else if (distance >= maxDistance) {
+      dx = (dx / distance) * maxOffset;
+      dy = (dy / distance) * maxOffset;
     }
 
-    setSubmitting(true);
-    setStatus({ type: '', message: '' });
+    mouseX.set(dx);
+    mouseY.set(dy);
+  };
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-
-      if (!response.ok) {
-        throw new Error('Unable to submit message at this time.');
-      }
-
-      setForm(initialForm);
-      setStatus({ type: 'success', message: 'Message sent successfully — I will respond shortly.' });
-    } catch (error) {
-      setStatus({
-        type: 'error',
-        message: 'Unable to send message right now. Please reach out directly on X or WhatsApp.',
-      });
-    } finally {
-      setSubmitting(false);
-    }
+  const handleMouseEnter = () => setIsHovering(true);
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    mouseX.set(0);
+    mouseY.set(0);
   };
 
   return (
     <section id="contact" className="section contact-section" data-reveal>
-      <div className="container contact-grid">
-        <motion.div
-          className="contact-copy"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={fadeUp}
-        >
-          <SectionHeader
-            title="Ready to discuss your next digital product."
-            description="Send a message if you're building something worth building, or want to explore frontend and product strategy together."
-            small="Contact"
-          />
+      {/* Background Decorative Text */}
+      <div className="contact-bg-text" aria-hidden="true">
+        LET'S TALK
+      </div>
 
-          <p className="contact-note">
-            For immediate contact, use{' '}
-            {socialLinks.map((link, index) => (
-              <span key={link.label}>
-                {index > 0 && ' or '}
-                <motion.a 
-                  href={link.href} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {link.label}
-                </motion.a>
-              </span>
-            ))}
-            .
-          </p>
+      <div className="container">
+        <div className="section-header" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>
+          <span className="section-label" style={{ justifyContent: 'center' }}>06 — Contact</span>
+        </div>
 
-          {/* Social Links as Buttons */}
-          <div className="contact-social-buttons">
-            {socialLinks.map((link) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="contact-social-btn"
-                whileHover={!prefersReducedMotion ? { y: -3, scale: 1.02 } : undefined}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              >
-                {link.label}
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
+        <div className="contact-content">
+          <motion.h2
+            className="contact-title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Let's build something worth building.
+          </motion.h2>
 
-        <motion.div
-          className="contact-form-card"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={fadeUp}
-          transition={{ duration: 0.7, delay: prefersReducedMotion ? 0 : 0.1 }}
-        >
-          <form onSubmit={handleSubmit} className="contact-form" noValidate>
-            <motion.label
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+          <motion.p
+            className="contact-subtext"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Whether it's a client project, a product idea, or just a conversation —
+            I'm open. I typically respond within 24 hours.
+          </motion.p>
+
+          <motion.div
+            className="contact-availability"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <span className="dot" />
+            Available for freelance work · Open to full-time roles
+          </motion.div>
+
+          {/* Magnetic CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            style={{
+              display: 'inline-block',
+              position: 'relative',
+            }}
+          >
+            <motion.a
+              ref={buttonRef}
+              href="mailto:danieladeleye321@gmail.com?subject=Let's Work Together"
+              className="contact-cta"
+              style={{
+                x: targetX,
+                y: targetY,
+              }}
+              onMouseMove={handleMouseMove}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              Full name
-              <motion.input 
-                name="name" 
-                type="text" 
-                value={form.name} 
-                onChange={handleChange} 
-                placeholder="Your name" 
-                required
-                onFocus={() => setFocusedField('name')}
-                onBlur={() => setFocusedField(null)}
-                animate={{
-                  borderColor: focusedField === 'name' ? 'rgba(96, 165, 250, 0.5)' : 'rgba(148, 163, 184, 0.16)',
-                  boxShadow: focusedField === 'name' ? '0 0 0 4px rgba(59, 130, 246, 0.1)' : 'none',
-                }}
-                transition={{ duration: 0.2 }}
-              />
-            </motion.label>
+              Send a Message →
+            </motion.a>
+          </motion.div>
 
-            <motion.label
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.15 }}
-            >
-              Email address
-              <motion.input 
-                name="email" 
-                type="email" 
-                value={form.email} 
-                onChange={handleChange} 
-                placeholder="your@email.com" 
-                required
-                onFocus={() => setFocusedField('email')}
-                onBlur={() => setFocusedField(null)}
-                animate={{
-                  borderColor: focusedField === 'email' ? 'rgba(96, 165, 250, 0.5)' : 'rgba(148, 163, 184, 0.16)',
-                  boxShadow: focusedField === 'email' ? '0 0 0 4px rgba(59, 130, 246, 0.1)' : 'none',
-                }}
-                transition={{ duration: 0.2 }}
-              />
-            </motion.label>
+          {/* Social Links */}
+          <motion.div
+            className="contact-socials"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <a href="https://github.com/Tireni4560" target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+            <a href="https://linkedin.com/in/danieladeleye" target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+            <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer">
+              Twitter ↗
+            </a>
+          </motion.div>
 
-            <motion.label
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              Project details
-              <motion.textarea
-                name="message"
-                rows="6"
-                value={form.message}
-                onChange={handleChange}
-                placeholder="What are you building? What's your vision?"
-                required
-                onFocus={() => setFocusedField('message')}
-                onBlur={() => setFocusedField(null)}
-                animate={{
-                  borderColor: focusedField === 'message' ? 'rgba(96, 165, 250, 0.5)' : 'rgba(148, 163, 184, 0.16)',
-                  boxShadow: focusedField === 'message' ? '0 0 0 4px rgba(59, 130, 246, 0.1)' : 'none',
-                }}
-                transition={{ duration: 0.2 }}
-              />
-            </motion.label>
-
-            <motion.button 
-              type="submit" 
-              className="button button-primary" 
-              disabled={submitting}
-              whileHover={!prefersReducedMotion && !submitting ? { scale: 1.02, y: -2 } : undefined}
-              whileTap={!prefersReducedMotion && !submitting ? { scale: 0.97 } : undefined}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-            >
-              {submitting ? (
-                <motion.span
-                  animate={{ opacity: [1, 0.5, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                >
-                  Sending...
-                </motion.span>
-              ) : (
-                'Send Message'
-              )}
-            </motion.button>
-
-            <AnimatePresence>
-              {status.message && (
-                <motion.p 
-                  aria-live="polite" 
-                  className={`form-status ${status.type === 'success' ? 'status-success' : 'status-error'}`}
-                  initial={{ opacity: 0, y: 10, height: 0 }}
-                  animate={{ opacity: 1, y: 0, height: 'auto' }}
-                  exit={{ opacity: 0, y: -10, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {status.message}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </form>
-        </motion.div>
+          {/* Trust Signals */}
+          <motion.div
+            className="contact-trust"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <span className="contact-trust-item">📍 Based in Nigeria · Works globally</span>
+            <span className="contact-trust-item">⚡ Fast turnaround</span>
+            <span className="contact-trust-item">✓ Responds in {'<'} 24h</span>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

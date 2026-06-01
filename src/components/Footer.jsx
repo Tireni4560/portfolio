@@ -1,34 +1,48 @@
+import { motion } from 'framer-motion';
+
 function Footer() {
+  const handleBackToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="footer-section">
-      <div className="container footer-grid">
-        <div>
-          <p className="footer-brand">Daniel Adeleye</p>
-          <p className="footer-copy">
-            Building premium digital products with clean frontend systems, cinematic polish, and thoughtful interaction design.
-          </p>
-        </div>
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-inner">
+          <motion.span
+            className="footer-text"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
+            © {new Date().getFullYear()} Daniel Adeleye
+          </motion.span>
 
-        <div className="footer-links" aria-label="Footer navigation">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Work</a>
-          <a href="#contact">Contact</a>
-        </div>
+          <motion.span
+            className="footer-text"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            Built with React · Framer Motion · Tailwind
+          </motion.span>
 
-        <div className="footer-socials" aria-label="Social links">
-          <a href="https://x.com/danieladeleye_" target="_blank" rel="noreferrer">
-            X / Twitter
-          </a>
-          <a href="https://wa.me/2349063626099" target="_blank" rel="noreferrer">
-            WhatsApp
-          </a>
+          <motion.div
+            className="footer-links"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+          >
+            <a href="#home" onClick={handleBackToTop}>
+              Back to top ↑
+            </a>
+          </motion.div>
         </div>
       </div>
-
-      <p className="footer-note">
-        © {new Date().getFullYear()} Daniel Adeleye. Premium frontend engineering for ambitious products.
-      </p>
     </footer>
   );
 }
