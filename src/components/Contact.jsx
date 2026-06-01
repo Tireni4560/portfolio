@@ -131,9 +131,6 @@ function Contact() {
             <a href="https://github.com/Tireni4560" target="_blank" rel="noopener noreferrer">
               GitHub ↗
             </a>
-            <a href="https://linkedin.com/in/danieladeleye" target="_blank" rel="noopener noreferrer">
-              LinkedIn ↗
-            </a>
             <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer">
               Twitter ↗
             </a>

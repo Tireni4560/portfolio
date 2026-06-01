@@ -234,7 +234,7 @@ function App() {
           aria-hidden="true"
         />
 
-        <div className="container header-inner">
+        <div className="header-inner">
           <a
             href="#home"
             className="brand-link"

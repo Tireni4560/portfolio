@@ -10,6 +10,7 @@
     liveLink: 'https://upwork-showcase.vercel.app',
     featured: true,
     number: '01',
+    image: '/images/upwork_showcase.PNG',
   },
   {
     id: 'bizdash',
@@ -22,6 +23,7 @@
     liveLink: 'https://bizdash-pi.vercel.app',
     featured: false,
     number: '02',
+    image: '/images/bizdash.PNG',
   },
   {
     id: 'miniecom',
@@ -34,6 +36,7 @@
     liveLink: 'https://miniecom-pi.vercel.app/',
     featured: false,
     number: '03',
+    image: '/images/miniecom.PNG',
   },
   {
     id: 'business-landing',
@@ -46,5 +49,5 @@
     liveLink: 'https://business-landing-demo.vercel.app',
     featured: false,
     number: '04',
+    image: '/images/bulade.PNG',
   },
-];

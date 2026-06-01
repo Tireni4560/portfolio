@@ -61,7 +61,7 @@
   --text-xl: 1.4rem;
   --text-2xl: 1.85rem;
   --text-3xl: 2.5rem;
-  --text-hero: clamp(3.2rem, 7vw, 6.5rem);
+  --text-hero: clamp(2.8rem, 6vw, 5.5rem);
   --text-bg: clamp(5rem, 13vw, 11rem);
 
   /* Motion */
@@ -288,7 +288,7 @@ button {
   left: 0;
   right: 0;
   z-index: var(--z-sticky);
-  height: 60px;
+  height: 64px;
   border-bottom: 1px solid transparent;
   background: transparent;
   transition: background var(--dur-base) var(--ease-in-out), border-color var(--dur-base) var(--ease-in-out);
@@ -306,7 +306,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-lg);
+  gap: 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-pad);
+  width: 100%;
 }
 
 /* Brand */
@@ -557,10 +561,10 @@ button {
 .section-header h2 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.9rem, 3.5vw, 3.2rem);
   font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
 }
 
 .section-header p {
@@ -581,7 +585,8 @@ button {
   overflow: hidden;
   display: flex;
   align-items: flex-end;
-  padding-bottom: 15%;
+  padding-bottom: clamp(8rem, 15%, 12rem);
+  padding-top: 80px;
 }
 
 .hero-grid {
@@ -620,8 +625,8 @@ button {
   font-family: var(--font-display);
   font-size: var(--text-hero);
   font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
   margin: 0;
 }
 
@@ -1121,6 +1126,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
 }
 
 /* Standard Project Cards */
@@ -1148,6 +1154,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   transition: transform 0.6s ease;
 }
 
@@ -1825,6 +1832,149 @@ button {
   .footer-inner {
     flex-direction: column;
     text-align: center;
+  }
+
+  /* 7B — Hero section on small screens */
+  .hero-section {
+    padding-bottom: clamp(6rem, 20vw, 8rem);
+    align-items: flex-end;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-social {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* 7C — Featured project card on mobile */
+  .project-featured-inner {
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .project-featured-badge {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  /* 7D — Founder card on mobile */
+  .founder-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .founder-watermark {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  /* 7E — Process steps on mobile */
+  .process-step {
+    text-align: left;
+    padding: 1.25rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  .process-step-number {
+    font-size: 1.5rem;
+  }
+
+  /* 7F — About section stat cards on mobile */
+  .stat-card {
+    position: static;
+    transform: none !important;
+  }
+
+  .about-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .about-stats-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .stat-card {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  /* 7H — Contact section on mobile */
+  .contact-title {
+    font-size: clamp(2rem, 9vw, 3rem);
+    letter-spacing: -0.03em;
+  }
+
+  .contact-socials {
+    gap: 1.25rem;
+  }
+}
+
+/* 7A — Standard projects grid on mobile */
+@media (max-width: 640px) {
+  .standard-projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 7G — Section header on small screens */
+@media (max-width: 480px) {
+  .section-header h2 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+    letter-spacing: -0.03em;
+  }
+
+  .section-header p {
+    font-size: var(--text-base);
+  }
+}
+
+/* 7I — Skills grid on small screens */
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 7J — Footer on mobile */
+@media (max-width: 480px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+}
+
+/* 7K — Nav toggle visible only on mobile */
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none !important;
   }
 }
 

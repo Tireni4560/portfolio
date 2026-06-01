@@ -37,12 +37,15 @@ function Hero() {
   const headlineLine1 = ['Building', 'products'];
   const headlineLine2 = ['people', 'open', 'twice.'];
 
-  const Word = ({ text, index }) => (
-    <span className="word" style={{ '--word-delay': `${index * 40}ms` }}>
-      <span className="word-inner" style={{ transitionDelay: `${index * 40}ms` }}>
-        {text}
+  const Word = ({ text, index, isLast }) => (
+    <>
+      <span className="word" style={{ '--word-delay': `${index * 40}ms` }}>
+        <span className="word-inner" style={{ transitionDelay: `${index * 40}ms` }}>
+          {text}
+        </span>
       </span>
-    </span>
+      {!isLast && ' '}
+    </>
   );
 
   return (
@@ -95,12 +98,12 @@ function Hero() {
           >
             <span className="line-1">
               {headlineLine1.map((word, i) => (
-                <Word key={`l1-${i}`} text={word} index={i} />
+                <Word key={`l1-${i}`} text={word} index={i} isLast={i === headlineLine1.length - 1} />
               ))}
             </span>
             <span className="line-2">
               {headlineLine2.map((word, i) => (
-                <Word key={`l2-${i}`} text={word} index={i} />
+                <Word key={`l2-${i}`} text={word} index={i} isLast={i === headlineLine2.length - 1} />
               ))}
             </span>
           </motion.h1>

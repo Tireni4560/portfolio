@@ -131,9 +131,10 @@ function FeaturedProjectCard({ project }) {
               }}
             >
               <img
-                src={`https://images.unsplash.com/photo-${getPlaceholderImage(project.id)}`}
-                alt={`Screenshot of ${project.title}`}
+                src={project.image}
+                alt={`Screenshot of ${project.title} — live project by Daniel Adeleye`}
                 loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </motion.div>
@@ -159,9 +160,10 @@ function ProjectCard({ project, index }) {
     >
       <div className="project-image">
         <img
-          src={`https://images.unsplash.com/photo-${getPlaceholderImage(project.id)}`}
-          alt={`Screenshot of ${project.title}`}
+          src={project.image}
+          alt={`Screenshot of ${project.title} — live project by Daniel Adeleye`}
           loading="lazy"
+          decoding="async"
         />
       </div>
 
@@ -198,17 +200,6 @@ function ProjectCard({ project, index }) {
       </div>
     </motion.article>
   );
-}
-
-// Helper to get placeholder images
-function getPlaceholderImage(projectId) {
-  const images = {
-    'upwork-showcase': '1561070796-175d61feb4cf?w=800&h=600&fit=crop',
-    'bizdash': '1551283885-61473363c3e6?w=800&h=600&fit=crop',
-    'miniecom': '1441986300-5864d41a59e6?w=800&h=600&fit=crop',
-    'business-landing': '1460925895917-afd2254e565a?w=800&h=600&fit=crop',
-  };
-  return images[projectId] || '1507238691701-97107f4e5366?w=800&h=600&fit=crop';
 }
 
 export default Projects;
