@@ -115,7 +115,7 @@ function Hero() {
             animate={loaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.55 }}
           >
-            I design and engineer web products with the precision of a developer
+            I build web products with the precision of a developer
             and the intent of a founder.
           </motion.p>
 

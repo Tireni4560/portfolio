@@ -9,12 +9,7 @@ function Founder() {
           <h2>I'm not just building for clients.</h2>
           <p>
             I'm building companies. Most developers build what they're asked to build.
-            I spend time thinking about what it should exist, who it's for, and whether
-            it creates real value. That's the mindset I bring to every client project —
-            and it's the mindset behind my own ventures.
-          </p>
-        </div>
-
+                I spend time thinking about what should exist, who it's for, and whether
         {/* Tirenify Featured Venture Card */}
         <motion.div
           className="founder-card-wrapper"

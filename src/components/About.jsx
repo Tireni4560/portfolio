@@ -51,14 +51,9 @@ function About() {
           >
             <div className="about-photo-wrapper">
               <div className="about-photo">
-                {!imageLoaded && (
-                  <div className="about-photo-placeholder">
-                    DA
-                  </div>
-                )}
                 <img
                   src="/images/Daniel.jpg"
-                  alt="Daniel Adeleye"
+                  alt="Daniel Adeleye — Frontend Developer and Product Builder"
                   loading="lazy"
                   onLoad={() => setImageLoaded(true)}
                   style={{ opacity: imageLoaded ? 1 : 0 }}
