@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import resumePdf from '../../images/resume.pdf';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 function Hero() {
@@ -129,7 +130,7 @@ function Hero() {
             <a href="#projects" className="button button-primary">
               View My Work
             </a>
-            <a href="/resume.pdf" className="button button-secondary">
+            <a href={resumePdf} className="button button-secondary" target="_blank" rel="noopener noreferrer" aria-label="Open resume in new tab">
               View Resume
             </a>
           </motion.div>
