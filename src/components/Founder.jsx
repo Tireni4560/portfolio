@@ -10,6 +10,8 @@ function Founder() {
           <p>
             I'm building companies. Most developers build what they're asked to build.
                 I spend time thinking about what should exist, who it's for, and whether
+          </p>
+        </div>
         {/* Tirenify Featured Venture Card */}
         <motion.div
           className="founder-card-wrapper"

@@ -51,3 +51,4 @@
     number: '04',
     image: '/images/bulade.PNG',
   },
+];
