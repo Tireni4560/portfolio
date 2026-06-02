@@ -1,4 +1,9 @@
-﻿export const projects = [
+﻿import upwork_showcase from '../../images/upwork showcase.PNG';
+import bizdashImg from '../../images/bizdash.PNG';
+import miniecomImg from '../../images/miniecom.PNG';
+import buladeImg from '../../images/bulade.PNG';
+
+export const projects = [
   {
     id: 'upwork-showcase',
     title: 'Upwork Showcase',
@@ -10,7 +15,7 @@
     liveLink: 'https://upwork-showcase.vercel.app',
     featured: true,
     number: '01',
-    image: '/images/upwork_showcase.PNG',
+    image: upwork_showcase,
   },
   {
     id: 'bizdash',
@@ -23,7 +28,7 @@
     liveLink: 'https://bizdash-pi.vercel.app',
     featured: false,
     number: '02',
-    image: '/images/bizdash.PNG',
+    image: bizdashImg,
   },
   {
     id: 'miniecom',
@@ -36,7 +41,7 @@
     liveLink: 'https://miniecom-pi.vercel.app/',
     featured: false,
     number: '03',
-    image: '/images/miniecom.PNG',
+    image: miniecomImg,
   },
   {
     id: 'business-landing',
@@ -49,6 +54,6 @@
     liveLink: 'https://business-landing-demo.vercel.app',
     featured: false,
     number: '04',
-    image: '/images/bulade.PNG',
+    image: buladeImg,
   },
 ];

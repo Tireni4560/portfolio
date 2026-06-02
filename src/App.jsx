@@ -293,6 +293,16 @@ function App() {
               aria-modal="true"
               aria-label="Navigation menu"
             >
+              <motion.button
+                className="mobile-close"
+                onClick={closeMenu}
+                aria-label="Close navigation menu"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+              >
+                ×
+              </motion.button>
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.href}

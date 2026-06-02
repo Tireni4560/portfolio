@@ -92,7 +92,7 @@ function Contact() {
             <span className="dot" />
             Available for freelance work · Open to full-time roles
           </motion.div>
-
+<br />
           {/* Magnetic CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
