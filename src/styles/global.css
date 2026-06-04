@@ -299,33 +299,6 @@ button {
   will-change: transform;
 }
 
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: calc(var(--z-cursor) + 1);
-  mix-blend-mode: normal;
-  will-change: transform;
-}
-
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(99, 102, 241, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: var(--z-cursor);
-  will-change: transform;
-}
-
 .cursor-ring--hover {
   width: 52px;
   height: 52px;
@@ -335,26 +308,14 @@ button {
   transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
 }
 
-/* Hide system cursor when custom cursor is active */
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
-  }
-  a, button, [role="button"] {
-    cursor: none;
-  }
-}
-
 @media (hover: none) {
-  .cursor-dot,
-  .cursor-ring {
+  .cursor-glow {
     display: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cursor-dot,
-  .cursor-ring {
+  .cursor-glow {
     display: none;
   }
 }

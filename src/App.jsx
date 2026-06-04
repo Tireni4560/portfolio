@@ -27,7 +27,6 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
-  const [cursorRingHover, setCursorRingHover] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const appRef = useRef(null);
 
@@ -69,19 +68,9 @@ function App() {
       setCursor({ x: event.clientX, y: event.clientY, visible: true });
     };
     const handlePointerLeave = () => setCursor((current) => ({ ...current, visible: false }));
-    const handlePointerOver = (event) => {
-      if (event.target.closest('a, button, [role="button"]')) {
-        setCursorRingHover(true);
-      } else {
-        setCursorRingHover(false);
-      }
-    };
-    const handlePointerOut = () => setCursorRingHover(false);
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
-    window.addEventListener('pointerover', handlePointerOver, { passive: true });
-    window.addEventListener('pointerout', handlePointerOut, { passive: true });
     window.addEventListener('pointerleave', handlePointerLeave);
 
     handleScroll();
@@ -219,30 +208,6 @@ function App() {
         </div>
       </div>
 
-      {/* Custom Cursor Dot */}
-      <motion.div
-        className="cursor-dot"
-        aria-hidden="true"
-        animate={{
-          x: cursor.x - 4,
-          y: cursor.y - 4,
-          opacity: cursor.visible ? 1 : 0,
-        }}
-        transition={{ type: 'spring', stiffness: 800, damping: 35, mass: 0.1 }}
-      />
-
-      {/* Cursor ring — lags behind */}
-      <motion.div
-        className={`cursor-ring${cursorRingHover ? ' cursor-ring--hover' : ''}`}
-        aria-hidden="true"
-        animate={{
-          x: cursor.x - 18,
-          y: cursor.y - 18,
-          opacity: cursor.visible && !prefersReducedMotion ? 1 : 0,
-        }}
-        transition={{ type: 'spring', stiffness: 120, damping: 22, mass: 0.5 }}
-      />
-
       {/* Cursor Glow Effect */}
       <motion.div
         className="cursor-glow"
@@ -356,8 +321,7 @@ function App() {
               ))}
               <div className="mobile-nav-social" style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem' }}>
                 <a href="https://github.com/Tireni4560" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://linkedin.com/in/danieladeleye" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer">X</a>
               </div>
             </motion.div>
             <motion.button

@@ -157,11 +157,8 @@ function Hero() {
             <a href="https://github.com/Tireni4560" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               GitHub
             </a>
-            <a href="https://linkedin.com/in/danieladeleye" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              LinkedIn
-            </a>
-            <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X">
-              Twitter/X
+            <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer" aria-label="X">
+              X
             </a>
           </motion.div>
         </div>

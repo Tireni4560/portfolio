@@ -72,7 +72,7 @@ function Contact() {
               GitHub ↗
             </a>
             <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer">
-              Twitter ↗
+              X ↗
             </a>
           </motion.div>
 
