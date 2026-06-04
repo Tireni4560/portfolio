@@ -143,7 +143,7 @@ function Hero() {
             transition={{ duration: 0.5, delay: 0.85 }}
           >
             <StatCounter value={3} suffix="+" label="Years Building" />
-            <StatCounter value={4} suffix="" label="Products Shipped" />
+            <StatCounter value={40} suffix="+" label="Products Shipped" />
             <StatCounter value={100} suffix="%" label="Passion for Craft" />
           </motion.div>
 

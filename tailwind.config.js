@@ -37,7 +37,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
+        display: ['Space Grotesk', 'Syne', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
         mono: ['Geist Mono', 'monospace'],
       },

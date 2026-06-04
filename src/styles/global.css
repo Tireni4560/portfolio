@@ -6,7 +6,7 @@
    ============================================ */
 :root {
   /* Typography */
-  --font-display: 'Syne', sans-serif;
+  --font-display: 'Space Grotesk', 'Syne', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
 
@@ -128,6 +128,26 @@ body {
   overflow-x: hidden;
   line-height: 1.7;
   font-family: var(--font-body);
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  z-index: calc(var(--z-modal) + 1);
+  overflow: hidden;
+}
+
+.loading-screen svg {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(90vw, 320px);
+  max-height: min(30vh, 120px);
+  overflow: visible;
 }
 
 body.menu-open {
