@@ -1,12 +1,17 @@
 import { motion } from 'framer-motion';
+import AnimatedHeading from './AnimatedHeading';
+import ScrambleText from './ScrambleText';
+import TerminalCode from './TerminalCode';
 
 function Founder() {
   return (
     <section id="founder" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <span className="section-label">04 — Ventures</span>
-          <h2>I'm not just building for clients.</h2>
+          <ScrambleText text="04 — Ventures" className="section-label" />
+          <h2>
+            <AnimatedHeading text="I'm not just building for clients." />
+          </h2>
           <p>
             I'm building companies. Most developers build what they're asked to build.
                 I spend time thinking about what should exist, who it's for, and whether
@@ -75,58 +80,7 @@ function Founder() {
 
                 {/* Right Column - Code Terminal */}
                 <div className="founder-terminal">
-                  <div className="founder-code-terminal">
-                    <div className="code-line">
-                      <span className="code-keyword">const</span> tirenify = {'{'}
-                    </div>
-
-                    <div className="code-line">
-                      &nbsp;&nbsp;mission:{' '}
-                      <span className="code-string">
-                        "Make digital exposure awareness accessible"
-                      </span>,
-                    </div>
-
-                    <div className="code-line">
-                      &nbsp;&nbsp;focus:{' '}
-                      <span className="code-string">
-                        "Privacy, trust & digital identity"
-                      </span>,
-                    </div>
-
-                    <div className="code-line">
-                      &nbsp;&nbsp;mvp:{' '}
-                      <span className="code-string">
-                        "Email breach checker"
-                      </span>,
-                    </div>
-
-                    <div className="code-line">
-                      &nbsp;&nbsp;users:{' '}
-                      <span className="code-string">
-                        "Internet users, freelancers & founders"
-                      </span>,
-                    </div>
-
-                    <div className="code-line">
-                      &nbsp;&nbsp;status:{' '}
-                      <span className="code-function">iterate</span>(),
-                    </div>
-
-                    <div className="code-line">
-                      &nbsp;&nbsp;vision:{' '}
-                      <span className="code-keyword">true</span>
-                    </div>
-
-                    <div className="code-line">{'}'}</div>
-
-                    <div className="code-line">&nbsp;</div>
-
-                    <div className="code-line">
-                      <span className="code-keyword">await</span> tirenify.
-                      <span className="code-function">grow</span>();
-                    </div>
-                  </div>
+                  <TerminalCode />
                 </div>
               </div>
             </div>

@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import AnimatedHeading from './AnimatedHeading';
+import ScrambleText from './ScrambleText';
 
 const skillCategories = [
   {
@@ -57,8 +59,10 @@ function Skills() {
     <section id="skills" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <span className="section-label">03 — Stack</span>
-          <h2>What I build with.</h2>
+          <ScrambleText text="03 — Stack" className="section-label" />
+          <h2>
+            <AnimatedHeading text="What I build with." />
+          </h2>
         </div>
 
         {/* Categorized Skills Grid */}

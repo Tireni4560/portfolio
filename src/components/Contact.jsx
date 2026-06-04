@@ -1,52 +1,9 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import AnimatedHeading from './AnimatedHeading';
+import ScrambleText from './ScrambleText';
+import MagneticButton from './MagneticButton';
 
 function Contact() {
-  const buttonRef = useRef(null);
-  const [isHovering, setIsHovering] = useState(false);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { stiffness: 150, damping: 15 };
-  const targetX = useSpring(mouseX, springConfig);
-  const targetY = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e) => {
-    if (!buttonRef.current) return;
-
-    const rect = buttonRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    // Calculate distance from center, clamp to max offset
-    const maxOffset = 15;
-    let dx = e.clientX - centerX;
-    let dy = e.clientY - centerY;
-
-    // Normalize and clamp
-    const distance = Math.sqrt(dx * dx + dy * dy);
-    const maxDistance = 120;
-
-    if (distance > 0 && distance < maxDistance) {
-      const factor = Math.min(distance / maxDistance, 1);
-      dx = (dx / distance) * maxOffset * factor;
-      dy = (dy / distance) * maxOffset * factor;
-    } else if (distance >= maxDistance) {
-      dx = (dx / distance) * maxOffset;
-      dy = (dy / distance) * maxOffset;
-    }
-
-    mouseX.set(dx);
-    mouseY.set(dy);
-  };
-
-  const handleMouseEnter = () => setIsHovering(true);
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-    mouseX.set(0);
-    mouseY.set(0);
-  };
 
   return (
     <section id="contact" className="section contact-section" data-reveal>
@@ -57,19 +14,13 @@ function Contact() {
 
       <div className="container">
         <div className="section-header" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>
-          <span className="section-label" style={{ justifyContent: 'center' }}>06 — Contact</span>
+          <ScrambleText text="06 — Contact" className="section-label" />
         </div>
 
         <div className="contact-content">
-          <motion.h2
-            className="contact-title"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Let's build something worth building.
-          </motion.h2>
+          <h2>
+            <AnimatedHeading text="Let's build something worth building." className="contact-title" />
+          </h2>
 
           <motion.p
             className="contact-subtext"
@@ -99,25 +50,14 @@ function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            style={{
-              display: 'inline-block',
-              position: 'relative',
-            }}
+            style={{ display: 'inline-block', position: 'relative' }}
           >
-            <motion.a
-              ref={buttonRef}
+            <MagneticButton
               href="mailto:danieladeleye321@gmail.com?subject=Let's Work Together"
               className="contact-cta"
-              style={{
-                x: targetX,
-                y: targetY,
-              }}
-              onMouseMove={handleMouseMove}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
             >
               Send a Message →
-            </motion.a>
+            </MagneticButton>
           </motion.div>
 
           {/* Social Links */}

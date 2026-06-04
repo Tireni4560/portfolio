@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import AnimatedHeading from './AnimatedHeading';
+import ScrambleText from './ScrambleText';
 import { projects } from '../data/projects';
 
 function Projects() {
@@ -10,8 +12,17 @@ function Projects() {
     <section id="projects" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <span className="section-label">02 — Work</span>
-          <h2>Products I've shipped.</h2>
+          <ScrambleText text="02 — Work" className="section-label" />
+          <h2>
+            <AnimatedHeading text="Products I've shipped." />
+          </h2>
+          <motion.div
+            className="section-line"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          />
         </div>
 
         <div className="projects-grid">
@@ -165,6 +176,9 @@ function ProjectCard({ project, index }) {
           loading="lazy"
           decoding="async"
         />
+        <div className="project-image-overlay">
+          <span className="project-overlay-cta">View Project ↗</span>
+        </div>
       </div>
 
       <div className="project-content">

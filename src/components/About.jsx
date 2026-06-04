@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import ExpertiseBar from './ExpertiseBar';
+import ScrambleText from './ScrambleText';
 
 function About() {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -8,7 +10,7 @@ function About() {
     <section id="about" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <span className="section-label">01 — About</span>
+          <ScrambleText text="01 — About" className="section-label" />
         </div>
 
         <div className="about-grid">
@@ -38,6 +40,17 @@ function About() {
                 I now think about retention, conversion, and business logic the same way I think
                 about component architecture.
               </p>
+            </div>
+
+            <div className="about-expertise">
+              {[
+                { skill: 'React & Frontend', level: 90 },
+                { skill: 'UI Engineering', level: 88 },
+                { skill: 'Product Thinking', level: 82 },
+                { skill: 'Performance & DX', level: 78 },
+              ].map((item, index) => (
+                <ExpertiseBar key={item.skill} skill={item.skill} level={item.level} index={index} />
+              ))}
             </div>
           </motion.div>
 

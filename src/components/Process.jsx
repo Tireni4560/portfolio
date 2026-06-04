@@ -1,6 +1,7 @@
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, useInView, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import AnimatedHeading from './AnimatedHeading';
+import ScrambleText from './ScrambleText';
 
 const steps = [
   {
@@ -81,19 +82,43 @@ function Process() {
     },
   };
 
+  const shouldReduceMotion = useReducedMotion();
+  const stepVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.6,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
   return (
     <section id="process" className="section" ref={ref} data-reveal>
       <div className="container">
         <div className="section-header">
-          <span className="section-label">05 — Approach</span>
-          <h2>I don't just implement designs. I question them.</h2>
+          <ScrambleText text="05 — Approach" className="section-label" />
+          <h2>
+            <AnimatedHeading text="I don't just implement designs. I question them." />
+          </h2>
           <p>
             My process is shaped by product thinking. Before I write a line of code,
             I ask whether the thing I'm building actually solves the right problem.
           </p>
         </div>
 
-        <div className="process-steps">
+        <motion.div
+          className="process-steps"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {/* Connecting Line (Desktop) */}
           <svg className="process-connector" aria-hidden="true">
             <motion.line
@@ -114,15 +139,9 @@ function Process() {
             <motion.div
               key={step.number}
               className="process-step"
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{
-                duration: 0.5,
-                delay: 0.3 + index * 0.3,
-                ease: [0.34, 1.56, 0.64, 1],
-              }}
+              variants={stepVariants}
             >
-              <span className="process-step-number">{step.number}</span>
+              <div className="process-step-number-accent">{step.number}</div>
 
               <motion.div
                 className="process-step-icon-wrapper"
@@ -136,7 +155,7 @@ function Process() {
               <p className="process-step-desc">{step.description}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

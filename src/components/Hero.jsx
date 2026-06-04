@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import resumePdf from '../../images/resume.pdf';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import StatCounter from './StatCounter';
 
 function Hero() {
   const heroRef = useRef(null);
@@ -135,6 +136,17 @@ function Hero() {
             </a>
           </motion.div>
 
+          <motion.div
+            className="hero-stats"
+            initial={{ opacity: 0 }}
+            animate={loaded ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.85 }}
+          >
+            <StatCounter value={3} suffix="+" label="Years Building" />
+            <StatCounter value={4} suffix="" label="Products Shipped" />
+            <StatCounter value={100} suffix="%" label="Passion for Craft" />
+          </motion.div>
+
           {/* Social Links */}
           <motion.div
             className={`hero-social ${loaded ? 'loaded' : ''}`}
@@ -163,6 +175,22 @@ function Hero() {
         <span>scroll</span>
         <div className="scroll-line" />
       </motion.div>
+
+      {/* Tech tag marquee — decorative */}
+      <div className="hero-marquee" aria-hidden="true">
+        <div className="hero-marquee-track">
+          {[
+            'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion',
+            'GSAP', 'Next.js', 'Node.js', 'Vite', 'Supabase',
+            'Product Thinking', 'UI Engineering', 'Startup Builder',
+            'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion',
+            'GSAP', 'Next.js', 'Node.js', 'Vite', 'Supabase',
+            'Product Thinking', 'UI Engineering', 'Startup Builder',
+          ].map((tag, i) => (
+            <span key={i} className="hero-marquee-tag">{tag}</span>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

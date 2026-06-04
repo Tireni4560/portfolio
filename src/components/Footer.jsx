@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 
 function Footer() {
-  const handleBackToTop = (e) => {
-    e.preventDefault();
+  const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -21,7 +20,7 @@ function Footer() {
           </motion.span>
 
           <motion.span
-            className="footer-text"
+            className="footer-text footer-built"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -37,12 +36,22 @@ function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
-            <a href="#home" onClick={handleBackToTop}>
-              Back to top ↑
-            </a>
+            <button className="footer-top-btn" onClick={scrollToTop} aria-label="Back to top">
+              <motion.span whileHover={{ y: -3 }} transition={{ duration: 0.2 }}>
+                Back to top ↑
+              </motion.span>
+            </button>
           </motion.div>
         </div>
       </div>
+
+      <motion.div
+        className="footer-accent-line"
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      />
     </footer>
   );
 }
