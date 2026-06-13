@@ -2,6 +2,7 @@
 import bizdashImg from '../../images/bizdash.PNG';
 import miniecomImg from '../../images/miniecom.PNG';
 import buladeImg from '../../images/bulade.PNG';
+import leyeImg from '../../images/leye.PNG';
 
 export const projects = [
   {
@@ -55,5 +56,18 @@ export const projects = [
     featured: false,
     number: '04',
     image: buladeImg,
+  },
+  {
+    id: 'leye-resources',
+    title: 'Leye Resources',
+    category: 'B2B · Corporate',
+    presentation: 'Premium Metal Trading Website',
+    description: 'Leye Resources is a B2B industrial metals trading company specializing in ferrous metals (steel, iron), non-ferrous metals (aluminum, copper, zinc), and specialty alloys.',
+    results: ['15+ years experience', '500+ clients', 'Quality assurance'],
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    liveLink: 'https://vedal-two.vercel.app/',
+    featured: false,
+    number: '05',
+    image: leyeImg,
   },
 ];

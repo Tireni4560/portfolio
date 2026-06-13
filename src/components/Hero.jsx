@@ -11,14 +11,10 @@ function Hero() {
   const { scrollY } = useScroll();
   const parallaxY = useTransform(scrollY, [0, 500], [0, 20]);
   const orb1Y = useTransform(scrollY, [0, 800], [0, 100]);
-  const orb2Y = useTransform(scrollY, [0, 800], [0, -80]);
-  const orb3Y = useTransform(scrollY, [0, 800], [0, 60]);
 
   // Smooth spring for parallax
   const smoothParallaxY = useSpring(parallaxY, { stiffness: 100, damping: 30 });
   const smoothOrb1Y = useSpring(orb1Y, { stiffness: 50, damping: 30 });
-  const smoothOrb2Y = useSpring(orb2Y, { stiffness: 50, damping: 30 });
-  const smoothOrb3Y = useSpring(orb3Y, { stiffness: 50, damping: 30 });
 
   useEffect(() => {
     // Trigger entrance animations after a short delay
@@ -61,16 +57,6 @@ function Hero() {
       <motion.div
         className="hero-orb hero-orb-1"
         style={{ y: smoothOrb1Y }}
-        aria-hidden="true"
-      />
-      <motion.div
-        className="hero-orb hero-orb-2"
-        style={{ y: smoothOrb2Y }}
-        aria-hidden="true"
-      />
-      <motion.div
-        className="hero-orb hero-orb-3"
-        style={{ y: smoothOrb3Y }}
         aria-hidden="true"
       />
 
@@ -163,7 +149,6 @@ function Hero() {
           </motion.div>
         </div>
       </motion.div>
-
       {/* Scroll Indicator */}
       <motion.div
         className={`scroll-indicator ${scrollVisible ? '' : 'hidden'}`}

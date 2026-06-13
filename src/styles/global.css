@@ -34,6 +34,9 @@
 
   /* Semantic */
   --available: #22c55e;
+  --safe: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
 
   /* Shadows */
   --shadow-card: 0 1px 3px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.35);
