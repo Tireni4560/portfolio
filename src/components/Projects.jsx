@@ -81,11 +81,12 @@ function FeaturedProjectCard({ project }) {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        <span className="project-featured-badge">Featured</span>
-
         <div className="project-info">
-          <span className="project-number">{project.number}</span>
-          <span className="project-category">{project.category}</span>
+          <div className="project-meta">
+            <span className="project-number">{project.number}</span>
+            <span className="project-category">{project.category}</span>
+          </div>
+          <span className="project-featured-badge">Featured</span>
           <h3 className="project-title">{project.title}</h3>
           <p className="project-description">{project.description}</p>
 

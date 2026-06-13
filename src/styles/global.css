@@ -1205,8 +1205,8 @@ button {
 
 .project-featured-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: -0.5rem;
+  right: 0;
   background: var(--accent);
   color: #fff;
   font-family: var(--font-mono);
@@ -1215,6 +1215,25 @@ button {
   border-radius: var(--radius-full);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  z-index: 2;
+}
+
+/* Position info column as relative container so the Featured badge
+   is anchored to the left (info) side only and never overlaps the image mockup */
+.project-info {
+  position: relative;
+}
+
+/* Reserve horizontal space on the right of the meta row inside the featured card
+   so the category badge doesn't slide under the absolutely positioned Featured pill */
+.project-card-featured .project-meta {
+  padding-right: 5.5rem;
+}
+
+/* Category's default bottom margin was for standalone use; inside meta the
+   row's margin-bottom controls spacing to the title. */
+.project-meta .project-category {
+  margin-bottom: 0;
 }
 
 .project-number {
@@ -2199,8 +2218,13 @@ button {
   }
 
   .project-featured-badge {
-    top: 0.75rem;
-    right: 0.75rem;
+    top: -0.25rem;
+    right: 0;
+  }
+
+  /* Slightly less right-reserve on narrow screens so category has more room */
+  .project-card-featured .project-meta {
+    padding-right: 4.75rem;
   }
 
   /* 7D — Founder card on mobile */

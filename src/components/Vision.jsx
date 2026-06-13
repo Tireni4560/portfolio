@@ -11,7 +11,7 @@ function Vision() {
         />
         <div className="vision-copy">
           <p>
-            My vision is to create technology that feels purposeful — tools and systems that solve real problems and stand the test of time. I believe in building with clarity, performance, and long-term thinking at the core.
+            My vision is to create technology that feels purposeful tools and systems that solve real problems and stand the test of time. I believe in building with clarity, performance, and long-term thinking at the core.
           </p>
           <p>
             Every project is an opportunity to learn, refine, and push toward bigger ambitions: scalable systems, secure digital experiences, and products that make a meaningful difference. My mission is simple — keep building, keep improving, and keep moving toward impactful technology.

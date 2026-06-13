@@ -6,7 +6,7 @@ import ScrambleText from './ScrambleText';
 const steps = [
   {
     number: '01',
-    title: 'Understand',
+    title: 'Understanding',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -21,7 +21,7 @@ const steps = [
   },
   {
     number: '02',
-    title: 'Question',
+    title: 'Questioning',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 3v5" />
@@ -34,7 +34,7 @@ const steps = [
   },
   {
     number: '03',
-    title: 'Architect',
+    title: 'Architecture',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="7" height="7" />
@@ -47,7 +47,7 @@ const steps = [
   },
   {
     number: '04',
-    title: 'Ship',
+    title: 'Shipping',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 2L11 13" />
