@@ -112,12 +112,12 @@ function FeaturedProjectCard({ project }) {
               Live Demo ↗
             </a>
             <a
-              href={`https://github.com/Tireni4560`}
+              href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android"
               target="_blank"
               rel="noopener noreferrer"
               className="project-link"
             >
-              GitHub ↗
+              LinkedIn ↗
             </a>
           </div>
         </div>

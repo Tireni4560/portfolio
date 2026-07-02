@@ -68,8 +68,8 @@ function Contact() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <a href="https://github.com/Tireni4560" target="_blank" rel="noopener noreferrer">
-              GitHub ↗
+            <a href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
             </a>
             <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer">
               X ↗

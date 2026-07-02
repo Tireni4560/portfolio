@@ -140,8 +140,8 @@ function Hero() {
             animate={loaded ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.9 }}
           >
-            <a href="https://github.com/Tireni4560" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              GitHub
+            <a href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              LinkedIn
             </a>
             <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer" aria-label="X">
               X

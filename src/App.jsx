@@ -320,7 +320,7 @@ function App() {
                 </motion.a>
               ))}
               <div className="mobile-nav-social" style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem' }}>
-                <a href="https://github.com/Tireni4560" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer">X</a>
               </div>
             </motion.div>

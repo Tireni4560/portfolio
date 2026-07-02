@@ -5,6 +5,6 @@ export const skills = [
   },
   {
     title: 'Product & Systems',
-    items: ['Node.js', 'Git/GitHub', 'REST APIs', 'Vercel Deployment', 'Performance', 'Scalable interfaces'],
+    items: ['Node.js', 'Git', 'REST APIs', 'Vercel Deployment', 'Performance', 'Scalable interfaces'],
   },
 ];
