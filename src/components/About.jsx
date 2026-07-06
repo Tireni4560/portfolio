@@ -30,13 +30,13 @@ function About() {
             <div className="about-body">
               <p>
                 I'm a frontend developer based in Nigeria with a product-builder mindset.
-                I've spent the last few years shipping web interfaces that don't just look good 
+                I've spent the last few years shipping web interfaces that don't just look good —
                 they serve a real purpose for the people who use them.
               </p>
 
               <p>
                 Outside of client work, I'm building Tirenify, a product I believe has
-                real market potential. That experience has changed how I approach every project 
+                real market potential. That experience has changed how I approach every project —
                 I now think about retention, conversion, and business logic the same way I think
                 about component architecture.
               </p>

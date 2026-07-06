@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { AnimatePresence, motion, useScroll, useReducedMotion } from 'framer-motion';
 import Lenis from 'lenis';
 import LoadingScreen from './components/LoadingScreen';
+import ParticleNetwork from './components/ParticleNetwork';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -152,17 +153,6 @@ function App() {
     setLoadingComplete(true);
   };
 
-  // Background orbs configuration
-  const backgroundOrbs = useMemo(
-    () => [
-      { left: '12%', top: '18%', size: 260, delay: 0 },
-      { left: '78%', top: '14%', size: 220, delay: 0.8 },
-      { left: '82%', top: '68%', size: 280, delay: 1.4 },
-      { left: '18%', top: '76%', size: 180, delay: 1.1 },
-    ],
-    []
-  );
-
   if (!loadingComplete) {
     return <LoadingScreen onComplete={handleLoadingComplete} />;
   }
@@ -174,38 +164,7 @@ function App() {
         <div className="bg-grid" />
         <div className="bg-noise" />
         <div className="bg-mesh" />
-
-        <div className="bg-orbs">
-          {backgroundOrbs.map((orb, index) => (
-            <motion.div
-              key={`${orb.left}-${orb.top}-${index}`}
-              className="bg-orb"
-              style={{
-                left: orb.left,
-                top: orb.top,
-                width: orb.size,
-                height: orb.size,
-              }}
-              animate={
-                prefersReducedMotion
-                  ? { opacity: 0.18 }
-                  : {
-                      y: [0, -25, 0],
-                      x: [0, 15, 0],
-                      opacity: [0.12, 0.25, 0.12],
-                      scale: [1, 1.05, 1],
-                    }
-              }
-              transition={{
-                duration: 16 + index * 3,
-                repeat: Infinity,
-                repeatType: 'mirror',
-                ease: 'easeInOut',
-                delay: orb.delay,
-              }}
-            />
-          ))}
-        </div>
+        <ParticleNetwork />
       </div>
 
       {/* Cursor Glow Effect */}

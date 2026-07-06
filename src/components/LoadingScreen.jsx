@@ -1,103 +1,111 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+
+const LETTERS = ['L', 'E', 'Y', 'E'];
+const SLOT_WIDTH_REM = 2.35;
+
+const TYPE_START_DELAY = 320;
+const LETTER_INTERVAL = 210;
+const LETTER_POP_DURATION = 300;
+const HOLD_AFTER_TYPING = 900;
+const EXIT_DURATION = 550;
 
 function LoadingScreen({ onComplete }) {
-  const [phase, setPhase] = useState('monogram');
+  const shouldReduceMotion = useReducedMotion();
+  const [typedCount, setTypedCount] = useState(shouldReduceMotion ? LETTERS.length : 0);
+  const [exiting, setExiting] = useState(false);
+  const timeouts = useRef([]);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setPhase('complete');
-      onComplete?.();
-    }, 1200);
-    return () => clearTimeout(timeout);
-  }, [onComplete]);
+    if (shouldReduceMotion) {
+      const exitTimer = setTimeout(() => setExiting(true), 250);
+      const completeTimer = setTimeout(() => onComplete?.(), 400);
+      return () => {
+        clearTimeout(exitTimer);
+        clearTimeout(completeTimer);
+      };
+    }
 
-  const strokeProps = {
-    fill: 'none',
-    stroke: '#fff',
-    strokeWidth: 2,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-  };
+    // Caret advances into place, then each letter pops in behind it.
+    LETTERS.forEach((_, index) => {
+      const arriveDelay = TYPE_START_DELAY + index * LETTER_INTERVAL;
+      timeouts.current.push(
+        setTimeout(() => setTypedCount(index + 1), arriveDelay + LETTER_POP_DURATION * 0.55)
+      );
+    });
 
-  const drawVariant = (delay) => ({
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: {
-      pathLength: 1,
-      opacity: 1,
-      transition: { duration: 0.8, ease: 'easeInOut', delay },
-    },
-  });
+    const lastLetterEnd =
+      TYPE_START_DELAY + (LETTERS.length - 1) * LETTER_INTERVAL + LETTER_POP_DURATION;
+    const revealDuration = lastLetterEnd + HOLD_AFTER_TYPING;
+
+    timeouts.current.push(setTimeout(() => setExiting(true), revealDuration));
+    timeouts.current.push(setTimeout(() => onComplete?.(), revealDuration + EXIT_DURATION));
+
+    return () => timeouts.current.forEach(clearTimeout);
+  }, [onComplete, shouldReduceMotion]);
+
+  const caretPosition = shouldReduceMotion ? LETTERS.length : typedCount;
 
   return (
-    <div className="loading-screen" aria-hidden="true">
-      {/* LEYE uppercase wordmark */}
-      <motion.svg
-        width="210"
-        height="60"
-        viewBox="0 0 210 60"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: phase === 'monogram' ? 1 : 0 }}
-        transition={{ duration: 0.25 }}
+    <motion.div
+      className="loading-screen"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading Daniel Adeleye's portfolio"
+      animate={exiting ? { opacity: 0 } : { opacity: 1 }}
+      transition={{ duration: shouldReduceMotion ? 0.15 : 0.55, ease: [0.4, 0, 0.2, 1] }}
+    >
+      <div className="loading-glow" aria-hidden="true" />
+
+      <motion.div
+        className="loading-mark"
+        animate={exiting ? { scale: 0.94, opacity: 0 } : { scale: 1, opacity: 1 }}
+        transition={{ duration: shouldReduceMotion ? 0.15 : 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* L — vertical down, horizontal foot */}
-        <motion.path
-          d="M 10 8 L 10 52 L 34 52"
-          {...strokeProps}
-          variants={drawVariant(0.05)}
-          initial="hidden"
-          animate="visible"
-        />
+        <div className="loading-word" aria-hidden="true">
+          {LETTERS.map((letter, index) => {
+            const isTyped = index < typedCount;
+            return (
+              <span key={index} className="loading-letter-slot" style={{ width: `${SLOT_WIDTH_REM}rem` }}>
+                <motion.span
+                  className="loading-letter"
+                  initial={shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.4 }}
+                  animate={
+                    isTyped
+                      ? { opacity: 1, scale: [0.4, 1.08, 1] }
+                      : { opacity: 0, scale: 0.4 }
+                  }
+                  transition={{
+                    duration: shouldReduceMotion ? 0 : LETTER_POP_DURATION / 1000,
+                    ease: [0.34, 1.56, 0.64, 1],
+                  }}
+                >
+                  {letter}
+                </motion.span>
+              </span>
+            );
+          })}
 
-        {/* E — vertical spine, three horizontals (top, mid, bottom) */}
-        <motion.path
-          d="M 44 8 L 44 52"
-          {...strokeProps}
-          variants={drawVariant(0.18)}
-          initial="hidden"
-          animate="visible"
-        />
-        <motion.path
-          d="M 44 8 L 70 8 M 44 30 L 64 30 M 44 52 L 70 52"
-          {...strokeProps}
-          variants={drawVariant(0.26)}
-          initial="hidden"
-          animate="visible"
-        />
+          {!shouldReduceMotion && (
+            <span
+              className={`loading-caret ${exiting ? 'is-exiting' : ''}`}
+              style={{ transform: `translateX(${caretPosition * SLOT_WIDTH_REM}rem)` }}
+            />
+          )}
+        </div>
 
-        {/* Y — two upper arms meeting at center, single stem down */}
-        <motion.path
-          d="M 82 8 L 98 30"
-          {...strokeProps}
-          variants={drawVariant(0.4)}
-          initial="hidden"
-          animate="visible"
-        />
-        <motion.path
-          d="M 114 8 L 98 30 L 98 52"
-          {...strokeProps}
-          variants={drawVariant(0.48)}
-          initial="hidden"
-          animate="visible"
-        />
+        <motion.div
+          className="loading-spinner"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: exiting ? 0 : 0.7 }}
+          transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : 0.5 }}
+        >
+          <span className="loading-spinner-ring" />
+        </motion.div>
+      </motion.div>
 
-        {/* E (second) — vertical spine, three horizontals */}
-        <motion.path
-          d="M 124 8 L 124 52"
-          {...strokeProps}
-          variants={drawVariant(0.62)}
-          initial="hidden"
-          animate="visible"
-        />
-        <motion.path
-          d="M 124 8 L 150 8 M 124 30 L 144 30 M 124 52 L 150 52"
-          {...strokeProps}
-          variants={drawVariant(0.7)}
-          initial="hidden"
-          animate="visible"
-        />
-      </motion.svg>
-    </div>
+      <span className="sr-only">Loading…</span>
+    </motion.div>
   );
 }
 

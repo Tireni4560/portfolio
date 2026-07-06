@@ -14,7 +14,8 @@ function Founder() {
           </h2>
           <p>
             I'm building companies. Most developers build what they're asked to build.
-                I spend time thinking about what should exist, who it's for, and whether
+            I spend time thinking about what should exist, who it's for, and whether
+            it's worth building at all.
           </p>
         </div>
         {/* Tirenify Featured Venture Card */}

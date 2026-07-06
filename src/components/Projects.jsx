@@ -170,7 +170,13 @@ function ProjectCard({ project, index }) {
         ease: [0.16, 1, 0.3, 1],
       }}
     >
-      <div className="project-image">
+      <a
+        className="project-image"
+        href={project.liveLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${project.title} live project`}
+      >
         <img
           src={project.image}
           alt={`Screenshot of ${project.title} — live project by Daniel Adeleye`}
@@ -180,7 +186,7 @@ function ProjectCard({ project, index }) {
         <div className="project-image-overlay">
           <span className="project-overlay-cta">View Project ↗</span>
         </div>
-      </div>
+      </a>
 
       <div className="project-content">
         <div className="project-meta">
