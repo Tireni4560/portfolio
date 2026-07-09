@@ -39,7 +39,7 @@
   --glass-bg: linear-gradient(160deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.02) 100%);
   --glass-border: rgba(255, 255, 255, 0.09);
   --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.07);
-  --glass-blur: blur(18px) saturate(150%);
+  --glass-blur: blur(10px) saturate(120%);
 
   /* Borders */
   --border: rgba(255, 255, 255, 0.065);
@@ -67,7 +67,7 @@
   /* Spacing */
   --max-width: 1240px;
   --content-pad: clamp(1.25rem, 5vw, 3.5rem);
-  --section-gap: clamp(5rem, 10vw, 9rem);
+  --section-gap: clamp(3.5rem, 7vw, 6.5rem);
   --grid-gap: clamp(1rem, 2.5vw, 1.75rem);
 
   /* Typography Scale */
@@ -156,6 +156,13 @@ body {
   background: var(--bg-deep);
   z-index: calc(var(--z-modal) + 1);
   overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.4s var(--ease-out-expo);
+  will-change: opacity;
+}
+
+.loading-screen.is-exiting {
+  opacity: 0;
 }
 
 .loading-glow {
@@ -163,9 +170,10 @@ body {
   width: min(60vw, 560px);
   height: min(60vw, 560px);
   border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-glow), transparent 68%);
-  filter: blur(70px);
-  opacity: 0.6;
+  /* Soft edge comes from the gradient's own falloff — no filter: blur() layer,
+     which is expensive to rasterize right at the critical first paint. */
+  background: radial-gradient(circle, var(--accent-glow), transparent 55%);
+  opacity: 0.55;
   pointer-events: none;
 }
 
@@ -183,53 +191,52 @@ body {
   line-height: 1;
 }
 
-.loading-letter-slot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.loading-letter {
+/* Pixel-by-pixel reveal — each letter materializes in blocky diagonal steps,
+   like a holographic grid resolving. clip-path + opacity only: no layout cost. */
+.loading-pixel-letter {
+  position: relative;
   display: inline-block;
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 8vw, 3.75rem);
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  font-weight: 300;
+  letter-spacing: 0.03em;
   line-height: 1;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  will-change: transform, opacity;
-}
-
-/* Blinking caret that tracks the typing position — moved via transform only */
-.loading-caret {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 2px;
-  height: clamp(1.9rem, 6vw, 2.9rem);
-  margin-top: calc(clamp(1.9rem, 6vw, 2.9rem) / -2);
-  background: var(--accent-light);
-  border-radius: 999px;
-  box-shadow: 0 0 8px var(--accent-glow);
-  transition: transform 0.22s var(--ease-out-expo), opacity 0.3s ease;
-  animation: caret-blink 0.9s step-end infinite;
-  will-change: transform;
-}
-
-.loading-caret.is-exiting {
-  animation-play-state: paused;
+  color: #ffffff;
+  clip-path: inset(0 100% 100% 0);
   opacity: 0;
+  animation:
+    pixel-reveal 420ms steps(2, end) forwards,
+    pixel-flicker 420ms linear forwards;
+  will-change: clip-path, opacity;
 }
 
-@keyframes caret-blink {
-  0%, 45% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+.reduce-motion .loading-pixel-letter {
+  animation: none;
+  clip-path: inset(0 0% 0% 0);
+  opacity: 1;
+}
+
+/* Uneven, asymmetric stops (not a clean linear wipe) so the letter resolves
+   corner-to-corner in blocky chunks rather than a single smooth scanline. */
+@keyframes pixel-reveal {
+  0%   { clip-path: inset(0 100% 100% 0); }
+  14%  { clip-path: inset(0 82% 88% 0); }
+  28%  { clip-path: inset(0 68% 70% 0); }
+  42%  { clip-path: inset(0 52% 58% 0); }
+  57%  { clip-path: inset(0 38% 42% 0); }
+  71%  { clip-path: inset(0 22% 28% 0); }
+  85%  { clip-path: inset(0 10% 12% 0); }
+  100% { clip-path: inset(0 0% 0% 0); }
+}
+
+@keyframes pixel-flicker {
+  0% { opacity: 0; }
+  8% { opacity: 0.85; }
+  18% { opacity: 0.25; }
+  30% { opacity: 1; }
+  46% { opacity: 0.55; }
+  62% { opacity: 1; }
+  100% { opacity: 1; }
 }
 
 /* Small supporting spinner — subtle, never dominant */
@@ -266,7 +273,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .loading-caret,
+  .loading-pixel-letter,
+  .loading-pixel-letter::after,
   .loading-spinner-ring {
     animation: none;
   }
@@ -380,24 +388,26 @@ button {
   background-size: 256px 256px;
 }
 
-/* Particle network canvas — sits above the mesh, below all page content */
+/* Particle network canvas — sits above the mesh, below all page content.
+   pointer-events: none so it never intercepts clicks/hover on real UI. */
 .particle-network {
   position: absolute;
   inset: 0;
   display: block;
-  opacity: 0.6;
+  opacity: 0.55;
   mix-blend-mode: screen;
+  pointer-events: none;
 }
 
 @media (max-width: 640px) {
   .particle-network {
-    opacity: 0.42;
+    opacity: 0.4;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .particle-network {
-    opacity: 0.35;
+    opacity: 0.3;
   }
 }
 
@@ -425,16 +435,8 @@ button {
   pointer-events: none;
   z-index: var(--z-cursor);
   mix-blend-mode: screen;
-  will-change: transform;
-}
-
-.cursor-ring--hover {
-  width: 52px;
-  height: 52px;
-  margin-left: -8px;
-  margin-top: -8px;
-  border-color: var(--accent);
-  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+  transition: opacity 0.3s ease;
+  will-change: transform, opacity;
 }
 
 @media (hover: none) {
@@ -522,10 +524,12 @@ button {
   position: absolute;
   bottom: -4px;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 2px;
   background: var(--accent);
-  transition: width var(--dur-base) ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) ease;
 }
 
 .site-nav a:hover {
@@ -533,7 +537,7 @@ button {
 }
 
 .site-nav a:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 .site-nav a.active {
@@ -599,32 +603,29 @@ button {
 .nav-toggle span {
   position: absolute;
   left: 50%;
+  top: 1.35rem;
   width: 1rem;
   height: 2px;
   border-radius: 999px;
   background: var(--text);
   transform-origin: center;
-  transition: transform 0.24s ease, opacity 0.2s ease, top 0.24s ease;
+  transition: transform 0.24s ease, opacity 0.2s ease;
 }
 
 .nav-toggle span:nth-child(1) {
-  top: 1rem;
-  transform: translateX(-50%);
+  transform: translate(-50%, -0.35rem);
 }
 
 .nav-toggle span:nth-child(2) {
-  top: 1.35rem;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0);
 }
 
 .nav-toggle span:nth-child(3) {
-  top: 1.7rem;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0.35rem);
 }
 
 .nav-toggle.open span:nth-child(1) {
-  top: 1.35rem;
-  transform: translateX(-50%) rotate(45deg);
+  transform: translate(-50%, 0) rotate(45deg);
 }
 
 .nav-toggle.open span:nth-child(2) {
@@ -632,8 +633,7 @@ button {
 }
 
 .nav-toggle.open span:nth-child(3) {
-  top: 1.35rem;
-  transform: translateX(-50%) rotate(-45deg);
+  transform: translate(-50%, 0) rotate(-45deg);
 }
 
 /* Mobile Menu Overlay */
@@ -841,7 +841,7 @@ button {
   overflow: hidden;
   display: flex;
   align-items: flex-end;
-  padding-bottom: clamp(8rem, 15%, 12rem);
+  padding-bottom: clamp(5rem, 9%, 7.5rem);
   padding-top: 80px;
 }
 
@@ -1301,7 +1301,6 @@ button {
   height: 100%;
   background: linear-gradient(to right, var(--accent), var(--accent-light));
   border-radius: 999px;
-  will-change: width;
 }
 
 .about-photo-placeholder {
@@ -1767,7 +1766,7 @@ button {
 
 /* Skills Marquee */
 .skills-marquee {
-  margin-top: var(--section-gap);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
   overflow: hidden;
   position: relative;
 }
@@ -2665,7 +2664,7 @@ button {
 @media (min-width: 1280px) {
   :root {
     --max-width: 1320px;
-    --section-gap: clamp(6.5rem, 9vw, 10rem);
+    --section-gap: clamp(4.5rem, 6vw, 7rem);
   }
 
   .about-grid {

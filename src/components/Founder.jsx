@@ -70,7 +70,7 @@ function Founder() {
                   </ul>
 
                   <a
-                    href="https://tirenify.netlify.app"
+                    href="https://tirenify.app"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button button-primary"

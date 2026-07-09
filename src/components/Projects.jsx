@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
@@ -44,7 +44,8 @@ function Projects() {
 // Featured Project with Browser Chrome Mockup
 function FeaturedProjectCard({ project }) {
   const cardRef = useRef(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const rectRef = useRef(null);
+  const rafRef = useRef(null);
 
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
@@ -53,16 +54,25 @@ function FeaturedProjectCard({ project }) {
   const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 30 });
   const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 30 });
 
+  // Rect is measured once per hover (not per pixel of mouse travel), and the
+  // motion-value update is batched to one write per animation frame — avoids
+  // forcing a synchronous layout read on every raw mousemove event.
+  const handleMouseEnter = () => {
+    if (cardRef.current) rectRef.current = cardRef.current.getBoundingClientRect();
+  };
+
   const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-    mouseX.set(x);
-    mouseY.set(y);
+    if (!rectRef.current) return;
+    const { left, top, width, height } = rectRef.current;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      mouseX.set((e.clientX - left) / width);
+      mouseY.set((e.clientY - top) / height);
+    });
   };
 
   const handleMouseLeave = () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     mouseX.set(0.5);
     mouseY.set(0.5);
   };
@@ -78,6 +88,7 @@ function FeaturedProjectCard({ project }) {
     >
       <div
         className="project-featured-inner"
+        onMouseEnter={handleMouseEnter}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >

@@ -15,8 +15,9 @@ function ExpertiseBar({ skill, level, index }) {
       <div className="expertise-bar-track">
         <motion.div
           className="expertise-bar-fill"
-          initial={{ width: 0 }}
-          animate={isInView ? { width: `${level}%` } : { width: 0 }}
+          style={{ width: `${level}%`, transformOrigin: 'left' }}
+          initial={{ scaleX: 0 }}
+          animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
           transition={
             shouldReduceMotion
               ? { duration: 0 }

@@ -27,11 +27,10 @@ function App() {
   const [activeSection, setActiveSection] = useState('#home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [loadingComplete, setLoadingComplete] = useState(false);
-  const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
-  const [scrollProgress, setScrollProgress] = useState(0);
   const appRef = useRef(null);
+  const cursorGlowRef = useRef(null);
 
-  const { scrollY, scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll();
 
   // Initialize Lenis smooth scrolling
   useEffect(() => {
@@ -50,38 +49,60 @@ function App() {
     return () => lenis.destroy();
   }, []);
 
-  // Scroll progress
-  useEffect(() => {
-    return scrollYProgress.onChange((progress) => {
-      setScrollProgress(progress);
-    });
-  }, [scrollYProgress]);
-
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen);
   }, [menuOpen]);
 
+  // Scroll + pointer tracking done imperatively (no React state per event) —
+  // avoids re-rendering the whole app tree on every scroll/mousemove tick.
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || prefersReducedMotion) return undefined;
 
-    const handleScroll = () => setIsScrolled(window.scrollY > 80);
-    const handlePointerMove = (event) => {
-      setCursor({ x: event.clientX, y: event.clientY, visible: true });
+    let ticking = false;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    const applyFrame = () => {
+      ticking = false;
+      setIsScrolled(window.scrollY > 80);
+      const el = cursorGlowRef.current;
+      if (el) {
+        el.style.transform = `translate3d(${pointerX - 200}px, ${pointerY - 200}px, 0)`;
+      }
     };
-    const handlePointerLeave = () => setCursor((current) => ({ ...current, visible: false }));
+
+    const requestFrame = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(applyFrame);
+      }
+    };
+
+    const handleScroll = () => requestFrame();
+    const handlePointerMove = (event) => {
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      const el = cursorGlowRef.current;
+      if (el) el.style.opacity = '1';
+      requestFrame();
+    };
+    const handlePointerLeave = () => {
+      const el = cursorGlowRef.current;
+      if (el) el.style.opacity = '0';
+    };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
     window.addEventListener('pointerleave', handlePointerLeave);
 
-    handleScroll();
+    setIsScrolled(window.scrollY > 80);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('pointermove', handlePointerMove);
       window.removeEventListener('pointerleave', handlePointerLeave);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   // Active section detection
   useEffect(() => {
@@ -167,17 +188,10 @@ function App() {
         <ParticleNetwork />
       </div>
 
-      {/* Cursor Glow Effect */}
-      <motion.div
-        className="cursor-glow"
-        aria-hidden="true"
-        animate={{
-          x: cursor.x - 200,
-          y: cursor.y - 200,
-          opacity: cursor.visible && !prefersReducedMotion ? 1 : 0,
-        }}
-        transition={{ type: 'spring', stiffness: 100, damping: 22, mass: 0.3 }}
-      />
+      {/* Cursor Glow Effect — position/opacity set imperatively via ref, not React state */}
+      {!prefersReducedMotion && (
+        <div ref={cursorGlowRef} className="cursor-glow" aria-hidden="true" style={{ opacity: 0 }} />
+      )}
 
       {/* Header / Navigation */}
       <motion.header
@@ -186,10 +200,10 @@ function App() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        {/* Scroll Progress Bar */}
+        {/* Scroll Progress Bar — bound directly to the motion value, no React state hop */}
         <motion.div
           className="scroll-progress"
-          style={{ scaleX: scrollProgress }}
+          style={{ scaleX: scrollYProgress }}
           aria-hidden="true"
         />
 

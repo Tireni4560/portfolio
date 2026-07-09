@@ -1,111 +1,71 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const LETTERS = ['L', 'E', 'Y', 'E'];
-const SLOT_WIDTH_REM = 2.35;
 
-const TYPE_START_DELAY = 320;
-const LETTER_INTERVAL = 210;
-const LETTER_POP_DURATION = 300;
-const HOLD_AFTER_TYPING = 900;
-const EXIT_DURATION = 550;
+const LETTER_REVEAL_DURATION = 420;
+const LETTER_STAGGER = LETTER_REVEAL_DURATION;
+const HOLD_AFTER_REVEAL = 550;
+const EXIT_DURATION = 400;
 
 function LoadingScreen({ onComplete }) {
-  const shouldReduceMotion = useReducedMotion();
-  const [typedCount, setTypedCount] = useState(shouldReduceMotion ? LETTERS.length : 0);
   const [exiting, setExiting] = useState(false);
-  const timeouts = useRef([]);
+  // Read synchronously at mount instead of in an effect — avoids a second
+  // render (and letter animation-delay recalculation) right as the page boots.
+  const [reduceMotion] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
 
   useEffect(() => {
-    if (shouldReduceMotion) {
-      const exitTimer = setTimeout(() => setExiting(true), 250);
-      const completeTimer = setTimeout(() => onComplete?.(), 400);
+    if (reduceMotion) {
+      const exitTimer = setTimeout(() => setExiting(true), 200);
+      const completeTimer = setTimeout(() => onComplete?.(), 350);
       return () => {
         clearTimeout(exitTimer);
         clearTimeout(completeTimer);
       };
     }
 
-    // Caret advances into place, then each letter pops in behind it.
-    LETTERS.forEach((_, index) => {
-      const arriveDelay = TYPE_START_DELAY + index * LETTER_INTERVAL;
-      timeouts.current.push(
-        setTimeout(() => setTypedCount(index + 1), arriveDelay + LETTER_POP_DURATION * 0.55)
-      );
-    });
+    const lastLetterStart = (LETTERS.length - 1) * LETTER_STAGGER;
+    const revealDuration = lastLetterStart + LETTER_REVEAL_DURATION + HOLD_AFTER_REVEAL;
 
-    const lastLetterEnd =
-      TYPE_START_DELAY + (LETTERS.length - 1) * LETTER_INTERVAL + LETTER_POP_DURATION;
-    const revealDuration = lastLetterEnd + HOLD_AFTER_TYPING;
+    const exitTimer = setTimeout(() => setExiting(true), revealDuration);
+    const completeTimer = setTimeout(() => onComplete?.(), revealDuration + EXIT_DURATION);
 
-    timeouts.current.push(setTimeout(() => setExiting(true), revealDuration));
-    timeouts.current.push(setTimeout(() => onComplete?.(), revealDuration + EXIT_DURATION));
-
-    return () => timeouts.current.forEach(clearTimeout);
-  }, [onComplete, shouldReduceMotion]);
-
-  const caretPosition = shouldReduceMotion ? LETTERS.length : typedCount;
+    return () => {
+      clearTimeout(exitTimer);
+      clearTimeout(completeTimer);
+    };
+  }, [onComplete, reduceMotion]);
 
   return (
-    <motion.div
-      className="loading-screen"
+    <div
+      className={`loading-screen ${exiting ? 'is-exiting' : ''} ${reduceMotion ? 'reduce-motion' : ''}`}
       role="status"
       aria-live="polite"
       aria-label="Loading Daniel Adeleye's portfolio"
-      animate={exiting ? { opacity: 0 } : { opacity: 1 }}
-      transition={{ duration: shouldReduceMotion ? 0.15 : 0.55, ease: [0.4, 0, 0.2, 1] }}
     >
       <div className="loading-glow" aria-hidden="true" />
 
-      <motion.div
-        className="loading-mark"
-        animate={exiting ? { scale: 0.94, opacity: 0 } : { scale: 1, opacity: 1 }}
-        transition={{ duration: shouldReduceMotion ? 0.15 : 0.5, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className="loading-mark">
         <div className="loading-word" aria-hidden="true">
-          {LETTERS.map((letter, index) => {
-            const isTyped = index < typedCount;
-            return (
-              <span key={index} className="loading-letter-slot" style={{ width: `${SLOT_WIDTH_REM}rem` }}>
-                <motion.span
-                  className="loading-letter"
-                  initial={shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.4 }}
-                  animate={
-                    isTyped
-                      ? { opacity: 1, scale: [0.4, 1.08, 1] }
-                      : { opacity: 0, scale: 0.4 }
-                  }
-                  transition={{
-                    duration: shouldReduceMotion ? 0 : LETTER_POP_DURATION / 1000,
-                    ease: [0.34, 1.56, 0.64, 1],
-                  }}
-                >
-                  {letter}
-                </motion.span>
-              </span>
-            );
-          })}
-
-          {!shouldReduceMotion && (
+          {LETTERS.map((letter, index) => (
             <span
-              className={`loading-caret ${exiting ? 'is-exiting' : ''}`}
-              style={{ transform: `translateX(${caretPosition * SLOT_WIDTH_REM}rem)` }}
-            />
-          )}
+              key={index}
+              className="loading-pixel-letter"
+              style={{ animationDelay: reduceMotion ? '0ms' : `${index * LETTER_STAGGER}ms` }}
+            >
+              {letter}
+            </span>
+          ))}
         </div>
 
-        <motion.div
-          className="loading-spinner"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: exiting ? 0 : 0.7 }}
-          transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : 0.5 }}
-        >
+        <div className="loading-spinner">
           <span className="loading-spinner-ring" />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       <span className="sr-only">Loading…</span>
-    </motion.div>
+    </div>
   );
 }
 
