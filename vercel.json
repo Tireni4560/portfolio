@@ -4,3 +4,8 @@
     { "src": "/api/contact", "dest": "/api/contact.js" }
   ]
 }
+{
+  "rewrites": [
+    { "source": "/test.html", "destination": "/test.html" }
+  ]
+}
