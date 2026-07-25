@@ -1,9 +1,7 @@
 {
-  "version": 2,
-  "routes": [
-    { "src": "/api/contact", "dest": "/api/contact.js" }
-  ],
   "rewrites": [
-    { "source": "/test.html", "destination": "/test.html" }
+    { "source": "/api/contact", "destination": "/api/contact.js" },
+    { "source": "/test.html", "destination": "/test.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
