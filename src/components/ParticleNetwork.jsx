@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from 'react';
 
 const PALETTE = ['99, 102, 241', '129, 140, 248', '34, 211, 238', '165, 180, 252'];

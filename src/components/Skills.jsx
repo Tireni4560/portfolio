@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
@@ -71,7 +73,6 @@ function Skills() {
             <motion.div
               key={category.name}
               className="skill-category"
-              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{
@@ -90,7 +91,6 @@ function Skills() {
                   <motion.span
                     key={skill}
                     className="skill-tag"
-                    initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{

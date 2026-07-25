@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
@@ -24,7 +26,6 @@ function Contact() {
 
           <motion.p
             className="contact-subtext"
-            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -35,7 +36,6 @@ function Contact() {
 
           <motion.div
             className="contact-availability"
-            initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -43,10 +43,8 @@ function Contact() {
             <span className="dot" />
             Available for freelance work · Open to full-time roles
           </motion.div>
-<br />
           {/* Magnetic CTA Button */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -63,7 +61,6 @@ function Contact() {
           {/* Social Links */}
           <motion.div
             className="contact-socials"
-            initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -79,7 +76,6 @@ function Contact() {
           {/* Trust Signals */}
           <motion.div
             className="contact-trust"
-            initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.5 }}

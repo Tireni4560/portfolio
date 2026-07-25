@@ -1,7 +1,8 @@
+"use client";
+
 import { useEffect, useState, useRef } from 'react';
 import { AnimatePresence, motion, useScroll, useReducedMotion } from 'framer-motion';
 import Lenis from 'lenis';
-import LoadingScreen from './components/LoadingScreen';
 import ParticleNetwork from './components/ParticleNetwork';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -26,7 +27,6 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [loadingComplete, setLoadingComplete] = useState(false);
   const appRef = useRef(null);
   const cursorGlowRef = useRef(null);
 
@@ -170,14 +170,6 @@ function App() {
     }
   };
 
-  const handleLoadingComplete = () => {
-    setLoadingComplete(true);
-  };
-
-  if (!loadingComplete) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
-
   return (
     <div className="app-shell" ref={appRef}>
       {/* Background System */}
@@ -196,7 +188,6 @@ function App() {
       {/* Header / Navigation */}
       <motion.header
         className={`site-header ${isScrolled ? 'scrolled' : ''}`}
-        initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
@@ -312,13 +303,8 @@ function App() {
       {/* Main Content */}
       <motion.main
         id="main-content"
-        initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={
-          prefersReducedMotion
-            ? { duration: 0 }
-            : { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }
-        }
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       >
         <Hero />
         <About />

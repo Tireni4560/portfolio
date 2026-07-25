@@ -1,11 +1,10 @@
+"use client";
+
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import ExpertiseBar from './ExpertiseBar';
 import ScrambleText from './ScrambleText';
 
 function About() {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   return (
     <section id="about" className="section" data-reveal>
       <div className="container">
@@ -17,7 +16,6 @@ function About() {
           {/* Left Column - Text Content */}
           <motion.div
             className="about-text"
-            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -57,7 +55,6 @@ function About() {
           {/* Right Column - Photo with Floating Stats */}
           <motion.div
             className="about-visual"
-            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -68,15 +65,12 @@ function About() {
                   src="/images/Daniel.jpg"
                   alt="Daniel Adeleye — Frontend Developer and Product Builder"
                   loading="lazy"
-                  onLoad={() => setImageLoaded(true)}
-                  style={{ opacity: imageLoaded ? 1 : 0 }}
                 />
               </div>
 
               {/* Floating Stat Cards */}
               <motion.div
                 className="stat-card stat-card-1"
-                initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2, ease: [0.34, 1.56, 0.64, 1] }}
@@ -87,7 +81,6 @@ function About() {
 
               <motion.div
                 className="stat-card stat-card-2"
-                initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.32, ease: [0.34, 1.56, 0.64, 1] }}
@@ -98,7 +91,6 @@ function About() {
 
               <motion.div
                 className="stat-card stat-card-3"
-                initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.44, ease: [0.34, 1.56, 0.64, 1] }}

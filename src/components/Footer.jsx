@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 
 function Footer() {
@@ -11,7 +13,6 @@ function Footer() {
         <div className="footer-inner">
           <motion.span
             className="footer-text"
-            initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
@@ -21,7 +22,6 @@ function Footer() {
 
           <motion.span
             className="footer-text footer-built"
-            initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
@@ -31,7 +31,6 @@ function Footer() {
 
           <motion.div
             className="footer-links"
-            initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
@@ -47,7 +46,6 @@ function Footer() {
 
       <motion.div
         className="footer-accent-line"
-        initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}

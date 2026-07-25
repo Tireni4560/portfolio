@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useReducedMotion } from 'framer-motion';
 
 function AnimatedHeading({ text, className = '' }) {
@@ -10,11 +12,6 @@ function AnimatedHeading({ text, className = '' }) {
         <span key={index} className="animated-heading-word">
           <motion.span
             className="animated-heading-inner"
-            initial={
-              shouldReduceMotion
-                ? { y: '0%', opacity: 1 }
-                : { y: '110%', opacity: 0 }
-            }
             whileInView={{ y: '0%', opacity: 1 }}
             viewport={{ once: true, amount: 0.8 }}
             transition={{

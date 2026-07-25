@@ -1,13 +1,15 @@
+"use client";
+
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
 
 function StatCounter({ value, suffix, label }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(value);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || count === value) return;
 
     const duration = 1200;
     const steps = 40;
@@ -25,7 +27,7 @@ function StatCounter({ value, suffix, label }) {
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [isInView, value]);
+  }, [count, isInView, value]);
 
   return (
     <div ref={ref} className="hero-stat">

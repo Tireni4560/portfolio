@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useAnimation, useInView, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import AnimatedHeading from './AnimatedHeading';
@@ -115,7 +117,7 @@ function Process() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
           }}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >

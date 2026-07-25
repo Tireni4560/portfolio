@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 
@@ -15,14 +17,7 @@ function ExpertiseBar({ skill, level, index }) {
       <div className="expertise-bar-track">
         <motion.div
           className="expertise-bar-fill"
-          style={{ width: `${level}%`, transformOrigin: 'left' }}
-          initial={{ scaleX: 0 }}
-          animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-          transition={
-            shouldReduceMotion
-              ? { duration: 0 }
-              : { duration: 1.1, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }
-          }
+          style={{ width: `${level}%`, transformOrigin: 'left', scaleX: 1 }}
         />
       </div>
     </div>

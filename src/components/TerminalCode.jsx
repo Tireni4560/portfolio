@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
 
@@ -75,11 +77,11 @@ const colorMap = {
 function TerminalCode() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const [visibleLines, setVisibleLines] = useState(0);
+  const [visibleLines, setVisibleLines] = useState(lines.length);
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || visibleLines === lines.length) return;
 
     let lineIndex = 0;
     intervalRef.current = setInterval(() => {
@@ -91,7 +93,7 @@ function TerminalCode() {
     }, 120);
 
     return () => clearInterval(intervalRef.current);
-  }, [isInView]);
+  }, [isInView, visibleLines]);
 
   return (
     <div ref={ref} className="founder-code-terminal">

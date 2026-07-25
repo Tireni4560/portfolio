@@ -1,7 +1,10 @@
+"use client";
+
 import { useEffect, useRef, useState } from 'react';
-import resumePdf from '../../images/resume.pdf';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import StatCounter from './StatCounter';
+
+const resumePdf = '/images/resume.pdf';
 
 function Hero() {
   const heroRef = useRef(null);
@@ -69,7 +72,6 @@ function Hero() {
           {/* Availability Badge */}
           <motion.div
             className="hero-availability"
-            initial={{ opacity: 0, y: 10 }}
             animate={loaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, delay: 0 }}
           >
@@ -80,7 +82,6 @@ function Hero() {
           {/* Headline */}
           <motion.h1
             className={`hero-title ${loaded ? 'loaded' : ''}`}
-            initial={{ opacity: 0 }}
             animate={loaded ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
@@ -99,7 +100,6 @@ function Hero() {
           {/* Subtext */}
           <motion.p
             className={`hero-subtext ${loaded ? 'loaded' : ''}`}
-            initial={{ opacity: 0, y: 10 }}
             animate={loaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.55 }}
           >
@@ -110,7 +110,6 @@ function Hero() {
           {/* CTA Buttons */}
           <motion.div
             className={`hero-actions ${loaded ? 'loaded' : ''}`}
-            initial={{ opacity: 0, y: 10 }}
             animate={loaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
@@ -124,7 +123,6 @@ function Hero() {
 
           <motion.div
             className="hero-stats"
-            initial={{ opacity: 0 }}
             animate={loaded ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.85 }}
           >
@@ -136,7 +134,6 @@ function Hero() {
           {/* Social Links */}
           <motion.div
             className={`hero-social ${loaded ? 'loaded' : ''}`}
-            initial={{ opacity: 0 }}
             animate={loaded ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.9 }}
           >

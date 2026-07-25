@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
@@ -18,7 +20,6 @@ function Projects() {
           </h2>
           <motion.div
             className="section-line"
-            initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -81,7 +82,6 @@ function FeaturedProjectCard({ project }) {
     <motion.article
       ref={cardRef}
       className="project-card-featured"
-      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -172,7 +172,6 @@ function ProjectCard({ project, index }) {
   return (
     <motion.article
       className="project-card"
-      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{

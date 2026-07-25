@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
@@ -21,7 +23,6 @@ function Founder() {
         {/* Tirenify Featured Venture Card */}
         <motion.div
           className="founder-card-wrapper"
-          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
