@@ -1,6 +1,6 @@
 # Daniel Adeleye Portfolio
 
-A modern React portfolio website designed for Daniel Adeleye.
+A modern React portfolio website designed for Daniel Adeleye by Daniel Adeleye.
 
 ## Features
 
