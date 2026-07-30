@@ -65,7 +65,7 @@ function Founder() {
 
                   <div className="founder-links">
                     <a
-                      href="https://tirenify.app"
+                      href="https://check.tirenify.app/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="button button-primary"
