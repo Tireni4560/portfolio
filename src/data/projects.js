@@ -10,7 +10,7 @@
     liveLink: 'https://breachchecker-rho.vercel.app',
     featured: true,
     number: '01',
-    image: '/images/upwork showcase.PNG',
+    image: '/images/Screenshot 2026-07-30 161802.png',
   },
   {
     id: 'upwork-showcase',
