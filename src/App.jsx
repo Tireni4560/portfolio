@@ -6,6 +6,7 @@ import Lenis from 'lenis';
 import ParticleNetwork from './components/ParticleNetwork';
 import Hero from './components/Hero';
 import About from './components/About';
+import Work from './components/Work';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Founder from './components/Founder';
@@ -16,6 +17,7 @@ import Footer from './components/Footer';
 const navItems = [
   { href: '#about', label: 'About' },
   { href: '#projects', label: 'Projects' },
+  { href: '#work', label: 'Work' },
   { href: '#skills', label: 'Skills' },
   { href: '#founder', label: 'Founder' },
   { href: '#process', label: 'Process' },
@@ -309,6 +311,7 @@ function App() {
         <Hero />
         <About />
         <Projects />
+        <Work />
         <Skills />
         <Founder />
         <Process />

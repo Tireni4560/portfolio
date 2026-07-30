@@ -1,5 +1,18 @@
 ﻿export const projects = [
   {
+    id: 'tirenify',
+    title: 'Tirenify',
+    category: 'Digital Security Platform · Founder Project · Live',
+    presentation: 'Tirenify',
+    description: 'A breach checker specifically built for African internet users. Detects exposure in threats relevant to the African cybercrime landscape.',
+    results: ['78+ active users', 'Shipped solo in 3 months', 'Real usage patterns'],
+    technologies: ['React', 'Node.js', 'Supabase', 'Resend', 'Vercel'],
+    liveLink: 'https://breachchecker-rho.vercel.app',
+    featured: true,
+    number: '01',
+    image: '/images/upwork showcase.PNG',
+  },
+  {
     id: 'upwork-showcase',
     title: 'Upwork Showcase',
     category: 'Freelance · Lead Generation',
@@ -8,8 +21,8 @@
     results: ['Conversion-focused', 'Client testimonials', 'Service architecture'],
     technologies: ['React', 'HTML', 'CSS', 'JavaScript'],
     liveLink: 'https://upwork-showcase.vercel.app',
-    featured: true,
-    number: '01',
+    featured: false,
+    number: '02',
     image: '/images/upwork showcase.PNG',
   },
   {
@@ -22,7 +35,7 @@
     technologies: ['React', 'JavaScript', 'CSS'],
     liveLink: 'https://bizdash-pi.vercel.app',
     featured: false,
-    number: '02',
+    number: '03',
     image: '/images/bizdash.PNG',
   },
   {
@@ -35,7 +48,7 @@
     technologies: ['React', 'JavaScript', 'CSS'],
     liveLink: 'https://miniecom-pi.vercel.app/',
     featured: false,
-    number: '03',
+    number: '04',
     image: '/images/miniecom.PNG',
   },
   {
@@ -48,7 +61,7 @@
     technologies: ['HTML', 'CSS', 'JavaScript'],
     liveLink: 'https://business-landing-demo.vercel.app',
     featured: false,
-    number: '04',
+    number: '05',
     image: '/images/bulade.PNG',
   },
   {
@@ -61,7 +74,7 @@
     technologies: ['HTML', 'CSS', 'JavaScript'],
     liveLink: 'https://vedal-two.vercel.app/',
     featured: false,
-    number: '05',
+    number: '06',
     image: '/images/leye.PNG',
   },
 ];

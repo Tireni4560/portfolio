@@ -61,7 +61,7 @@ function Skills() {
     <section id="skills" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <ScrambleText text="03 — Stack" className="section-label" />
+          <ScrambleText text="04 — Stack" className="section-label" />
           <h2>
             <AnimatedHeading text="What I build with." />
           </h2>

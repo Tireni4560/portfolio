@@ -22,21 +22,25 @@ function About() {
           >
             <blockquote className="about-pullquote">
               I care less about what technology I'm using and more about whether
-              the product I'm building is worth someone's attention.
+              the product I'm building moves the user closer to their goal.
             </blockquote>
 
             <div className="about-body">
               <p>
-                I'm a frontend developer based in Nigeria with a product-builder mindset.
-                I've spent the last few years shipping web interfaces that don't just look good —
-                they serve a real purpose for the people who use them.
+                I'm a founder building Tirenify, a digital security product for African internet users.
+                I'm also a developer who helps other founders ship fast.
               </p>
 
               <p>
-                Outside of client work, I'm building Tirenify, a product I believe has
-                real market potential. That experience has changed how I approach every project —
-                I now think about retention, conversion, and business logic the same way I think
-                about component architecture.
+                Tirenify taught me that shipping matters more than perfection.
+                Every line of code is a decision about whether it moves the user closer to their goal.
+                That's how I approach every project whether it's landing pages for founders or full-stack MVPs.
+              </p>
+
+              <p>
+                I think about retention, conversion, and business logic the same way I think about component architecture.
+                Most developers build what they're asked to build.
+                I spend time understanding what should actually exist and whether it's worth building at all.
               </p>
             </div>
 
@@ -63,7 +67,7 @@ function About() {
               <div className="about-photo">
                 <img
                   src="/images/Daniel.jpg"
-                  alt="Daniel Adeleye — Frontend Developer and Product Builder"
+                  alt="Daniel Adeleye — Founder and product builder"
                   loading="lazy"
                 />
               </div>

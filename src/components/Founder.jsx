@@ -10,14 +10,13 @@ function Founder() {
     <section id="founder" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <ScrambleText text="04 — Ventures" className="section-label" />
+          <ScrambleText text="05 — Ventures" className="section-label" />
           <h2>
-            <AnimatedHeading text="I'm not just building for clients." />
+            <AnimatedHeading text="I'm building Tirenify first." />
           </h2>
           <p>
-            I'm building companies. Most developers build what they're asked to build.
-            I spend time thinking about what should exist, who it's for, and whether
-            it's worth building at all.
+            Primary focus: building Tirenify. Secondary: select client projects for founders.
+            I think about what should exist, who it's for, and whether it's worth building at all.
           </p>
         </div>
         {/* Tirenify Featured Venture Card */}
@@ -44,40 +43,44 @@ function Founder() {
                   <h3 className="founder-name">Tirenify</h3>
 
                   <p className="founder-tagline">
-                    Helping people understand and manage their digital exposure
-                    in an increasingly connected world.
+                    A breach checker specifically built for African internet users.
                   </p>
 
                   <div className="founder-status">
                     <span className="dot" />
-                    MVP live and actively evolving
+                    78+ active users · Shipped solo in 3 months
                   </div>
 
                   <ul className="founder-details">
                     <li>
-                      Building a privacy-focused platform that helps users
-                      discover whether their email addresses have appeared in
-                      known data breaches.
+                      Detects exposure in threats relevant to the African cybercrime landscape.
                     </li>
                     <li>
-                      Focused on making digital security awareness simple,
-                      accessible, and understandable for everyday internet users.
+                      Full-stack build: React, Node.js, Supabase, and Resend.
                     </li>
                     <li>
-                      Long-term vision: evolve into a broader digital trust,
-                      privacy, identity, and online security platform that helps
-                      people better understand and protect their online presence.
+                      Next: real-time alerts, dark web monitoring, and enterprise partnerships.
                     </li>
                   </ul>
 
-                  <a
-                    href="https://tirenify.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="button button-primary"
-                  >
-                    Try the MVP →
-                  </a>
+                  <div className="founder-links">
+                    <a
+                      href="https://breachchecker-rho.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="button button-primary"
+                    >
+                      Use the product →
+                    </a>
+                    <a
+                      href="https://tirenify.netlify.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link"
+                    >
+                      Visit homepage →
+                    </a>
+                  </div>
                 </div>
 
                 {/* Right Column - Code Terminal */}

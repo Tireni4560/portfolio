@@ -2,9 +2,9 @@ import '../styles/global.css';
 
 export const metadata = {
   metadataBase: new URL('https://dan-lac.vercel.app/'),
-  title: 'Daniel Adeleye | Frontend Developer & Product Builder',
+  title: 'Daniel Adeleye | Founder Building Tirenify',
   description:
-    'Daniel Adeleye is a frontend-focused developer and product builder creating premium digital experiences with React, modern design, and scalable systems. Founder of Tirenify.',
+    'Daniel Adeleye is a founder building Tirenify and a developer who helps early-stage founders ship MVPs, landing pages, and product sites.',
   alternates: {
     canonical: '/',
   },
@@ -18,16 +18,16 @@ export const metadata = {
     type: 'website',
     url: 'https://dan-lac.vercel.app/',
     siteName: 'Daniel Adeleye',
-    title: 'Daniel Adeleye | Frontend Developer & Product Builder',
+    title: 'Daniel Adeleye | Founder Building Tirenify',
     description:
-      'Frontend-focused developer and product builder creating premium digital experiences. Founder of Tirenify — Africa\'s digital security platform. Based in Akure, Nigeria.',
+      'Founder building Tirenify and developer helping founders ship MVPs and landing pages. Based in Akure, Nigeria.',
     locale: 'en_GB',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Daniel Adeleye — Frontend Developer & Product Builder',
+        alt: 'Daniel Adeleye — Founder building Tirenify',
         type: 'image/png',
       },
     ],
@@ -36,9 +36,9 @@ export const metadata = {
     card: 'summary_large_image',
     site: '@tirenify',
     creator: '@tirenify',
-    title: 'Daniel Adeleye | Frontend Developer & Product Builder',
+    title: 'Daniel Adeleye | Founder Building Tirenify',
     description:
-      'Frontend-focused developer and product builder. Founder of Tirenify — Africa\'s digital security platform. Based in Akure, Nigeria.',
+      'Founder building Tirenify and developer helping founders ship MVPs and landing pages. Based in Akure, Nigeria.',
     images: ['/og-image.png'],
   },
   icons: {

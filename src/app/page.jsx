@@ -5,10 +5,10 @@ const personJsonLd = {
   '@type': 'Person',
   name: 'Daniel Adeleye',
   url: 'https://dan-lac.vercel.app/',
-  jobTitle: 'Frontend Developer & Product Builder',
+  jobTitle: 'Founder & Product Builder',
   description:
-    'Frontend-focused developer and product builder creating premium digital experiences. Founder of Tirenify.',
-  sameAs: ['https://x.com/tirenify', 'https://tirenify.app'],
+    'Founder building Tirenify and developer helping early-stage founders ship MVPs and landing pages.',
+  sameAs: ['https://x.com/tirenify', 'https://breachchecker-rho.vercel.app', 'https://tirenify.netlify.app'],
   knowsAbout: ['Frontend Development', 'React', 'Product Design', 'Digital Security', 'African Tech'],
   address: {
     '@type': 'PostalAddress',

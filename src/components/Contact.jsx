@@ -16,12 +16,12 @@ function Contact() {
 
       <div className="container">
         <div className="section-header" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>
-          <ScrambleText text="06 — Contact" className="section-label" />
+          <ScrambleText text="07 — Contact" className="section-label" />
         </div>
 
         <div className="contact-content">
           <h2>
-            <AnimatedHeading text="Let's build something worth building." className="contact-title" />
+            <AnimatedHeading text="Let's ship together." className="contact-title" />
           </h2>
 
           <motion.p
@@ -30,8 +30,8 @@ function Contact() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            Whether it's a client project, a product idea, or just a conversation —
-            I'm open. I typically respond within 24 hours.
+            Whether it's a client project for your startup, a Tirenify partnership,
+            or a conversation about founding — I'm open. I respond within 24 hours to serious inquiries.
           </motion.p>
 
           <motion.div
@@ -41,7 +41,16 @@ function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <span className="dot" />
-            Available for freelance work · Open to full-time roles
+            Available for: Landing pages, MVP builds, pitch sites, retainer work
+          </motion.div>
+          <motion.div
+            className="contact-direct"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <a href="mailto:danieladeleye321@gmail.com">📧 danieladeleye321@gmail.com</a>
+            <a href="https://wa.me/2349063626099" target="_blank" rel="noopener noreferrer">💬 +234 906 362 6099</a>
           </motion.div>
           {/* Magnetic CTA Button */}
           <motion.div
@@ -54,7 +63,7 @@ function Contact() {
               href="mailto:danieladeleye321@gmail.com?subject=Let's Work Together"
               className="contact-cta"
             >
-              Send a Message →
+              Let's ship together.
             </MagneticButton>
           </motion.div>
 
@@ -81,7 +90,7 @@ function Contact() {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <span className="contact-trust-item">📍 Based in Nigeria · Works globally</span>
-            <span className="contact-trust-item">⚡ Fast turnaround</span>
+            <span className="contact-trust-item">⚡ Fast turnaround · Serious inquiries only</span>
             <span className="contact-trust-item">✓ Responds in {'<'} 24h</span>
           </motion.div>
         </div>

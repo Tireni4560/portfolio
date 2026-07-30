@@ -34,9 +34,9 @@ function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Split headline into words for staggered animation
-  const headlineLine1 = ['Building', 'products'];
-  const headlineLine2 = ['people', 'open', 'twice.'];
+  // Split the founder-first headline into words for staggered animation
+  const headlineLine1 = ['Founder', 'building', 'Tirenify.'];
+  const headlineLine2 = ['I', 'build', 'MVPs', 'and', 'landing', 'pages', 'for', 'early-stage', 'founders.'];
 
   const Word = ({ text, index, isLast }) => (
     <>
@@ -103,8 +103,7 @@ function Hero() {
             animate={loaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.55 }}
           >
-            I build web products with the precision of a developer
-            and the intent of a founder.
+            Currently serving 78+ users on Tirenify (digital security platform for Africans).
           </motion.p>
 
           {/* CTA Buttons */}

@@ -101,7 +101,7 @@ function Process() {
     <section id="process" className="section" ref={ref} data-reveal>
       <div className="container">
         <div className="section-header">
-          <ScrambleText text="05 — Approach" className="section-label" />
+          <ScrambleText text="06 — Approach" className="section-label" />
           <h2>
             <AnimatedHeading text="I don't just implement designs. I question them." />
           </h2>
