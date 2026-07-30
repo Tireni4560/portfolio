@@ -49,8 +49,9 @@ function Contact() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
-            <a href="mailto:danieladeleye321@gmail.com">📧 danieladeleye321@gmail.com</a>
-            <a href="https://wa.me/2349063626099" target="_blank" rel="noopener noreferrer">💬 +234 906 362 6099</a>
+            <
+span className="dot" />
+
           </motion.div>
           {/* Magnetic CTA Button */}
           <motion.div
