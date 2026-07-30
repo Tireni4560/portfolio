@@ -7,8 +7,7 @@ import ScrambleText from './ScrambleText';
 import { projects } from '../data/projects';
 
 function Projects() {
-  const featuredProject = projects.find(p => p.featured) || projects[0];
-  const standardProjects = projects.filter(p => !p.featured);
+  const clientProjects = projects;
 
   return (
     <section id="projects" className="section" data-reveal>
@@ -27,12 +26,9 @@ function Projects() {
         </div>
 
         <div className="projects-grid">
-          {/* Featured Project - Full Width */}
-          <FeaturedProjectCard project={featuredProject} />
-
           {/* Standard Projects Grid */}
           <div className="standard-projects-grid">
-            {standardProjects.map((project, index) => (
+            {clientProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>

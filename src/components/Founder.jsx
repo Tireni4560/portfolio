@@ -65,7 +65,7 @@ function Founder() {
 
                   <div className="founder-links">
                     <a
-                      href="https://breachchecker-rho.vercel.app"
+                      href="https://tirenify.app"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="button button-primary"
@@ -73,7 +73,7 @@ function Founder() {
                       Use the product →
                     </a>
                     <a
-                      href="https://tirenify.netlify.app"
+                      href="https://tirenify.app"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="project-link"

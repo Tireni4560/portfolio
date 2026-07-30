@@ -8,7 +8,7 @@ const personJsonLd = {
   jobTitle: 'Founder & Product Builder',
   description:
     'Founder building Tirenify and developer helping early-stage founders ship MVPs and landing pages.',
-  sameAs: ['https://x.com/tirenify', 'https://breachchecker-rho.vercel.app', 'https://tirenify.netlify.app'],
+  sameAs: ['https://x.com/tirenify', 'https://tirenify.app'],
   knowsAbout: ['Frontend Development', 'React', 'Product Design', 'Digital Security', 'African Tech'],
   address: {
     '@type': 'PostalAddress',
