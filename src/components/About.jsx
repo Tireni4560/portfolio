@@ -7,7 +7,7 @@ function About() {
   const stats = [
     { value: '78+', label: 'Active users on Tirenify' },
     { value: '3', label: 'Months to launch' },
-    { value: '5+', label: 'Products shipped' },
+    { value: '40+', label: 'Products shipped' },
   ];
 
   return (

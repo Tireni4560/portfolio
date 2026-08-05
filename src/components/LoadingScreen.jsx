@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 
 const LETTERS = ['L', 'E', 'Y', 'E'];
 
-const LETTER_REVEAL_DURATION = 420;
-const LETTER_STAGGER = LETTER_REVEAL_DURATION;
-const HOLD_AFTER_REVEAL = 550;
-const EXIT_DURATION = 400;
+const LETTER_REVEAL_DURATION = 200;
+const LETTER_STAGGER = 120;
+const HOLD_AFTER_REVEAL = 400;
+const EXIT_DURATION = 300;
 
 function LoadingScreen({ onComplete }) {
   const [exiting, setExiting] = useState(false);

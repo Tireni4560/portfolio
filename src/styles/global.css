@@ -346,22 +346,6 @@ img, svg, video { display: block; max-width: 100%; }
   font-weight: 600;
   color: var(--color-text);
 }
-.mobile-close {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  color: var(--color-text);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
 .mobile-backdrop {
   position: fixed;
   inset: 0;
@@ -375,6 +359,101 @@ img, svg, video { display: block; max-width: 100%; }
   color: var(--color-text-secondary);
 }
 .mobile-nav-social a:hover { color: var(--color-text); }
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  transition: opacity 0.4s var(--ease-out), visibility 0.4s var(--ease-out);
+}
+.loading-screen.is-exiting {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loading-screen.reduce-motion {
+  transition: none;
+}
+
+.loading-glow {
+  position: absolute;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.loading-mark {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.loading-word {
+  display: flex;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+.loading-pixel-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(1rem);
+  animation: loading-letter-reveal 0.2s var(--ease-out) forwards;
+}
+.loading-screen.reduce-motion .loading-pixel-letter {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+@keyframes loading-letter-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loading-spinner {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.loading-spinner-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: loading-spin 0.8s linear infinite;
+}
+.loading-screen.reduce-motion .loading-spinner-ring {
+  animation: none;
+}
+
+@keyframes loading-spin {
+  to { transform: rotate(360deg); }
+}
 
 /* ============================================================
    BACKGROUND SYSTEM

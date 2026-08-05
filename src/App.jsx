@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { AnimatePresence, motion, useScroll, useReducedMotion } from 'framer-motion';
 import Lenis from 'lenis';
 import ParticleNetwork from './components/ParticleNetwork';
+import LoadingScreen from './components/LoadingScreen';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -27,6 +28,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [loading, setLoading] = useState(true);
   const appRef = useRef(null);
   const cursorGlowRef = useRef(null);
 
@@ -172,6 +174,11 @@ function App() {
 
   return (
     <div className="app-shell" ref={appRef}>
+      {/* Loading Screen */}
+      <AnimatePresence>
+        {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+
       {/* Background System */}
       <div className="site-background" aria-hidden="true">
         <div className="bg-grid" />
@@ -257,16 +264,6 @@ function App() {
               aria-modal="true"
               aria-label="Navigation menu"
             >
-              <motion.button
-                className="mobile-close"
-                onClick={closeMenu}
-                aria-label="Close navigation menu"
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-              >
-                ×
-              </motion.button>
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.href}
