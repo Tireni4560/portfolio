@@ -117,7 +117,7 @@ function Hero() {
               <span className="hero-stat-label">Months to Launch</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-value">5+</span>
+              <span className="hero-stat-value">20+</span>
               <span className="hero-stat-label">Products Shipped</span>
             </div>
           </motion.div>
