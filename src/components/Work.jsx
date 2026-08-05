@@ -29,10 +29,11 @@ function Work() {
         <div className="section-header">
           <ScrambleText text="03 — Availability" className="section-label" />
           <h2>
-            <AnimatedHeading text="Available for the right projects." />
+            <AnimatedHeading text="Selective freelance build slots." />
           </h2>
           <p>
-            I'm selective. I work best with founders shipping products.
+            I take on 2–3 projects each month to fund Tirenify. Best fit: founders and startups
+            that need to ship quickly.
           </p>
         </div>
 
@@ -57,13 +58,25 @@ function Work() {
         </div>
 
         <motion.div
+          className="availability-message"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="availability-message-label">Founder builds only</span>
+          <span className="availability-message-copy">
+            If you have a deadline and a half-finished Figma, let's turn it into something real.
+          </span>
+        </motion.div>
+
+        <motion.div
           className="availability-cta"
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <a href="#contact" className="button button-primary">
-            Let's Talk
+            Start a project
           </a>
         </motion.div>
       </div>

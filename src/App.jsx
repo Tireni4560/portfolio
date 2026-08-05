@@ -313,6 +313,20 @@ function App() {
         <Contact />
       </motion.main>
 
+      <motion.a
+        href="#contact"
+        className="floating-contact-cta button button-primary"
+        onClick={(e) => handleNavClick(e, '#contact')}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: 0.9 }}
+        whileHover={prefersReducedMotion ? undefined : { y: -2 }}
+        whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+        aria-label="Jump to contact section"
+      >
+        Talk to Daniel
+      </motion.a>
+
       <Footer />
     </div>
   );

@@ -98,7 +98,7 @@ function Contact() {
               href="mailto:danieladeleye321@gmail.com?subject=Let's Ship Together"
               className="contact-cta button button-primary"
             >
-              Let's Talk
+              Start a conversation
             </MagneticButton>
           </motion.div>
 
