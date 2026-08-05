@@ -6,21 +6,19 @@ import Lenis from 'lenis';
 import ParticleNetwork from './components/ParticleNetwork';
 import Hero from './components/Hero';
 import About from './components/About';
-import Work from './components/Work';
-import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Founder from './components/Founder';
 import Process from './components/Process';
+import Skills from './components/Skills';
+import Availability from './components/Work';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 const navItems = [
+  { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#projects', label: 'Projects' },
-  { href: '#work', label: 'Work' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#founder', label: 'Founder' },
-  { href: '#process', label: 'Process' },
+  { href: '#stack', label: 'Stack' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -131,7 +129,7 @@ function App() {
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('data-revealed');
+            entry.target.classList.add('reveal-visible');
             entry.target.dataset.revealed = 'true';
             obs.unobserve(entry.target);
           }
@@ -216,7 +214,7 @@ function App() {
               <a
                 key={item.href}
                 href={item.href}
-                className={activeSection === item.href ? 'active' : ''}
+                className={`nav-link ${activeSection === item.href ? 'active' : ''}`}
                 aria-current={activeSection === item.href ? 'page' : undefined}
                 onClick={(e) => handleNavClick(e, item.href)}
               >
@@ -273,7 +271,7 @@ function App() {
                 <motion.a
                   key={item.href}
                   href={item.href}
-                  className={activeSection === item.href ? 'active' : ''}
+                  className={`nav-link ${activeSection === item.href ? 'active' : ''}`}
                   onClick={(e) => handleNavClick(e, item.href)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{
@@ -311,10 +309,10 @@ function App() {
         <Hero />
         <About />
         <Projects />
-        <Work />
-        <Skills />
         <Founder />
         <Process />
+        <Skills />
+        <Availability />
         <Contact />
       </motion.main>
 

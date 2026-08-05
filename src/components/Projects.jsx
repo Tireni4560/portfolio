@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from 'react';
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
 import { projects } from '../data/projects';
@@ -13,153 +12,22 @@ function Projects() {
     <section id="projects" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <ScrambleText text="02 — Work" className="section-label" />
+          <ScrambleText text="02 — Client Work" className="section-label" />
           <h2>
-            <AnimatedHeading text="Products I've shipped." />
+            <AnimatedHeading text="Proof of execution." />
           </h2>
-          <motion.div
-            className="section-line"
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          />
+          <p>
+            Selected client projects that show how I think, build, and ship.
+          </p>
         </div>
 
         <div className="projects-grid">
-          {/* Standard Projects Grid */}
-          <div className="standard-projects-grid">
-            {clientProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
-            ))}
-          </div>
+          {clientProjects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
         </div>
       </div>
     </section>
-  );
-}
-
-// Featured Project with Browser Chrome Mockup
-function FeaturedProjectCard({ project }) {
-  const cardRef = useRef(null);
-  const rectRef = useRef(null);
-  const rafRef = useRef(null);
-
-  const mouseX = useMotionValue(0.5);
-  const mouseY = useMotionValue(0.5);
-  const rotateX = useTransform(mouseY, [0, 1], [4, -4]);
-  const rotateY = useTransform(mouseX, [0, 1], [-6, 6]);
-  const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 30 });
-  const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 30 });
-
-  // Rect is measured once per hover (not per pixel of mouse travel), and the
-  // motion-value update is batched to one write per animation frame — avoids
-  // forcing a synchronous layout read on every raw mousemove event.
-  const handleMouseEnter = () => {
-    if (cardRef.current) rectRef.current = cardRef.current.getBoundingClientRect();
-  };
-
-  const handleMouseMove = (e) => {
-    if (!rectRef.current) return;
-    const { left, top, width, height } = rectRef.current;
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    rafRef.current = requestAnimationFrame(() => {
-      mouseX.set((e.clientX - left) / width);
-      mouseY.set((e.clientY - top) / height);
-    });
-  };
-
-  const handleMouseLeave = () => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    mouseX.set(0.5);
-    mouseY.set(0.5);
-  };
-
-  return (
-    <motion.article
-      ref={cardRef}
-      className="project-card-featured"
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <div
-        className="project-featured-inner"
-        onMouseEnter={handleMouseEnter}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        <div className="project-info">
-          <div className="project-meta">
-            <span className="project-number">{project.number}</span>
-            <span className="project-category">{project.category}</span>
-          </div>
-          <span className="project-featured-badge">Featured</span>
-          <h3 className="project-title">{project.title}</h3>
-          <p className="project-description">{project.description}</p>
-
-          <div className="project-results">
-            {project.results.map((result, i) => (
-              <span key={i} className="result-pill">
-                {result}
-              </span>
-            ))}
-          </div>
-
-          <div className="project-tech">
-            {project.technologies.join(' · ')}
-          </div>
-
-          <div className="project-links">
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button button-primary"
-            >
-              Live Demo ↗
-            </a>
-            <a
-              href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-link"
-            >
-              LinkedIn ↗
-            </a>
-          </div>
-        </div>
-
-        <div className="project-mockup">
-          <motion.div
-            className="browser-chrome"
-            style={{
-              perspective: '1000px',
-            }}
-          >
-            <div className="browser-dots">
-              <span className="browser-dot browser-dot-1" />
-              <span className="browser-dot browser-dot-2" />
-              <span className="browser-dot browser-dot-3" />
-            </div>
-            <div className="browser-url">{project.liveLink}</div>
-            <motion.div
-              className="browser-viewport"
-              style={{
-                rotateX: springRotateX,
-                rotateY: springRotateY,
-              }}
-            >
-              <img
-                src={project.image}
-                alt={`Screenshot of ${project.title} — live project by Daniel Adeleye`}
-                loading="lazy"
-                decoding="async"
-              />
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
-    </motion.article>
   );
 }
 

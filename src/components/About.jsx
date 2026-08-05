@@ -1,10 +1,15 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import ExpertiseBar from './ExpertiseBar';
 import ScrambleText from './ScrambleText';
 
 function About() {
+  const stats = [
+    { value: '78+', label: 'Active users on Tirenify' },
+    { value: '3', label: 'Months to launch' },
+    { value: '5+', label: 'Products shipped' },
+  ];
+
   return (
     <section id="about" className="section" data-reveal>
       <div className="container">
@@ -21,42 +26,51 @@ function About() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <blockquote className="about-pullquote">
-              I care less about what technology I'm using and more about whether
-              the product I'm building moves the user closer to their goal.
+              I'm a founder. I build products that solve real problems for real people.
             </blockquote>
 
             <div className="about-body">
               <p>
-                I'm a founder building Tirenify, a digital security product for African internet users.
-                I'm also a developer who helps other founders ship fast.
+                I'm the founder of Tirenify, a digital security product for African internet users.
+                I started it because the threats Africans face online are different — and the tools
+                available weren't built for them.
               </p>
 
               <p>
-                Tirenify taught me that shipping matters more than perfection.
-                Every line of code is a decision about whether it moves the user closer to their goal.
-                That's how I approach every project whether it's landing pages for founders or full-stack MVPs.
+                Tirenify taught me that shipping matters more than perfection. Every line of code
+                is a decision about whether it moves the user closer to their goal. That's how I
+                approach every project.
               </p>
 
               <p>
-                I think about retention, conversion, and business logic the same way I think about component architecture.
-                Most developers build what they're asked to build.
-                I spend time understanding what should actually exist and whether it's worth building at all.
+                I take on select client work with founders who ship fast. Not because I need to —
+                because building with early-stage teams sharpens my product instincts and keeps me
+                close to the market.
               </p>
             </div>
 
-            <div className="about-expertise">
-              {[
-                { skill: 'React & Frontend', level: 90 },
-                { skill: 'UI Engineering', level: 88 },
-                { skill: 'Product Thinking', level: 82 },
-                { skill: 'Performance & DX', level: 78 },
-              ].map((item, index) => (
-                <ExpertiseBar key={item.skill} skill={item.skill} level={item.level} index={index} />
+            {/* Stats Callouts */}
+            <div className="about-stats">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  className="about-stat"
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.1,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                >
+                  <span className="about-stat-value">{stat.value}</span>
+                  <span className="about-stat-label">{stat.label}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right Column - Photo with Floating Stats */}
+          {/* Right Column - Photo */}
           <motion.div
             className="about-visual"
             whileInView={{ opacity: 1, x: 0 }}
@@ -79,8 +93,8 @@ function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2, ease: [0.34, 1.56, 0.64, 1] }}
               >
-                <span className="number">3+</span>
-                <span className="label">Years Building</span>
+                <span className="number">78+</span>
+                <span className="label">Tirenify Users</span>
               </motion.div>
 
               <motion.div
@@ -89,8 +103,8 @@ function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.32, ease: [0.34, 1.56, 0.64, 1] }}
               >
-                <span className="number">4</span>
-                <span className="label">Products Shipped</span>
+                <span className="number">3</span>
+                <span className="label">Months to Launch</span>
               </motion.div>
 
               <motion.div

@@ -7,58 +7,25 @@ import ScrambleText from './ScrambleText';
 const skillCategories = [
   {
     name: 'Frontend',
-    icon: (
-      <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-        <line x1="8" y1="21" x2="16" y2="21" />
-        <line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
-    ),
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'HTML/CSS'],
+    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
   },
   {
     name: 'Backend',
-    icon: (
-      <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-        <path d="M2 17l10 5 10-5" />
-        <path d="M2 12l10 5 10-5" />
-      </svg>
-    ),
-    skills: ['Node.js', 'Express', 'REST APIs', 'PostgreSQL', 'Supabase', 'Firebase'],
+    skills: ['Node.js', 'Express', 'PostgreSQL', 'Supabase', 'Firebase'],
   },
   {
     name: 'Design',
-    icon: (
-      <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M14.31 8l5.74 9.94" />
-        <path d="M9.69 8h11.48" />
-        <path d="M7.38 12l5.74-9.94" />
-        <path d="M9.69 16L3.95 6.06" />
-        <path d="M14.31 16H2.83" />
-        <path d="M16.62 12l-5.74 9.94" />
-      </svg>
-    ),
-    skills: ['Figma', 'UI/UX', 'Component Systems', 'Responsive Design', 'Design Tokens'],
+    skills: ['Figma', 'UI/UX', 'Design Systems'],
   },
   {
     name: 'Tools',
-    icon: (
-      <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-      </svg>
-    ),
-    skills: ['Git', 'Vercel', 'Vite', 'VS Code', 'Lenis', 'Performance Auditing'],
+    skills: ['Git', 'Vercel', 'Vite', 'VS Code'],
   },
 ];
 
-const marqueeRow1 = ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Figma', 'Node.js', 'Supabase'];
-const marqueeRow2 = ['GSAP', 'Vite', 'PostgreSQL', 'Git', 'Vercel', 'REST APIs', 'Firebase', 'Lenis'];
-
 function Skills() {
   return (
-    <section id="skills" className="section" data-reveal>
+    <section id="stack" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
           <ScrambleText text="04 — Stack" className="section-label" />
@@ -82,7 +49,6 @@ function Skills() {
               }}
             >
               <div className="skill-category-header">
-                {category.icon}
                 <span className="skill-category-title">{category.name}</span>
               </div>
 
@@ -95,12 +61,11 @@ function Skills() {
                     viewport={{ once: true }}
                     transition={{
                       duration: 0.3,
-                      delay: categoryIndex * 0.1 + skillIndex * 0.025,
+                      delay: categoryIndex * 0.1 + skillIndex * 0.05,
                       ease: [0.34, 1.56, 0.64, 1],
                     }}
                     whileHover={{
-                      borderColor: 'var(--border-accent)',
-                      y: -1,
+                      borderColor: 'var(--color-accent)',
                       transition: { duration: 0.15 },
                     }}
                   >
@@ -110,30 +75,6 @@ function Skills() {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* Horizontal Marquee */}
-        <div className="skills-marquee" aria-hidden="true">
-          <div className="marquee-row marquee-row-1">
-            {[...marqueeRow1, ...marqueeRow1].map((item, i) => (
-              <span key={`${item}-${i}`} className="marquee-item">
-                {i > 0 && i % marqueeRow1.length === 0 && (
-                  <span className="marquee-separator">·</span>
-                )}
-                {item}
-              </span>
-            ))}
-          </div>
-          <div className="marquee-row marquee-row-2">
-            {[...marqueeRow2, ...marqueeRow2].map((item, i) => (
-              <span key={`${item}-${i}`} className="marquee-item">
-                {i > 0 && i % marqueeRow2.length === 0 && (
-                  <span className="marquee-separator">·</span>
-                )}
-                {item}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

@@ -7,7 +7,7 @@ const personJsonLd = {
   url: 'https://dan-lac.vercel.app/',
   jobTitle: 'Founder & Product Builder',
   description:
-    'Founder building Tirenify and developer helping early-stage founders ship MVPs and landing pages.',
+    'Founder building Tirenify — digital security for African internet users. Available for select projects with founders who ship fast.',
   sameAs: ['https://x.com/tirenify', 'https://tirenify.app'],
   knowsAbout: ['Frontend Development', 'React', 'Product Design', 'Digital Security', 'African Tech'],
   address: {

@@ -4,7 +4,7 @@ export const metadata = {
   metadataBase: new URL('https://dan-lac.vercel.app/'),
   title: 'Daniel Adeleye | Founder Building Tirenify',
   description:
-    'Daniel Adeleye is a founder building Tirenify and a developer who helps early-stage founders ship MVPs, landing pages, and product sites.',
+    'Daniel Adeleye is a founder building Tirenify — a digital security product for African internet users. Available for select projects with founders who ship fast.',
   alternates: {
     canonical: '/',
   },
@@ -20,14 +20,14 @@ export const metadata = {
     siteName: 'Daniel Adeleye',
     title: 'Daniel Adeleye | Founder Building Tirenify',
     description:
-      'Founder building Tirenify and developer helping founders ship MVPs and landing pages. Based in Akure, Nigeria.',
+      'Founder building Tirenify — digital security for African internet users. Available for select projects with founders who ship fast.',
     locale: 'en_GB',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Daniel Adeleye — Founder building Tirenify',
+        alt: 'Daniel Adeleye — Founder Building Tirenify',
         type: 'image/png',
       },
     ],
@@ -38,7 +38,7 @@ export const metadata = {
     creator: '@tirenify',
     title: 'Daniel Adeleye | Founder Building Tirenify',
     description:
-      'Founder building Tirenify and developer helping founders ship MVPs and landing pages. Based in Akure, Nigeria.',
+      'Founder building Tirenify — digital security for African internet users. Available for select projects with founders who ship fast.',
     images: ['/og-image.png'],
   },
   icons: {
@@ -49,7 +49,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: '#09090b',
+  themeColor: '#0a0a0a',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,

@@ -3,23 +3,22 @@
 import { motion } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
-import TerminalCode from './TerminalCode';
 
 function Founder() {
   return (
-    <section id="founder" className="section" data-reveal>
+    <section id="founder" className="section founder-section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <ScrambleText text="05 — Ventures" className="section-label" />
+          <ScrambleText text="Founder Project" className="section-label" />
           <h2>
-            <AnimatedHeading text="I'm building Tirenify first." />
+            <AnimatedHeading text="Tirenify" />
           </h2>
           <p>
-            Primary focus: building Tirenify. Secondary: select client projects for founders.
-            I think about what should exist, who it's for, and whether it's worth building at all.
+            Digital security built for African internet users.
           </p>
         </div>
-        {/* Tirenify Featured Venture Card */}
+
+        {/* Tirenify Featured Card */}
         <motion.div
           className="founder-card-wrapper"
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,11 +26,14 @@ function Founder() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="founder-card">
-            <div className="founder-card-border" aria-hidden="true" />
-
-            {/* Watermark */}
-            <div className="founder-watermark" aria-hidden="true">
-              TIRENIFY
+            {/* Tirenify Screenshot */}
+            <div className="founder-screenshot">
+              <img
+                src="/images/tirenify.png"
+                alt="Tirenify homepage — digital security for African internet users"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <div className="founder-content">
@@ -44,6 +46,7 @@ function Founder() {
 
                   <p className="founder-tagline">
                     A breach checker specifically built for African internet users.
+                    Detects exposure in threats relevant to the African cybercrime landscape.
                   </p>
 
                   <div className="founder-status">
@@ -53,7 +56,7 @@ function Founder() {
 
                   <ul className="founder-details">
                     <li>
-                      Detects exposure in threats relevant to the African cybercrime landscape.
+                      Digital security product focused on the African internet user.
                     </li>
                     <li>
                       Full-stack build: React, Node.js, Supabase, and Resend.
@@ -63,6 +66,14 @@ function Founder() {
                     </li>
                   </ul>
 
+                  <div className="founder-tech">
+                    <span>React</span>
+                    <span>Node.js</span>
+                    <span>Supabase</span>
+                    <span>Resend</span>
+                    <span>Vercel</span>
+                  </div>
+
                   <div className="founder-links">
                     <a
                       href="https://check.tirenify.app/"
@@ -70,7 +81,7 @@ function Founder() {
                       rel="noopener noreferrer"
                       className="button button-primary"
                     >
-                      Use the product →
+                      Explore Product →
                     </a>
                     <a
                       href="https://tirenify.app"
@@ -78,14 +89,25 @@ function Founder() {
                       rel="noopener noreferrer"
                       className="project-link"
                     >
-                      Visit homepage →
+                      Homepage →
                     </a>
                   </div>
                 </div>
 
-                {/* Right Column - Code Terminal */}
-                <div className="founder-terminal">
-                  <TerminalCode />
+                {/* Right Column - Metrics */}
+                <div className="founder-metrics">
+                  <div className="founder-metric">
+                    <span className="founder-metric-value">78+</span>
+                    <span className="founder-metric-label">Active Users</span>
+                  </div>
+                  <div className="founder-metric">
+                    <span className="founder-metric-value">3</span>
+                    <span className="founder-metric-label">Months to Launch</span>
+                  </div>
+                  <div className="founder-metric">
+                    <span className="founder-metric-value">Full</span>
+                    <span className="founder-metric-label">Stack Product</span>
+                  </div>
                 </div>
               </div>
             </div>

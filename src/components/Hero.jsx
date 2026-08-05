@@ -2,9 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import StatCounter from './StatCounter';
-
-const resumePdf = '/images/resume.pdf';
 
 function Hero() {
   const heroRef = useRef(null);
@@ -34,21 +31,6 @@ function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Split the founder-first headline into words for staggered animation
-  const headlineLine1 = ['Founder', 'building', 'Tirenify.'];
-  const headlineLine2 = ['I', 'build', 'MVPs', 'and', 'landing', 'pages', 'for', 'early-stage', 'founders.'];
-
-  const Word = ({ text, index, isLast }) => (
-    <>
-      <span className="word" style={{ '--word-delay': `${index * 40}ms` }}>
-        <span className="word-inner" style={{ transitionDelay: `${index * 40}ms` }}>
-          {text}
-        </span>
-      </span>
-      {!isLast && ' '}
-    </>
-  );
-
   return (
     <section
       id="home"
@@ -69,72 +51,83 @@ function Hero() {
         style={{ y: smoothParallaxY }}
       >
         <div className="hero-copy">
-          {/* Availability Badge */}
+          {/* Overline */}
           <motion.div
-            className="hero-availability"
+            className="hero-overline"
             animate={loaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, delay: 0 }}
           >
             <span className="dot" />
-            Available for Projects
+            Founder at Tirenify
           </motion.div>
 
           {/* Headline */}
           <motion.h1
             className={`hero-title ${loaded ? 'loaded' : ''}`}
-            animate={loaded ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            animate={loaded ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, y: 24 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
-            <span className="line-1">
-              {headlineLine1.map((word, i) => (
-                <Word key={`l1-${i}`} text={word} index={i} isLast={i === headlineLine1.length - 1} />
-              ))}
-            </span>
-            <span className="line-2">
-              {headlineLine2.map((word, i) => (
-                <Word key={`l2-${i}`} text={word} index={i} isLast={i === headlineLine2.length - 1} />
-              ))}
-            </span>
+            Building Tirenify. Digital security for African users.
           </motion.h1>
 
           {/* Subtext */}
           <motion.p
             className={`hero-subtext ${loaded ? 'loaded' : ''}`}
             animate={loaded ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.55 }}
+            initial={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Currently serving 78+ users on Tirenify (digital security platform for Africans).
+            I build products people return to. Available for select projects with founders who ship fast.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
             className={`hero-actions ${loaded ? 'loaded' : ''}`}
             animate={loaded ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.7 }}
+            initial={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.5, delay: 0.45 }}
           >
-            <a href="#projects" className="button button-primary">
-              View My Work
+            <a
+              href="https://tirenify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button-primary"
+            >
+              Explore Tirenify
             </a>
-            <a href={resumePdf} className="button button-secondary" target="_blank" rel="noopener noreferrer" aria-label="Open resume in new tab">
-              View Resume
+            <a href="#contact" className="button button-secondary">
+              Let's Talk
             </a>
           </motion.div>
 
+          {/* Proof Stats */}
           <motion.div
             className="hero-stats"
             animate={loaded ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.85 }}
+            initial={{ opacity: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <StatCounter value={3} suffix="+" label="Years Building" />
-            <StatCounter value={40} suffix="+" label="Products Shipped" />
-            <StatCounter value={100} suffix="%" label="Passion for Craft" />
+            <div className="hero-stat">
+              <span className="hero-stat-value">78+</span>
+              <span className="hero-stat-label">Active Users on Tirenify</span>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-value">3</span>
+              <span className="hero-stat-label">Months to Launch</span>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-value">5+</span>
+              <span className="hero-stat-label">Products Shipped</span>
+            </div>
           </motion.div>
 
           {/* Social Links */}
           <motion.div
             className={`hero-social ${loaded ? 'loaded' : ''}`}
             animate={loaded ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.9 }}
+            initial={{ opacity: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
           >
             <a href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               LinkedIn
@@ -145,6 +138,7 @@ function Hero() {
           </motion.div>
         </div>
       </motion.div>
+
       {/* Scroll Indicator */}
       <motion.div
         className={`scroll-indicator ${scrollVisible ? '' : 'hidden'}`}
@@ -159,11 +153,11 @@ function Hero() {
         <div className="hero-marquee-track">
           {[
             'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion',
-            'GSAP', 'Next.js', 'Node.js', 'Vite', 'Supabase',
-            'Product Thinking', 'UI Engineering', 'Startup Builder',
+            'Next.js', 'Node.js', 'Vite', 'Supabase',
+            'Product Thinking', 'Digital Security', 'Startup Builder',
             'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion',
-            'GSAP', 'Next.js', 'Node.js', 'Vite', 'Supabase',
-            'Product Thinking', 'UI Engineering', 'Startup Builder',
+            'Next.js', 'Node.js', 'Vite', 'Supabase',
+            'Product Thinking', 'Digital Security', 'Startup Builder',
           ].map((tag, i) => (
             <span key={i} className="hero-marquee-tag">{tag}</span>
           ))}
