@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
+import ShowcaseNote from './ShowcaseNote';
 import { projects } from '../data/projects';
 
 function Projects() {
@@ -20,6 +21,8 @@ function Projects() {
             Selected client projects that show how I think, build, and ship.
           </p>
         </div>
+
+        <ShowcaseNote />
 
         <div className="projects-grid">
           {clientProjects.map((project, index) => (
