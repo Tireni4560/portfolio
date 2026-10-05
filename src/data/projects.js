@@ -5,7 +5,7 @@ export const projects = [
   {
     id: 'upwork-showcase',
     liveLink: 'https://upwork-showcase.vercel.app',
-    image: '/images/upwork showcase.PNG',
+    image: '/images/upwork%20showcase.png',
     number: '01',
     copy: {
       es: {
@@ -29,7 +29,7 @@ export const projects = [
   {
     id: 'bizdash',
     liveLink: 'https://bizdash-pi.vercel.app',
-    image: '/images/bizdash.PNG',
+    image: '/images/bizdash.png',
     number: '02',
     copy: {
       es: {
@@ -53,7 +53,7 @@ export const projects = [
   {
     id: 'miniecom',
     liveLink: 'https://miniecom-pi.vercel.app/',
-    image: '/images/miniecom.PNG',
+    image: '/images/miniecom.png',
     number: '03',
     copy: {
       es: {
@@ -77,7 +77,7 @@ export const projects = [
   {
     id: 'business-landing',
     liveLink: 'https://business-landing-demo.vercel.app',
-    image: '/images/bulade.PNG',
+    image: '/images/bulade.png',
     number: '04',
     copy: {
       es: {
