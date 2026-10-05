@@ -12,7 +12,7 @@ function Projects() {
   const clientProjects = projects;
 
   return (
-    <section id="projects" className="section" data-reveal>
+    <section id="projects" className="section">
       <div className="container">
         <div className="section-header">
           <ScrambleText text={t.projects.label} className="section-label" />
