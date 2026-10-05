@@ -60,7 +60,6 @@ function ProjectCard({ project, index, t, lang }) {
         <img
           src={project.image}
           alt={`${copy.presentation} ${t.projects.imageAltSuffix}`}
-          loading="lazy"
           decoding="async"
         />
         <div className="project-image-overlay">
