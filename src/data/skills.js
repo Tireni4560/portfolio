@@ -1,10 +1,16 @@
 export const skills = [
   {
-    title: 'Frontend Focus',
-    items: ['HTML', 'CSS', 'JavaScript', 'React', 'Responsive Design', 'UI/UX Principles'],
+    title: 'Lo que incluye tu web',
+    items: [
+      'Diseñada para el móvil',
+      'Botón para llamar y para WhatsApp',
+      'Google Maps y horario',
+      'Tus reseñas de Google',
+      'Formulario de contacto',
+    ],
   },
   {
-    title: 'Product & Systems',
-    items: ['Node.js', 'Git', 'REST APIs', 'Vercel Deployment', 'Performance', 'Scalable interfaces'],
+    title: 'Lo que no incluye',
+    items: ['Hosting', 'Mantenimiento mensual', 'Fotos profesionales', 'Publicidad de pago'],
   },
 ];

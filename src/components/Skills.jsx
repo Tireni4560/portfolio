@@ -4,33 +4,19 @@ import { motion } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
 
-const skillCategories = [
-  {
-    name: 'Frontend',
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
-  },
-  {
-    name: 'Backend',
-    skills: ['Node.js', 'Express', 'PostgreSQL', 'Supabase', 'Firebase'],
-  },
-  {
-    name: 'Design',
-    skills: ['Figma', 'UI/UX', 'Design Systems'],
-  },
-  {
-    name: 'Tools',
-    skills: ['Git', 'Vercel', 'Vite', 'VS Code'],
-  },
-];
+import { useI18n } from '../i18n/I18nProvider';
 
 function Skills() {
+  const { t } = useI18n();
+  const skillCategories = t.skills.categories;
+
   return (
     <section id="stack" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <ScrambleText text="04 — Stack" className="section-label" />
+          <ScrambleText text={t.skills.label} className="section-label" />
           <h2>
-            <AnimatedHeading text="What I build with." />
+            <AnimatedHeading text={t.skills.heading} />
           </h2>
         </div>
 

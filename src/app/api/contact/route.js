@@ -4,15 +4,24 @@ export async function POST(request) {
     const { name, email, message } = data ?? {};
 
     if (!name || !email || !message) {
-      return Response.json({ error: 'Missing required fields' }, { status: 400 });
+      return Response.json(
+        { error: 'Faltan datos. Revisa el nombre, el email y el mensaje.' },
+        { status: 400 }
+      );
     }
 
-    return Response.json({ success: true, message: 'Contact request received.' }, { status: 200 });
+    return Response.json(
+      { success: true, message: 'Mensaje recibido. Te respondo en menos de 24 horas.' },
+      { status: 200 }
+    );
   } catch (error) {
-    return Response.json({ error: 'Failed to process contact form.' }, { status: 500 });
+    return Response.json(
+      { error: 'No he podido enviar el mensaje. Escríbeme por WhatsApp y lo vemos.' },
+      { status: 500 }
+    );
   }
 }
 
 export function GET() {
-  return Response.json({ error: 'Method not allowed' }, { status: 405 });
+  return Response.json({ error: 'Método no permitido' }, { status: 405 });
 }

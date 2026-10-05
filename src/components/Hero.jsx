@@ -2,8 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useI18n } from '../i18n/I18nProvider';
+import { whatsappLink, telLink, trackEvent } from '../lib/contact';
 
 function Hero() {
+  const { t } = useI18n();
   const heroRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
   const [scrollVisible, setScrollVisible] = useState(true);
@@ -36,7 +39,7 @@ function Hero() {
       id="home"
       ref={heroRef}
       className="hero-section"
-      aria-label="Introduction"
+      aria-label={t.hero.overline}
     >
       {/* Ambient Orbs */}
       <motion.div
@@ -58,7 +61,7 @@ function Hero() {
             transition={{ duration: 0.4, delay: 0 }}
           >
             <span className="dot" />
-            Founder at Tirenify
+            {t.hero.overline}
           </motion.div>
 
           {/* Headline */}
@@ -68,7 +71,7 @@ function Hero() {
             initial={{ opacity: 0, y: 24 }}
             transition={{ duration: 0.4, delay: 0.1 }}
           >
-            Building Tirenify. Digital security for African users.
+            {t.hero.title}
           </motion.h1>
 
           {/* Subtext */}
@@ -78,7 +81,7 @@ function Hero() {
             initial={{ opacity: 0, y: 16 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            I build products people return to. Available for select projects with founders who ship fast.
+            {t.hero.subtext}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -89,15 +92,27 @@ function Hero() {
             transition={{ duration: 0.5, delay: 0.45 }}
           >
             <a
-              href="https://tirenify.app/"
+              href={whatsappLink(t.waMessages.hero)}
               target="_blank"
               rel="noopener noreferrer"
               className="button button-primary"
+              onClick={() => trackEvent('WhatsApp', { location: 'hero' })}
             >
-              Explore Tirenify
+              {t.hero.primary}
             </a>
-            <a href="#contact" className="button button-secondary">
-              Let's Talk
+            <a
+              href="#contact"
+              className="button button-secondary"
+              onClick={() => trackEvent('Free review', { location: 'hero' })}
+            >
+              {t.hero.secondary}
+            </a>
+            <a
+              href={telLink()}
+              className="button button-secondary hero-call-button"
+              onClick={() => trackEvent('Click to call', { location: 'hero' })}
+            >
+              {t.hero.call}
             </a>
           </motion.div>
 
@@ -108,18 +123,12 @@ function Hero() {
             initial={{ opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <div className="hero-stat">
-              <span className="hero-stat-value">78+</span>
-              <span className="hero-stat-label">Active Users on Tirenify</span>
-            </div>
-            <div className="hero-stat">
-              <span className="hero-stat-value">3</span>
-              <span className="hero-stat-label">Months to Launch</span>
-            </div>
-            <div className="hero-stat">
-              <span className="hero-stat-value">20+</span>
-              <span className="hero-stat-label">Products Shipped</span>
-            </div>
+            {t.hero.stats.map((stat) => (
+              <div className="hero-stat" key={stat.label}>
+                <span className="hero-stat-value">{stat.value}</span>
+                <span className="hero-stat-label">{stat.label}</span>
+              </div>
+            ))}
           </motion.div>
 
           {/* Social Links */}
@@ -129,11 +138,22 @@ function Hero() {
             initial={{ opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <a href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a
+              href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
               LinkedIn
             </a>
-            <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer" aria-label="X">
-              X
+            <a
+              href={whatsappLink(t.waMessages.hero)}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.contact.whatsappAria}
+              onClick={() => trackEvent('WhatsApp', { location: 'hero-social' })}
+            >
+              WhatsApp
             </a>
           </motion.div>
         </div>
@@ -144,21 +164,14 @@ function Hero() {
         className={`scroll-indicator ${scrollVisible ? '' : 'hidden'}`}
         aria-hidden="true"
       >
-        <span>scroll</span>
+        <span>{t.hero.scroll}</span>
         <div className="scroll-line" />
       </motion.div>
 
-      {/* Tech tag marquee — decorative */}
+      {/* Industry tag marquee — decorative */}
       <div className="hero-marquee" aria-hidden="true">
         <div className="hero-marquee-track">
-          {[
-            'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion',
-            'Next.js', 'Node.js', 'Vite', 'Supabase',
-            'Product Thinking', 'Digital Security', 'Startup Builder',
-            'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion',
-            'Next.js', 'Node.js', 'Vite', 'Supabase',
-            'Product Thinking', 'Digital Security', 'Startup Builder',
-          ].map((tag, i) => (
+          {[...t.hero.marquee, ...t.hero.marquee].map((tag, i) => (
             <span key={i} className="hero-marquee-tag">{tag}</span>
           ))}
         </div>

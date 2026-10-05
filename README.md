@@ -1,14 +1,18 @@
-# Daniel Adeleye Portfolio
+# leye.me — Webs para negocios de servicios
 
-A modern React portfolio website designed for Daniel Adeleye by Daniel Adeleye.
+Web de una página para Daniel Adeleye. Público: fontaneros, electricistas, empresas de
+cubiertas, técnicos de climatización y clínicas dentales en España.
 
 ## Features
 
-- Premium responsive design
-- React-based reusable components
-- Smooth scroll and reveal animations
-- Node.js backend endpoint for contact submission
-- Vercel-ready deployment configuration
+- Diseño responsive (sin cambios de diseño: el copy es lo único que se toca)
+- Copy en español (por defecto) e inglés, con conmutador en la navegación (`src/i18n/`)
+- Componentes React reutilizables
+- Animaciones de scroll y revelado
+- Endpoint de contacto en `/api/contact`
+- Analítica sin cookies (Plausible, opcional vía `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`)
+- Parámetros UTM guardados en `localStorage` para saber qué email funciona
+- Configuración de despliegue para Vercel
 
 ## Local development
 
@@ -24,7 +28,7 @@ npm install
 npm run dev
 ```
 
-3. Build for production:
+3. Build for release:
 
 ```bash
 npm run build
@@ -32,5 +36,10 @@ npm run build
 
 ## Deployment
 
-This project is configured for Vercel using `vercel.json`.
-The frontend builds with Vite and the contact endpoint is available through `/api/contact`.
+Este proyecto está configurado para Vercel usando `vercel.json`.
+La web se compila con Next.js y el endpoint de contacto está en `/api/contact`.
+
+## Copy
+
+Todo el texto en español está en `src/i18n/es.js` y el inglés en `src/i18n/en.js`.
+Para revisión nativa hay una lista en `copy-review.md`.

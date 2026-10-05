@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useI18n } from '../i18n/I18nProvider';
 
 const LETTERS = ['L', 'E', 'Y', 'E'];
 
@@ -8,6 +9,7 @@ const HOLD_AFTER_REVEAL = 400;
 const EXIT_DURATION = 300;
 
 function LoadingScreen({ onComplete }) {
+  const { t } = useI18n();
   const [exiting, setExiting] = useState(false);
   // Read synchronously at mount instead of in an effect — avoids a second
   // render (and letter animation-delay recalculation) right as the page boots.
@@ -42,7 +44,7 @@ function LoadingScreen({ onComplete }) {
       className={`loading-screen ${exiting ? 'is-exiting' : ''} ${reduceMotion ? 'reduce-motion' : ''}`}
       role="status"
       aria-live="polite"
-      aria-label="Loading Daniel Adeleye's portfolio"
+      aria-label={t.loading.aria}
     >
       <div className="loading-glow" aria-hidden="true" />
 
@@ -64,7 +66,7 @@ function LoadingScreen({ onComplete }) {
         </div>
       </div>
 
-      <span className="sr-only">Loading…</span>
+      <span className="sr-only">{t.loading.text}</span>
     </div>
   );
 }

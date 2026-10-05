@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   DESIGN TOKENS — Premium Dark Founder System
+   DESIGN TOKENS — Dark Portfolio System
    ============================================================ */
 :root {
   /* Typography */
@@ -289,6 +289,16 @@ img, svg, video { display: block; max-width: 100%; }
 }
 .nav-cta:hover { color: var(--color-accent-hover); }
 
+/* Language toggle — inherits .nav-link so it matches the nav exactly. */
+.lang-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.lang-toggle::after { display: none; }
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -570,6 +580,12 @@ img, svg, video { display: block; max-width: 100%; }
   align-items: center;
   gap: 0.85rem;
   margin-bottom: 2.5rem;
+}
+
+/* Click-to-call is a mobile-only convenience; the same styles as the other buttons. */
+.hero-call-button { display: none; }
+@media (max-width: 767px) {
+  .hero-call-button { display: inline-flex; }
 }
 
 .hero-stats {
@@ -960,21 +976,24 @@ img, svg, video { display: block; max-width: 100%; }
 }
 
 /* ============================================================
-   FOUNDER / TIRENIFY — Featured Section
+   WHO I WORK WITH — Featured Section
    ============================================================ */
-.founder-section { position: relative; }
+.trades-section { position: relative; }
+.trades-section .section-header { margin-bottom: 1.5rem; }
+.trades-section .trades-pipeline { margin: 0 0 1rem; }
+.trades-lead-in { margin-bottom: 1rem; }
 
-.founder-featured-grid {
+.trades-featured-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
-.founder-card-wrapper {
+.trades-card-wrapper {
   perspective: 1000px;
 }
 
-.founder-card {
+.trades-card {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--color-bg-elevated);
@@ -982,41 +1001,41 @@ img, svg, video { display: block; max-width: 100%; }
   position: relative;
   transition: border-color var(--duration-short) var(--ease-out);
 }
-.founder-card:hover { border-color: var(--color-border-hover); }
+.trades-card:hover { border-color: var(--color-border-hover); }
 
-.founder-screenshot {
+.trades-screenshot {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   overflow: hidden;
   margin: 2rem 2rem 0;
 }
-.founder-screenshot img {
+.trades-screenshot img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
 }
 
-.founder-content {
+.trades-content {
   padding: 2rem;
 }
 
-.founder-grid {
+.trades-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
 }
 @media (min-width: 820px) {
-  .founder-grid { grid-template-columns: 1.2fr 0.8fr; }
+  .trades-grid { grid-template-columns: 1.2fr 0.8fr; }
 }
 
-.founder-info {
+.trades-info {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.founder-badge {
+.trades-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -1032,7 +1051,7 @@ img, svg, video { display: block; max-width: 100%; }
   width: fit-content;
 }
 
-.founder-name {
+.trades-name {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3.2vw, 2.25rem);
   font-weight: 700;
@@ -1040,13 +1059,13 @@ img, svg, video { display: block; max-width: 100%; }
   color: var(--color-text);
 }
 
-.founder-tagline {
+.trades-tagline {
   font-size: clamp(1rem, 1.8vw, 1.125rem);
   line-height: 1.7;
   color: var(--color-text-secondary);
 }
 
-.founder-status {
+.trades-status {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -1054,20 +1073,20 @@ img, svg, video { display: block; max-width: 100%; }
   font-weight: 500;
   color: var(--color-text-secondary);
 }
-.founder-status .dot {
+.trades-status .dot {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
   background: var(--color-success);
 }
 
-.founder-details {
+.trades-details {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
   margin: 1rem 0;
 }
-.founder-details li {
+.trades-details li {
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
@@ -1075,7 +1094,7 @@ img, svg, video { display: block; max-width: 100%; }
   line-height: 1.65;
   color: var(--color-text-secondary);
 }
-.founder-details li::before {
+.trades-details li::before {
   content: '';
   margin-top: 0.3rem;
   width: 0.28rem;
@@ -1085,12 +1104,12 @@ img, svg, video { display: block; max-width: 100%; }
   flex-shrink: 0;
 }
 
-.founder-tech {
+.trades-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-.founder-tech span {
+.trades-tags span {
   font-size: 0.75rem;
   font-weight: 500;
   font-family: var(--font-mono);
@@ -1101,7 +1120,7 @@ img, svg, video { display: block; max-width: 100%; }
   padding: 0.3rem 0.75rem;
 }
 
-.founder-links {
+.trades-links {
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -1109,7 +1128,7 @@ img, svg, video { display: block; max-width: 100%; }
   margin-top: 0.5rem;
 }
 
-.founder-metrics {
+.trades-metrics {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1119,28 +1138,28 @@ img, svg, video { display: block; max-width: 100%; }
   background: var(--color-surface);
   padding: 1.5rem;
 }
-.founder-metric {
+.trades-metric {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-border);
 }
-.founder-metric:last-child { padding-bottom: 0; border-bottom: none; }
-.founder-metric-value {
+.trades-metric:last-child { padding-bottom: 0; border-bottom: none; }
+.trades-metric-value {
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-accent);
   line-height: 1;
 }
-.founder-metric-label {
+.trades-metric-label {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--color-text-tertiary);
 }
 
-.founder-pipeline {
+.trades-pipeline {
   margin-top: 3rem;
   font-size: clamp(1.0625rem, 1.7vw, 1.1875rem);
   font-style: italic;
@@ -1336,7 +1355,7 @@ img, svg, video { display: block; max-width: 100%; }
   color: var(--color-text-secondary);
 }
 
-.about-founder-note {
+.about-whoami-note {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
@@ -1346,7 +1365,7 @@ img, svg, video { display: block; max-width: 100%; }
   border-radius: var(--radius-md);
   background: var(--color-surface);
 }
-.about-founder-note-label {
+.about-whoami-note-label {
   display: inline-flex;
   width: fit-content;
   font-size: 0.78rem;
@@ -1355,7 +1374,7 @@ img, svg, video { display: block; max-width: 100%; }
   text-transform: uppercase;
   color: var(--color-accent);
 }
-.about-founder-note p {
+.about-whoami-note p {
   font-size: 1.02rem;
   line-height: 1.7;
   color: var(--color-text-secondary);
@@ -1567,8 +1586,8 @@ img, svg, video { display: block; max-width: 100%; }
   .about-stats { grid-template-columns: 1fr; }
   .stat-card-1 { left: 0.5rem; }
   .stat-card-2 { right: 0.5rem; }
-  .founder-screenshot { margin: 1rem 1rem 0; }
-  .founder-content { padding: 1.5rem; }
+  .trades-screenshot { margin: 1rem 1rem 0; }
+  .trades-content { padding: 1.5rem; }
 }
 
 /* Dot helper */

@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import { useI18n } from '../i18n/I18nProvider';
+import { whatsappLink, mailtoLink, trackEvent } from '../lib/contact';
 
 const emailIcon = (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -21,6 +23,8 @@ const whatsappIcon = (
 );
 
 function Footer() {
+  const { t } = useI18n();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -45,26 +49,31 @@ function Footer() {
             transition={{ duration: 0.4, delay: 0.2 }}
           >
             <a
-              href="mailto:danieladeleye321@gmail.com"
+              href={mailtoLink(t.mail.subject, t.mail.body)}
               className="footer-icon-btn"
-              aria-label="Email Daniel Adeleye"
+              aria-label={t.contact.emailAria}
               title="Email"
+              onClick={() => trackEvent('Email', { location: 'footer' })}
             >
               {emailIcon}
             </a>
             <a
-              href="https://wa.me/2349063626099?text=Hi%20Daniel%2C%20I%27d%20like%20to%20talk%20about%20a%20project"
+              href={whatsappLink(t.waMessages.contact)}
               target="_blank"
               rel="noopener noreferrer"
               className="footer-icon-btn"
-              aria-label="WhatsApp Daniel Adeleye"
+              aria-label={t.contact.whatsappAria}
               title="WhatsApp"
+              onClick={() => trackEvent('WhatsApp', { location: 'footer' })}
             >
               {whatsappIcon}
             </a>
-            <button className="footer-top-btn" onClick={scrollToTop} aria-label="Back to top">
+            <a href="/privacidad" className="footer-text">
+              {t.footer.privacy}
+            </a>
+            <button className="footer-top-btn" onClick={scrollToTop} aria-label={t.footer.backTop}>
               <motion.span whileHover={{ y: -3 }} transition={{ duration: 0.2 }}>
-                Back to top ↑
+                {t.footer.backTop}
               </motion.span>
             </button>
           </motion.div>

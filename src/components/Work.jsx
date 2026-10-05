@@ -4,37 +4,22 @@ import { motion } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
 
-const offerings = [
-  {
-    title: 'Landing pages & pitch sites',
-    price: '$400–900',
-    timeline: '5–7 days',
-  },
-  {
-    title: 'MVP & proof-of-concept',
-    price: '$1,500–5,000',
-    timeline: '2–4 weeks',
-  },
-  {
-    title: 'Retainer partnerships',
-    price: '$150–400',
-    timeline: 'Per month',
-  },
-];
+import { useI18n } from '../i18n/I18nProvider';
+import { whatsappLink, trackEvent } from '../lib/contact';
 
 function Work() {
+  const { t } = useI18n();
+  const offerings = t.work.offerings;
+
   return (
     <section id="work" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <ScrambleText text="03 — Availability" className="section-label" />
+          <ScrambleText text={t.work.label} className="section-label" />
           <h2>
-            <AnimatedHeading text="Selective freelance build slots." />
+            <AnimatedHeading text={t.work.heading} />
           </h2>
-          <p>
-            I take on 2–3 projects each month to fund Tirenify. Best fit: founders and startups
-            that need to ship quickly.
-          </p>
+          <p>{t.work.intro}</p>
         </div>
 
         <div className="offerings-grid">
@@ -53,6 +38,7 @@ function Work() {
               <h3 className="offering-title">{offering.title}</h3>
               <div className="offering-price">{offering.price}</div>
               <div className="offering-timeline">{offering.timeline}</div>
+              <div className="offering-timeline">{offering.forWho}</div>
             </motion.div>
           ))}
         </div>
@@ -63,10 +49,8 @@ function Work() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="availability-message-label">Founder builds only</span>
-          <span className="availability-message-copy">
-            If you have a deadline and a half-finished Figma, let's turn it into something real.
-          </span>
+          <span className="availability-message-label">{t.work.noteLabel}</span>
+          <span className="availability-message-copy">{t.work.noteCopy}</span>
         </motion.div>
 
         <motion.div
@@ -75,8 +59,14 @@ function Work() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <a href="#contact" className="button button-primary">
-            Start a project
+          <a
+            href={whatsappLink(t.waMessages.pricing)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button button-primary"
+            onClick={() => trackEvent('WhatsApp', { location: 'pricing' })}
+          >
+            {t.work.cta}
           </a>
         </motion.div>
       </div>

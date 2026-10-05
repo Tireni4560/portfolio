@@ -2,19 +2,17 @@
 
 import { motion } from 'framer-motion';
 import ScrambleText from './ScrambleText';
+import { useI18n } from '../i18n/I18nProvider';
 
 function About() {
-  const stats = [
-    { value: '78+', label: 'Active users on Tirenify' },
-    { value: '3', label: 'Months to launch' },
-    { value: '20+', label: 'Builds shipped while learning' },
-  ];
+  const { t } = useI18n();
+  const stats = t.about.stats;
 
   return (
     <section id="about" className="section" data-reveal>
       <div className="container">
         <div className="section-header">
-          <ScrambleText text="01 — About" className="section-label" />
+          <ScrambleText text={t.about.label} className="section-label" />
         </div>
 
         <div className="about-grid">
@@ -26,40 +24,22 @@ function About() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <blockquote className="about-pullquote">
-              I'm building Tirenify because African internet users deserve security tools built for
-              their reality, not adapted from somewhere else.
+              {t.about.quote}
             </blockquote>
             <motion.div
-              className="about-founder-note"
+              className="about-whoami-note"
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="about-founder-note-label">Founder-first</span>
-              <p>
-                Tirenify is the priority. Client work is selective, deliberate, and there to fund
-                the company while I keep shipping.
-              </p>
+              <span className="about-whoami-note-label">{t.about.noteLabel}</span>
+              <p>{t.about.note}</p>
             </motion.div>
 
             <div className="about-body">
-              <p>
-                I'm the founder of Tirenify, a digital security company for African internet users.
-                I started it because the threats people face online here are different, and the
-                tools available were not built with that reality in mind.
-              </p>
-
-              <p>
-                I teach myself whatever I need to build it. I ship quickly, listen closely, and
-                make decisions from evidence instead of ego. That mindset shapes everything I
-                build.
-              </p>
-
-              <p>
-                I take on select client work to fund Tirenify and stay close to ambitious founders
-                who need to move fast. I care about solving meaningful problems, not collecting
-                projects.
-              </p>
+              {t.about.body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
 
             {/* Stats Callouts */}
@@ -94,7 +74,7 @@ function About() {
               <div className="about-photo">
                 <img
                   src="/images/Daniel.jpg"
-                  alt="Daniel Adeleye — Founder and product builder"
+                  alt={t.about.photoAlt}
                   loading="lazy"
                 />
               </div>
@@ -106,8 +86,8 @@ function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2, ease: [0.34, 1.56, 0.64, 1] }}
               >
-                <span className="number">78+</span>
-                <span className="label">Tirenify Users</span>
+                <span className="number">{t.about.statCards[0].number}</span>
+                <span className="label">{t.about.statCards[0].label}</span>
               </motion.div>
 
               <motion.div
@@ -116,8 +96,8 @@ function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.32, ease: [0.34, 1.56, 0.64, 1] }}
               >
-                <span className="number">3</span>
-                <span className="label">Months to Launch</span>
+                <span className="number">{t.about.statCards[1].number}</span>
+                <span className="label">{t.about.statCards[1].label}</span>
               </motion.div>
 
               <motion.div
@@ -126,8 +106,8 @@ function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.44, ease: [0.34, 1.56, 0.64, 1] }}
               >
-                <span className="number">Founder</span>
-                <span className="label">Mode</span>
+                <span className="number">{t.about.statCards[2].number}</span>
+                <span className="label">{t.about.statCards[2].label}</span>
               </motion.div>
             </div>
           </motion.div>

@@ -4,31 +4,11 @@ import { motion, useAnimation, useInView, useReducedMotion } from 'framer-motion
 import { useEffect, useRef } from 'react';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
-
-const steps = [
-  {
-    number: '01',
-    title: 'Understanding',
-    description: "I dig into what's actually being asked — not just what's specified.",
-  },
-  {
-    number: '02',
-    title: 'Questioning',
-    description: 'I challenge assumptions and flag where the brief could be improved.',
-  },
-  {
-    number: '03',
-    title: 'Architecture',
-    description: 'I design the component structure, data flow, and UX before any visual work.',
-  },
-  {
-    number: '04',
-    title: 'Shipping',
-    description: 'I build, test, and deploy with performance and maintainability first.',
-  },
-];
+import { useI18n } from '../i18n/I18nProvider';
 
 function Process() {
+  const { t } = useI18n();
+  const steps = t.process.steps;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const controls = useAnimation();
@@ -69,14 +49,11 @@ function Process() {
     <section id="process" className="section" ref={ref} data-reveal>
       <div className="container">
         <div className="section-header">
-          <ScrambleText text="03 — Approach" className="section-label" />
+          <ScrambleText text={t.process.label} className="section-label" />
           <h2>
-            <AnimatedHeading text="How I Work" />
+            <AnimatedHeading text={t.process.heading} />
           </h2>
-          <p>
-            My process is shaped by product thinking. Before I write a line of code,
-            I ask whether the thing I'm building actually solves the right problem.
-          </p>
+          <p>{t.process.intro}</p>
         </div>
 
         <motion.div

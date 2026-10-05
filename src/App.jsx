@@ -8,22 +8,25 @@ import LoadingScreen from './components/LoadingScreen';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
-import Founder from './components/Founder';
+import WhoWorkWith from './components/WhoWorkWith';
 import Process from './components/Process';
 import Skills from './components/Skills';
 import Availability from './components/Work';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-
-const navItems = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#stack', label: 'Stack' },
-  { href: '#contact', label: 'Contact' },
-];
+import I18nProvider, { useI18n } from './i18n/I18nProvider';
+import { captureUtm, whatsappLink, trackEvent } from './lib/contact';
 
 function App() {
+  return (
+    <I18nProvider>
+      <Site />
+    </I18nProvider>
+  );
+}
+
+function Site() {
+  const { t, lang, toggleLang } = useI18n();
   const prefersReducedMotion = useReducedMotion();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
@@ -33,6 +36,20 @@ function App() {
   const cursorGlowRef = useRef(null);
 
   const { scrollYProgress } = useScroll();
+
+  const navItems = [
+    { href: '#home', label: t.nav.home },
+    { href: '#about', label: t.nav.about },
+    { href: '#projects', label: t.nav.projects },
+    { href: '#stack', label: t.nav.stack },
+    { href: '#contact', label: t.nav.contact },
+  ];
+
+  // Store UTM parameters from the landing URL once, so cold-email visits can be
+  // told apart later. No cookies involved.
+  useEffect(() => {
+    captureUtm();
+  }, []);
 
   // Initialize Lenis smooth scrolling
   useEffect(() => {
@@ -210,7 +227,7 @@ function App() {
             href="#home"
             className="brand-link"
             onClick={(e) => handleNavClick(e, '#home')}
-            aria-label="Go to home"
+            aria-label={t.nav.brandAria}
           >
             Daniel Adeleye
           </a>
@@ -233,15 +250,27 @@ function App() {
               className="nav-cta"
               onClick={(e) => handleNavClick(e, '#contact')}
             >
-              Let's Talk
+              {t.nav.cta}
             </a>
+            {/* Language toggle — same size and rhythm as the nav links */}
+            <button
+              type="button"
+              className="nav-link lang-toggle"
+              onClick={() => {
+                toggleLang();
+                trackEvent('Language toggle', { to: lang === 'es' ? 'en' : 'es' });
+              }}
+              aria-label={t.nav.toggleAria}
+            >
+              ES / EN
+            </button>
           </nav>
 
           {/* Mobile Menu Toggle */}
           <button
             className={`nav-toggle ${menuOpen ? 'open' : ''}`}
             onClick={toggleMenu}
-            aria-label="Toggle navigation menu"
+            aria-label={t.nav.menuAria}
             aria-expanded={menuOpen}
           >
             <span />
@@ -262,7 +291,7 @@ function App() {
               exit={{ opacity: 0 }}
               role="dialog"
               aria-modal="true"
-              aria-label="Navigation menu"
+              aria-label={t.nav.menuAria}
             >
               {navItems.map((item, index) => (
                 <motion.a
@@ -280,14 +309,32 @@ function App() {
                   {item.label}
                 </motion.a>
               ))}
+              <motion.button
+                type="button"
+                className="nav-link lang-toggle"
+                onClick={toggleLang}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: navItems.length * 0.06 } }}
+                aria-label={t.nav.toggleAria}
+                style={{ textAlign: 'left' }}
+              >
+                ES / EN
+              </motion.button>
               <div className="mobile-nav-social" style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem' }}>
                 <a href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://twitter.com/danieladeleye_" target="_blank" rel="noopener noreferrer">X</a>
+                <a
+                  href={whatsappLink(t.waMessages.hero)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('WhatsApp', { location: 'mobile-menu' })}
+                >
+                  WhatsApp
+                </a>
               </div>
             </motion.div>
             <motion.button
               className="mobile-backdrop"
-              aria-label="Close navigation menu"
+              aria-label={t.nav.menuAria}
               onClick={closeMenu}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -306,7 +353,7 @@ function App() {
         <Hero />
         <About />
         <Projects />
-        <Founder />
+        <WhoWorkWith />
         <Process />
         <Skills />
         <Availability />
@@ -314,17 +361,19 @@ function App() {
       </motion.main>
 
       <motion.a
-        href="#contact"
+        href={whatsappLink(t.waMessages.hero)}
+        target="_blank"
+        rel="noopener noreferrer"
         className="floating-contact-cta button button-primary"
-        onClick={(e) => handleNavClick(e, '#contact')}
+        onClick={() => trackEvent('WhatsApp', { location: 'floating-cta' })}
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: 0.9 }}
         whileHover={prefersReducedMotion ? undefined : { y: -2 }}
         whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
-        aria-label="Jump to contact section"
+        aria-label={t.nav.floatingCta}
       >
-        Talk to Daniel
+        {t.nav.floatingCta}
       </motion.a>
 
       <Footer />

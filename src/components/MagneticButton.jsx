@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
 
-function MagneticButton({ href, children, className }) {
+function MagneticButton({ href, children, className, target, rel, onClick }) {
   const ref = useRef(null);
   const centerRef = useRef(null);
   const rafRef = useRef(null);
@@ -53,6 +53,9 @@ function MagneticButton({ href, children, className }) {
     >
       <motion.a
         href={href}
+        target={target}
+        rel={rel}
+        onClick={onClick}
         className={className}
         style={{ x: springX, y: springY, display: 'inline-flex' }}
       >

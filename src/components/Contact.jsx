@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import ScrambleText from './ScrambleText';
 import MagneticButton from './MagneticButton';
+import { useI18n } from '../i18n/I18nProvider';
+import { whatsappLink, mailtoLink, trackEvent } from '../lib/contact';
 
 const emailIcon = (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -24,21 +26,23 @@ const whatsappIcon = (
 );
 
 function Contact() {
+  const { t } = useI18n();
+
   return (
     <section id="contact" className="section contact-section" data-reveal>
       {/* Background Decorative Text */}
       <div className="contact-bg-text" aria-hidden="true">
-        LET'S TALK
+        {t.contact.bg}
       </div>
 
       <div className="container">
         <div className="section-header" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>
-          <ScrambleText text="05 — Contact" className="section-label" />
+          <ScrambleText text={t.contact.label} className="section-label" />
         </div>
 
         <div className="contact-content">
           <h2>
-            <AnimatedHeading text="Let's ship together." className="contact-title" />
+            <AnimatedHeading text={t.contact.title} className="contact-title" />
           </h2>
 
           <motion.p
@@ -47,7 +51,7 @@ function Contact() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            Whether it's a Tirenify partnership, a client project, or a conversation — I'm open.
+            {t.contact.subtext}
           </motion.p>
 
           <motion.div
@@ -57,7 +61,7 @@ function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <span className="dot" />
-            Available for select projects · Responds within 24 hours
+            {t.contact.availability}
           </motion.div>
 
           {/* Contact Method Icons */}
@@ -68,20 +72,22 @@ function Contact() {
             transition={{ duration: 0.6, delay: 0.25 }}
           >
             <a
-              href="mailto:danieladeleye321@gmail.com?subject=Let's Work Together"
+              href={mailtoLink(t.mail.subject, t.mail.body)}
               className="contact-icon-btn"
-              aria-label="Email Daniel Adeleye"
+              aria-label={t.contact.emailAria}
               title="Email"
+              onClick={() => trackEvent('Email', { location: 'contact' })}
             >
               {emailIcon}
             </a>
             <a
-              href="https://wa.me/2349063626099?text=Hi%20Daniel%2C%20I%27d%20like%20to%20talk%20about%20a%20project"
+              href={whatsappLink(t.waMessages.contact)}
               target="_blank"
               rel="noopener noreferrer"
               className="contact-icon-btn"
-              aria-label="WhatsApp Daniel Adeleye"
+              aria-label={t.contact.whatsappAria}
               title="WhatsApp"
+              onClick={() => trackEvent('WhatsApp', { location: 'contact-icons' })}
             >
               {whatsappIcon}
             </a>
@@ -95,10 +101,13 @@ function Contact() {
             style={{ display: 'inline-block', position: 'relative' }}
           >
             <MagneticButton
-              href="mailto:danieladeleye321@gmail.com?subject=Let's Ship Together"
+              href={whatsappLink(t.waMessages.contact)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent('WhatsApp', { location: 'contact-cta' })}
               className="contact-cta button button-primary"
             >
-              Start a conversation
+              {t.contact.cta}
             </MagneticButton>
           </motion.div>
 
@@ -109,9 +118,11 @@ function Contact() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <span className="contact-trust-item">📍 Based in Nigeria · Works globally</span>
-            <span className="contact-trust-item">⚡ Fast turnaround · Serious inquiries only</span>
-            <span className="contact-trust-item">✓ Responds in {'<'} 24h</span>
+            {t.contact.trust.map((item) => (
+              <span className="contact-trust-item" key={item}>
+                {item}
+              </span>
+            ))}
           </motion.div>
         </div>
       </div>

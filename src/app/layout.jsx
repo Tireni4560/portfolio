@@ -1,12 +1,17 @@
 import '../styles/global.css';
 
 export const metadata = {
-  metadataBase: new URL('https://dan-lac.vercel.app/'),
-  title: 'Daniel Adeleye | Founder Building Tirenify',
+  metadataBase: new URL('https://leye.me'),
+  title: 'Webs rápidas para fontaneros, electricistas y clínicas | Daniel Adeleye',
   description:
-    'Daniel Adeleye is a founder building Tirenify — a digital security product for African internet users. Available for select projects with founders who ship fast.',
+    'Hago webs rápidas y modernas para fontaneros, electricistas y clínicas, para que más clientes te encuentren y te llamen. Web lista en 5–7 días. Sin tecnicismos.',
   alternates: {
     canonical: '/',
+    languages: {
+      es: 'https://leye.me/',
+      en: 'https://leye.me/?lang=en',
+      'x-default': 'https://leye.me/',
+    },
   },
   robots: {
     index: true,
@@ -16,29 +21,27 @@ export const metadata = {
   applicationName: 'Daniel Adeleye',
   openGraph: {
     type: 'website',
-    url: 'https://dan-lac.vercel.app/',
+    url: 'https://leye.me/',
     siteName: 'Daniel Adeleye',
-    title: 'Daniel Adeleye | Founder Building Tirenify',
+    title: 'Webs rápidas para fontaneros, electricistas y clínicas | Daniel Adeleye',
     description:
-      'Founder building Tirenify — digital security for African internet users. Available for select projects with founders who ship fast.',
-    locale: 'en_GB',
+      'Hago webs rápidas y modernas para fontaneros, electricistas y clínicas, para que más clientes te encuentren y te llamen. Web lista en 5–7 días. Sin tecnicismos.',
+    locale: 'es_ES',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Daniel Adeleye — Founder Building Tirenify',
+        alt: 'Daniel Adeleye — webs para negocios de servicios',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@tirenify',
-    creator: '@tirenify',
-    title: 'Daniel Adeleye | Founder Building Tirenify',
+    title: 'Webs rápidas para fontaneros, electricistas y clínicas | Daniel Adeleye',
     description:
-      'Founder building Tirenify — digital security for African internet users. Available for select projects with founders who ship fast.',
+      'Hago webs rápidas y modernas para fontaneros, electricistas y clínicas. Web lista en 5–7 días. Sin tecnicismos.',
     images: ['/og-image.png'],
   },
   icons: {
@@ -57,8 +60,17 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
+        {/* Privacy-friendly, cookieless analytics. No tracking cookies, so no
+            cookie banner is needed. Set NEXT_PUBLIC_PLAUSIBLE_DOMAIN to enable. */}
+        {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN && (
+          <script
+            defer
+            data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
+            src="https://plausible.io/js/script.js"
+          />
+        )}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link

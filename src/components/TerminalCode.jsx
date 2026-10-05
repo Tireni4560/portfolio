@@ -7,48 +7,47 @@ const lines = [
   {
     parts: [
       { t: 'keyword', v: 'const' },
-      { t: 'text', v: ' tirenify = {' },
+      { t: 'text', v: ' presupuesto = {' },
     ],
   },
   {
     parts: [
-      { t: 'text', v: '  mission: ' },
-      { t: 'string', v: '"Make digital exposure awareness accessible"' },
+      { t: 'text', v: '  entrega: ' },
+      { t: 'string', v: '"5–7 días"' },
       { t: 'text', v: ',' },
     ],
   },
   {
     parts: [
-      { t: 'text', v: '  focus: ' },
-      { t: 'string', v: '"Privacy, trust & digital identity"' },
+      { t: 'text', v: '  oficio: ' },
+      { t: 'string', v: '"Fontanería, electricidad, clínicas"' },
       { t: 'text', v: ',' },
     ],
   },
   {
     parts: [
-      { t: 'text', v: '  mvp: ' },
-      { t: 'string', v: '"Email breach checker"' },
-      { t: 'text', v: ',' },
-    ],
-  },
-  {
-    parts: [
-      { t: 'text', v: '  users: ' },
-      { t: 'string', v: '"Internet users, freelancers & founders"' },
-      { t: 'text', v: ',' },
-    ],
-  },
-  {
-    parts: [
-      { t: 'text', v: '  status: ' },
-      { t: 'function', v: 'iterate' },
-      { t: 'text', v: '(),' },
-    ],
-  },
-  {
-    parts: [
-      { t: 'text', v: '  vision: ' },
+      { t: 'text', v: '  movil_primero: ' },
       { t: 'keyword', v: 'true' },
+      { t: 'text', v: ',' },
+    ],
+  },
+  {
+    parts: [
+      { t: 'text', v: '  incluye: ' },
+      { t: 'string', v: '"Llamar, WhatsApp, Maps, reseñas"' },
+      { t: 'text', v: ',' },
+    ],
+  },
+  {
+    parts: [
+      { t: 'text', v: '  tecnicismos: ' },
+      { t: 'string', v: '"ninguno",' },
+    ],
+  },
+  {
+    parts: [
+      { t: 'text', v: '  dominio: ' },
+      { t: 'string', v: '"tuyo"' },
     ],
   },
   {
@@ -60,8 +59,8 @@ const lines = [
   {
     parts: [
       { t: 'keyword', v: 'await ' },
-      { t: 'text', v: 'tirenify.' },
-      { t: 'function', v: 'grow' },
+      { t: 'text', v: 'cliente.' },
+      { t: 'function', v: 'llamar' },
       { t: 'text', v: '();' },
     ],
   },
@@ -96,7 +95,7 @@ function TerminalCode() {
   }, [isInView, visibleLines]);
 
   return (
-    <div ref={ref} className="founder-code-terminal">
+    <div ref={ref} className="trades-code-terminal">
       {lines.slice(0, visibleLines).map((line, lineIndex) => (
         <div key={lineIndex} className="code-line">
           {line.parts.map((part, partIndex) => (
