@@ -14,6 +14,7 @@ import Skills from './components/Skills';
 import Availability from './components/Work';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import LanguageSwitcher from './components/LanguageSwitcher';
 import I18nProvider, { useI18n } from './i18n/I18nProvider';
 import { captureUtm, whatsappLink, trackEvent } from './lib/contact';
 
@@ -26,7 +27,7 @@ function App() {
 }
 
 function Site() {
-  const { t, lang, toggleLang } = useI18n();
+  const { t } = useI18n();
   const prefersReducedMotion = useReducedMotion();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
@@ -252,31 +253,27 @@ function Site() {
             >
               {t.nav.cta}
             </a>
-            {/* Language toggle — same size and rhythm as the nav links */}
-            <button
-              type="button"
-              className="nav-link lang-toggle"
-              onClick={() => {
-                toggleLang();
-                trackEvent('Language toggle', { to: lang === 'es' ? 'en' : 'es' });
-              }}
-              aria-label={t.nav.toggleAria}
-            >
-              ES / EN
-            </button>
+            {/* Language switcher — desktop position, inside the nav row */}
+            <LanguageSwitcher className="lang-switcher--desktop" />
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className={`nav-toggle ${menuOpen ? 'open' : ''}`}
-            onClick={toggleMenu}
-            aria-label={t.nav.menuAria}
-            aria-expanded={menuOpen}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          {/* Language switcher — always visible in the header, left of the hamburger.
+              It is intentionally NOT part of the mobile drawer. */}
+          <div className="header-mobile-actions">
+            <LanguageSwitcher className="lang-switcher--mobile" />
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className={`nav-toggle ${menuOpen ? 'open' : ''}`}
+              onClick={toggleMenu}
+              aria-label={t.nav.menuAria}
+              aria-expanded={menuOpen}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </motion.header>
 
@@ -309,17 +306,8 @@ function Site() {
                   {item.label}
                 </motion.a>
               ))}
-              <motion.button
-                type="button"
-                className="nav-link lang-toggle"
-                onClick={toggleLang}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: navItems.length * 0.06 } }}
-                aria-label={t.nav.toggleAria}
-                style={{ textAlign: 'left' }}
-              >
-                ES / EN
-              </motion.button>
+              {/* No language switcher here on purpose: it lives in the header bar,
+                  permanently visible next to the hamburger, on every screen size. */}
               <div className="mobile-nav-social" style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem' }}>
                 <a href="https://www.linkedin.com/in/daniel-adeleye-45b37141b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a

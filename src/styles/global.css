@@ -249,6 +249,7 @@ img, svg, video { display: block; max-width: 100%; }
   font-weight: 600;
   color: var(--color-text);
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .site-nav {
@@ -289,15 +290,69 @@ img, svg, video { display: block; max-width: 100%; }
 }
 .nav-cta:hover { color: var(--color-accent-hover); }
 
-/* Language toggle — inherits .nav-link so it matches the nav exactly. */
-.lang-toggle {
+/* Language switcher — pill with globe + "ES | EN".
+   Reuses the existing design tokens (border, accent, radii, durations). */
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.35rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: border-color var(--duration-short) var(--ease-out),
+              background-color var(--duration-short) var(--ease-out);
+}
+.lang-switcher:hover { border-color: var(--color-border-hover); }
+
+.lang-switcher-globe {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  color: var(--color-text-secondary);
+}
+
+.lang-switcher-part { display: inline-flex; align-items: center; }
+.lang-switcher-sep {
+  color: var(--color-text-tertiary);
+  padding-inline: 0.1rem;
+}
+
+.lang-option {
+  appearance: none;
   background: none;
   border: 0;
-  padding: 0;
-  cursor: pointer;
+  border-radius: 999px;
+  padding: 0.4rem 0.45rem;
   font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--duration-short) var(--ease-out),
+              background-color var(--duration-short) var(--ease-out);
 }
-.lang-toggle::after { display: none; }
+.lang-option:hover { color: var(--color-text); background: var(--color-surface); }
+.lang-option:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.lang-option[aria-current='true'] {
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  font-weight: 700;
+}
+
+/* Desktop copy lives in the nav row, mobile copy sits next to the hamburger. */
+.header-mobile-actions { display: none; }
+.lang-switcher--mobile { display: none; }
 
 .nav-toggle {
   display: none;
@@ -325,6 +380,46 @@ img, svg, video { display: block; max-width: 100%; }
   .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
   .nav-toggle.open span:nth-child(2) { opacity: 0; }
   .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+  /* Switcher + hamburger live together on the right of the header bar. */
+  .header-mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    flex: 0 0 auto;
+  }
+  .header-inner { gap: 0.5rem; }
+  .lang-switcher--desktop { display: none; }
+  .lang-switcher--mobile {
+    display: inline-flex;
+    gap: 0.1rem;
+    padding: 0.1rem;
+  }
+  /* 44x44 minimum tap target for each language option. */
+  .lang-switcher--mobile .lang-option {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lang-switcher--mobile .lang-switcher-sep { padding-inline: 0; }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .header-inner { gap: 0.5rem; }
+  .site-nav { gap: 0.65rem; }
+  .site-nav .nav-link,
+  .site-nav .nav-cta { font-size: 0.78rem; white-space: nowrap; }
+  .lang-switcher { font-size: 0.75rem; }
+  .lang-option { font-size: 0.75rem; padding-inline: 0.35rem; }
+}
+
+/* Very narrow phones: tighten spacing so the header never overflows or wraps. */
+@media (max-width: 380px) {
+  .header-inner { padding-inline: 1.25rem; gap: 0.35rem; }
+  .brand-link { font-size: 0.9rem; }
 }
 
 /* Scroll progress bar */
