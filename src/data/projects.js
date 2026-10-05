@@ -5,7 +5,7 @@ export const projects = [
   {
     id: 'upwork-showcase',
     liveLink: 'https://upwork-showcase.vercel.app',
-    image: '/images/upwork%20showcase.png',
+    image: '/images/upwork-showcase.png',
     number: '01',
     copy: {
       es: {
