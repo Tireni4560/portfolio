@@ -1,49 +1,69 @@
 "use client";
 
-import SectionHeader from './SectionHeader';
+import AnimatedHeading from './AnimatedHeading';
+import ScrambleText from './ScrambleText';
+import { useI18n } from '../i18n/I18nProvider';
+import { whatsappLink, telLink, trackEvent } from '../lib/contact';
 
-const services = [
-  {
-    title: 'Webs para fontaneros y empresas de fontanería',
-    description: 'Webs pensadas para que te llamen en cuanto estropea una tubería o se rompe la calefacción.',
-  },
-  {
-    title: 'Webs para electricistas',
-    description: 'Webs con los servicios claros y un botón para pedir presupuesto sin llamadas de sobra.',
-  },
-  {
-    title: 'Webs para empresas de cubiertas y climatización',
-    description: 'Webs que explican el trabajo que haces y en qué zona trabajas.',
-  },
-  {
-    title: 'Webs para clínicas dentales',
-    description: 'Webs con servicios, horarios y cómo pedir cita, pensadas para el móvil.',
-  },
-  {
-    title: 'Webs de una página',
-    description: 'Para un negocio que solo necesita que le encuentren y le llamen.',
-  },
-  {
-    title: 'Arreglar tu web actual',
-    description: 'Cuando la web ya existe pero va lenta, no se entiende o no aparece en Google.',
-  },
-];
-
+// Section 02 — the service offer, moved out of the hero. The section is
+// position:relative so the hero marquee (position:absolute; bottom:0) can sit
+// at the end of this section, exactly as it used to sit at the end of the hero.
 function Services() {
+  const { t } = useI18n();
+
   return (
-    <section id="services" className="section services-section" data-reveal>
+    <section id="services" className="section" style={{ position: 'relative' }} data-reveal>
       <div className="container">
-        <SectionHeader
-          title="Webs para negocios de servicios. Rápidas, claras y pensadas para el móvil."
-          description="Cada web se hace para un oficio y una zona: fontanería, electricidad, cubiertas, climatización y clínicas dentales."
-          small="Servicios"
-        />
-        <div className="services-grid">
-          {services.map((item) => (
-            <article key={item.title} className="service-card">
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
+        <div className="section-header">
+          <ScrambleText text={t.services.label} className="section-label" />
+          <h2>
+            <AnimatedHeading text={t.services.heading} />
+          </h2>
+          <p>{t.services.intro}</p>
+          <p>{t.services.remote}</p>
+        </div>
+
+        <div className="hero-actions">
+          <a
+            href={whatsappLink(t.waMessages.hero)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button button-primary"
+            onClick={() => trackEvent('WhatsApp', { location: 'services' })}
+          >
+            {t.services.primary}
+          </a>
+          <a
+            href="#contact"
+            className="button button-secondary"
+            onClick={() => trackEvent('Free review', { location: 'services' })}
+          >
+            {t.services.secondary}
+          </a>
+          <a
+            href={telLink()}
+            className="button button-secondary hero-call-button"
+            onClick={() => trackEvent('Click to call', { location: 'services' })}
+          >
+            {t.services.call}
+          </a>
+        </div>
+
+        <div className="hero-stats">
+          {t.services.stats.map((stat) => (
+            <div className="hero-stat" key={stat.label}>
+              <span className="hero-stat-value">{stat.value}</span>
+              <span className="hero-stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Industry tag marquee — decorative, pinned to the end of this section. */}
+      <div className="hero-marquee" aria-hidden="true">
+        <div className="hero-marquee-track">
+          {[...t.services.marquee, ...t.services.marquee].map((tag, i) => (
+            <span key={i} className="hero-marquee-tag">{tag}</span>
           ))}
         </div>
       </div>

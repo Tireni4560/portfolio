@@ -29,6 +29,22 @@ function Projects() {
             <ProjectCard key={project.id} project={project} index={index} t={t} lang={lang} />
           ))}
         </div>
+
+        {/* Stat strip moved from the Tirenify card, now at the end of Work. */}
+        <motion.div
+          className="trades-metrics"
+          style={{ marginTop: '2.5rem' }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {t.whoWorkWith.metrics.map((metric) => (
+            <div className="trades-metric" key={metric.label}>
+              <span className="trades-metric-value">{metric.value}</span>
+              <span className="trades-metric-label">{metric.label}</span>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

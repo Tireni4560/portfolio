@@ -1,14 +1,15 @@
 import '../styles/global.css';
 
 export const metadata = {
-  title: 'Esta página no existe | Daniel Adeleye',
-  description: 'Esta página no existe. Vuelve a leye.me y pide una revisión gratuita de tu web.',
+  title: 'This page does not exist | Daniel Adeleye',
+  description:
+    'This page does not exist. Go back to leye.me and ask for a free review of your site.',
   robots: { index: false, follow: false },
 };
 
 export default function NotFound() {
   return (
-    <html lang="es">
+    <html lang="en">
       <body>
         <main
           className="section"
@@ -20,13 +21,14 @@ export default function NotFound() {
               className="contact-title"
               style={{ marginBottom: '1rem' }}
             >
-              Esta página no existe.
+              This page does not exist.
             </h1>
             <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
-              Pero tu web sí. Si tarda en abrir o no te trae llamadas, te la reviso gratis.
+              But your website should. If it loads slowly or doesn't bring you calls,
+              I'll review it for free.
             </p>
             <a href="/" className="button button-primary">
-              Volver al inicio
+              Back to home
             </a>
           </div>
         </main>

@@ -3,7 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useI18n } from '../i18n/I18nProvider';
-import { whatsappLink, telLink, trackEvent } from '../lib/contact';
+import { whatsappLink, trackEvent } from '../lib/contact';
+
+// Live Tirenify product URL (same target the product band used).
+const TIRENIFY_PRODUCT_URL = 'https://check.tirenify.app/';
 
 function Hero() {
   const { t } = useI18n();
@@ -33,6 +36,13 @@ function Hero() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Smooth-scroll for the in-page "Also built…" link (same behaviour as App.jsx nav).
+  const scrollTo = (e, selector) => {
+    e.preventDefault();
+    const element = document.querySelector(selector);
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section
@@ -84,7 +94,20 @@ function Hero() {
             {t.hero.subtext}
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* Stack chips */}
+          <motion.ul
+            className="product-chips"
+            style={{ marginBottom: '1.5rem' }}
+            animate={loaded ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            {t.hero.chips.map((chip) => (
+              <li key={chip}>{chip}</li>
+            ))}
+          </motion.ul>
+
+          {/* Product CTAs */}
           <motion.div
             className={`hero-actions ${loaded ? 'loaded' : ''}`}
             animate={loaded ? { opacity: 1, y: 0 } : {}}
@@ -92,43 +115,33 @@ function Hero() {
             transition={{ duration: 0.5, delay: 0.45 }}
           >
             <a
-              href={whatsappLink(t.waMessages.hero)}
+              href={TIRENIFY_PRODUCT_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="button button-primary"
+              onClick={() => trackEvent('Tirenify', { location: 'hero' })}
+            >
+              {t.hero.ctaPrimary} ↗
+            </a>
+            <a
+              href={whatsappLink(t.waMessages.product)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button-secondary"
               onClick={() => trackEvent('WhatsApp', { location: 'hero' })}
             >
-              {t.hero.primary}
+              {t.hero.ctaSecondary}
             </a>
             <a
-              href="#contact"
-              className="button button-secondary"
-              onClick={() => trackEvent('Free review', { location: 'hero' })}
+              href="#projects"
+              className="product-tertiary"
+              onClick={(e) => {
+                trackEvent('Projects anchor', { location: 'hero' });
+                scrollTo(e, '#projects');
+              }}
             >
-              {t.hero.secondary}
+              {t.hero.tertiary} →
             </a>
-            <a
-              href={telLink()}
-              className="button button-secondary hero-call-button"
-              onClick={() => trackEvent('Click to call', { location: 'hero' })}
-            >
-              {t.hero.call}
-            </a>
-          </motion.div>
-
-          {/* Proof Stats */}
-          <motion.div
-            className="hero-stats"
-            animate={loaded ? { opacity: 1 } : {}}
-            initial={{ opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            {t.hero.stats.map((stat) => (
-              <div className="hero-stat" key={stat.label}>
-                <span className="hero-stat-value">{stat.value}</span>
-                <span className="hero-stat-label">{stat.label}</span>
-              </div>
-            ))}
           </motion.div>
 
           {/* Social Links */}
@@ -167,15 +180,6 @@ function Hero() {
         <span>{t.hero.scroll}</span>
         <div className="scroll-line" />
       </motion.div>
-
-      {/* Industry tag marquee — decorative */}
-      <div className="hero-marquee" aria-hidden="true">
-        <div className="hero-marquee-track">
-          {[...t.hero.marquee, ...t.hero.marquee].map((tag, i) => (
-            <span key={i} className="hero-marquee-tag">{tag}</span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }

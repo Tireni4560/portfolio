@@ -68,7 +68,15 @@ export default function LanguageSwitcher({ className = '' }) {
             lang={option.code}
             onClick={() => choose(option.code)}
             aria-current={lang === option.code ? 'true' : undefined}
-            aria-label={option.code === 'es' ? 'Cambiar a español' : 'Switch to English'}
+            aria-label={
+              option.code === 'es'
+                ? lang === 'es'
+                  ? 'Cambiar a español'
+                  : 'Switch to Spanish'
+                : lang === 'es'
+                  ? 'Cambiar a inglés'
+                  : 'Switch to English'
+            }
           >
             {option.short}
           </button>

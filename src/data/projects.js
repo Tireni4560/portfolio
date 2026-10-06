@@ -101,7 +101,7 @@ export const projects = [
   {
     id: 'leye-resources',
     liveLink: 'https://vedal-two.vercel.app/',
-    image: '/images/leye.PNG',
+    image: '/images/leye.png',
     number: '05',
     copy: {
       es: {

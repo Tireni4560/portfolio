@@ -7,15 +7,15 @@ const personJsonLd = {
   '@type': 'Person',
   name: 'Daniel Adeleye',
   url: 'https://leye.me/',
-  jobTitle: 'Creador de webs para negocios de servicios',
+  jobTitle: 'Website creator for service businesses',
   description:
-    'Creo webs rápidas y modernas para fontaneros, electricistas, empresas de cubiertas, técnicos de climatización y clínicas dentales en España. Trabajo en remoto, casi en el horario del cliente, y entrego la web en 5–7 días.',
+    'I build fast, modern websites for plumbers, electricians, roofing companies, HVAC technicians and dental clinics in Spain. I work remotely, almost on your schedule, and deliver the site in 5–7 days.',
   knowsAbout: [
-    'Webs para fontaneros',
-    'Webs para electricistas',
-    'Webs para clínicas dentales',
-    'Diseño-web para móvil',
-    'Webs para negocios de servicios',
+    'Websites for plumbers',
+    'Websites for electricians',
+    'Websites for dental clinics',
+    'Mobile web design',
+    'Websites for service businesses',
   ],
   address: {
     '@type': 'PostalAddress',
@@ -27,12 +27,12 @@ const personJsonLd = {
 const professionalServiceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  name: 'Daniel Adeleye — Webs para negocios de servicios',
+  name: 'Daniel Adeleye — Websites for service businesses',
   url: 'https://leye.me/',
   image: 'https://leye.me/og-image.png',
   description:
-    'Webs rápidas y modernas para fontaneros, electricistas y clínicas. Web lista en 5–7 días. Sin tecnicismos.',
-  areaServed: { '@type': 'Country', name: 'España' },
+    'Fast, modern websites for plumbers, electricians and clinics. Site ready in 5–7 days. No tech jargon.',
+  areaServed: { '@type': 'Country', name: 'Spain' },
   availableLanguage: ['es', 'en'],
   priceRange: '€€',
 };

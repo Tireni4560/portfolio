@@ -1,4 +1,4 @@
-// Spanish copy (default language for the site).
+// Spanish copy (opt-in: the ES/EN switcher, a ?lang=es URL, or the language hint).
 // Every user-facing string lives in the i18n folder so the copy can be
 // reviewed and translated in one place. Warm, plain Spain Spanish, "tú".
 
@@ -7,7 +7,8 @@ const es = {
 
   nav: {
     home: 'Inicio',
-    about: 'Sobre mí',
+    product: 'Producto',
+    services: 'Servicios',
     projects: 'Trabajos',
     stack: 'Qué incluye',
     contact: 'Contacto',
@@ -24,15 +25,27 @@ const es = {
   },
 
   hero: {
-    overline: 'Webs para negocios de servicios',
-    title:
-      'Hago webs rápidas y modernas para fontaneros, electricistas y clínicas, para que más clientes te encuentren y te llamen.',
+    overline: 'Desarrollo de productos full-stack',
+    title: 'Construyo productos full-stack, de principio a fin.',
     subtext:
+      'Fundador de Tirenify. Diseño, construyo y lanzo dashboards, plataformas y apps, de la base de datos a la interfaz.',
+    chips: ['React', 'Node.js', 'Supabase', 'Resend', 'Vercel'],
+    ctaPrimary: 'Ver Tirenify',
+    ctaSecondary: 'Proyectos de producto: escríbeme',
+    tertiary: 'También he creado: un panel de negocio y una tienda online',
+    scroll: 'baja',
+  },
+
+  services: {
+    label: '02 — Servicios',
+    heading: 'Webs para negocios de servicios',
+    intro:
+      'Hago webs rápidas y modernas para fontaneros, electricistas y clínicas, para que más clientes te encuentren y te llamen.',
+    remote:
       'Trabajo en remoto, casi en tu mismo horario. Web lista en 5–7 días. Sin tecnicismos.',
     primary: 'Escríbeme por WhatsApp',
     secondary: 'Pídeme una revisión gratuita',
     call: 'Llámame',
-    scroll: 'baja',
     stats: [
       { value: '5–7', label: 'Días de entrega' },
       { value: '24 h', label: 'Para responderte' },
@@ -50,8 +63,32 @@ const es = {
     ],
   },
 
+  product: {
+    label: '01 — Producto',
+    heading: 'Desarrollo de producto full-stack',
+    points: [
+      'Construí y lancé Tirenify en solitario en 3 meses: más de 78 usuarios activos, producto en producción',
+      'Dashboards, plataformas y apps, de principio a fin',
+      'React, Node.js, Supabase, bases de datos, APIs',
+      'Entregas rápidas, enfocado en lanzar',
+    ],
+    caseStudy: {
+      type: 'Caso práctico · Dashboard',
+      title: 'Panel de control del negocio',
+      description:
+        'Un dashboard que muestra al dueño sus ventas, clientes nuevos y reseñas de un vistazo, sin tener que pedirle los números a nadie.',
+      bullets: [
+        'Ventas, clientes nuevos y reseñas en una sola pantalla, siempre al día',
+        'Filtros por fecha para ver cualquier periodo',
+        'Funciona en el móvil, sin instalar nada',
+      ],
+      link: 'Ver el dashboard ↗',
+    },
+    ctaLine: '¿Tienes una idea de producto? Hablemos.',
+  },
+
   about: {
-    label: '01 — Sobre mí',
+    label: '03 — Sobre mí',
     quote:
       'Hago webs para negocios que viven de la confianza y las recomendaciones. Tu web es la primera impresión, y ahora mismo puede estar costándote llamadas.',
     noteLabel: 'Quién soy',
@@ -75,7 +112,7 @@ const es = {
     ],
   },
   projects: {
-    label: '02 — Trabajos',
+    label: '04 — Trabajos',
     heading: 'Webs reales, sin plantillas.',
     intro:
       'Estas son webs de referencia que he creado para mostrarte cómo podría ser la tuya. Cada una está pensada para que el dueño reciba más llamadas. ¿Quieres ver una con tu nombre y tu teléfono? Escríbeme.',
@@ -88,10 +125,6 @@ const es = {
   },
 
   whoWorkWith: {
-    label: 'Proyecto de fundador',
-    heading: 'Tirenify',
-    intro:
-      'Seguridad digital creada para usuarios de internet en África.',
     badge: 'Proyecto actual',
     name: 'Tirenify',
     tagline:
@@ -113,7 +146,6 @@ const es = {
     ctaSecondary: 'Ver trabajos →',
     productLink: 'Explorar producto →',
     homepageLink: 'Página de inicio →',
-    leadIn: 'Esto es a lo que me refiero:',
     metrics: [
       { value: '5–7', label: 'Días de entrega' },
       { value: '24 h', label: 'Respuesta' },
@@ -125,7 +157,7 @@ const es = {
   },
 
   process: {
-    label: '04 — Cómo funciona',
+    label: '05 — Cómo funciona',
     heading: 'Cómo funciona',
     intro: 'Cuatro pasos, sin tecnicismos. En una semana tienes la web.',
     steps: [
@@ -153,7 +185,7 @@ const es = {
     ],
   },
   skills: {
-    label: '05 — Qué incluye',
+    label: '06 — Qué incluye',
     heading: 'Qué incluye tu web',
     categories: [
       {
@@ -188,7 +220,7 @@ const es = {
   },
 
   work: {
-    label: '06 — Precios',
+    label: '07 — Precios',
     heading: 'Precios claros, sin sorpresas.',
     intro:
       'Sabes lo que cuesta antes de empezar. Si el trabajo es más grande de lo normal, te lo digo en la llamada de 15 minutos.',
@@ -219,7 +251,7 @@ const es = {
   },
   contact: {
     bg: 'HABLEMOS',
-    label: '07 — Contacto',
+    label: '08 — Contacto',
     title: 'Vamos a conseguirte más llamadas.',
     subtext:
       'Mándame el enlace de tu web actual. Te envío 3 cosas que cambiaría, gratis y sin compromiso.',
@@ -228,6 +260,7 @@ const es = {
     emailAria: 'Escribir un email a Daniel Adeleye',
     whatsappAria: 'Escribir por WhatsApp a Daniel Adeleye',
     cta: 'Escríbeme por WhatsApp',
+    productLine: '¿Tienes un proyecto full-stack? Escríbeme con lo que estás construyendo.',
     trust: [
       '📍 Trabajo en remoto, casi en tu horario',
       '⚡ Web lista en 5–7 días',
@@ -245,11 +278,14 @@ const es = {
     review: 'Hola Daniel, te paso el enlace de mi web y me gustaría una revisión gratuita: ',
     contact: 'Hola Daniel, te paso el enlace de mi web: ',
     pricing: 'Hola Daniel, quiero una revisión gratuita de mi web: ',
+    product: 'Hola Daniel, me gustaría hablar de un proyecto de producto.',
   },
 
   mail: {
     subject: 'Revisión gratuita de mi web',
     body: 'Hola Daniel,\n\nEsta es mi web: ',
+    productSubject: 'Idea de producto',
+    productEmail: 'daniel@tirenify.app',
   },
 };
 

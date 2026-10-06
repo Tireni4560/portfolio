@@ -1,11 +1,14 @@
-// English copy (secondary language, behind the ES/EN toggle in the nav).
+// English copy (default language for the site, served on first visit).
+// Every user-facing string lives in the i18n folder so the copy can be
+// reviewed and translated in one place.
 
 const en = {
   siteUrl: 'https://leye.me',
 
   nav: {
     home: 'Home',
-    about: 'About',
+    product: 'Product',
+    services: 'Services',
     projects: 'Work',
     stack: 'What you get',
     contact: 'Contact',
@@ -22,15 +25,27 @@ const en = {
   },
 
   hero: {
-    overline: 'Websites for service businesses',
-    title:
-      'I build fast, modern websites for plumbers, electricians and clinics, so more customers find you and call you.',
+    overline: 'Full-Stack Product Development',
+    title: 'I build full-stack products, end to end.',
     subtext:
+      'Founder of Tirenify. I design, build and ship dashboards, platforms and apps from database to UI.',
+    chips: ['React', 'Node.js', 'Supabase', 'Resend', 'Vercel'],
+    ctaPrimary: 'See Tirenify',
+    ctaSecondary: 'Product work: get in touch',
+    tertiary: 'Also built: a business dashboard and an online store',
+    scroll: 'scroll',
+  },
+
+  services: {
+    label: '02 — Services',
+    heading: 'Websites for service businesses',
+    intro:
+      'I build fast, modern websites for Spanish plumbers, electricians and clinics, so more customers find you and call you.',
+    remote:
       'I work remotely, almost on your schedule. Your site ready in 5–7 days from when I get your info. No tech jargon.',
     primary: 'Message me on WhatsApp',
     secondary: 'Get a free review of your site',
     call: 'Call me',
-    scroll: 'scroll',
     stats: [
       { value: '5–7', label: 'Day turnaround' },
       { value: '24 h', label: 'To reply to you' },
@@ -48,8 +63,32 @@ const en = {
     ],
   },
 
+  product: {
+    label: '01 — Product',
+    heading: 'Full-Stack Product Development',
+    points: [
+      'Built and launched Tirenify solo in 3 months: 78+ active users, live product',
+      'Dashboards, platforms and apps, end to end',
+      'React, Node.js, Supabase, databases, APIs',
+      'Fast turnaround, shipping-focused',
+    ],
+    caseStudy: {
+      type: 'Case study · Dashboard',
+      title: 'Business control panel',
+      description:
+        'A dashboard that shows an owner their sales, new customers and reviews at a glance, without asking anyone for the numbers.',
+      bullets: [
+        'Sales, new customers and reviews on one screen, always up to date',
+        'Date filters to look at any period',
+        'Works on mobile, nothing to install',
+      ],
+      link: 'View the dashboard ↗',
+    },
+    ctaLine: "Have a product idea? Let's talk.",
+  },
+
   about: {
-    label: '01 — About',
+    label: '03 — About',
     quote:
       'I build for businesses that run on trust and referrals. Your website is the first impression, and right now it might be costing you calls.',
     noteLabel: 'Who I am',
@@ -73,7 +112,7 @@ const en = {
     ],
   },
   projects: {
-    label: '02 — Work',
+    label: '04 — Work',
     heading: 'Real builds. No templates.',
     intro:
       'These are reference websites I built to show you what your site could look like. Each one is designed to get the owner more calls. Want to see one with your own name and phone number? Message me.',
@@ -86,10 +125,6 @@ const en = {
   },
 
   whoWorkWith: {
-    label: 'Founder Project',
-    heading: 'Tirenify',
-    intro:
-      'Digital security built for African internet users.',
     badge: 'Current Venture',
     name: 'Tirenify',
     tagline:
@@ -111,7 +146,6 @@ const en = {
     ctaSecondary: 'See recent builds →',
     productLink: 'Explore Product →',
     homepageLink: 'Homepage →',
-    leadIn: "Here's what I mean:",
     metrics: [
       { value: '5–7', label: 'Day turnaround' },
       { value: '24 h', label: 'Reply' },
@@ -123,7 +157,7 @@ const en = {
   },
 
   process: {
-    label: '04 — How it works',
+    label: '05 — How it works',
     heading: 'How it works',
     intro: 'Four steps, no jargon. Your site is live in a week.',
     steps: [
@@ -151,7 +185,7 @@ const en = {
     ],
   },
   skills: {
-    label: '05 — What you get',
+    label: '06 — What you get',
     heading: 'What your website includes',
     categories: [
       {
@@ -186,7 +220,7 @@ const en = {
   },
 
   work: {
-    label: '06 — Pricing',
+    label: '07 — Pricing',
     heading: 'Clear pricing.',
     intro:
       'You know the cost before we start. If the job is bigger than usual, I tell you on the 15-minute call.',
@@ -217,7 +251,7 @@ const en = {
   },
   contact: {
     bg: "LET'S TALK",
-    label: '07 — Contact',
+    label: '08 — Contact',
     title: "Let's get you more calls.",
     subtext:
       "Email me a link to your current site. I'll send you 3 things I'd fix — free, no strings.",
@@ -226,6 +260,7 @@ const en = {
     emailAria: 'Email Daniel Adeleye',
     whatsappAria: 'WhatsApp Daniel Adeleye',
     cta: 'Message me on WhatsApp',
+    productLine: "Have a full-stack project? Write to me with what you're building.",
     trust: [
       '📍 I work remotely, almost on your hours',
       '⚡ Site ready in 5–7 days',
@@ -243,11 +278,14 @@ const en = {
     review: 'Hi Daniel, here is the link to my website and I would like a free review: ',
     contact: 'Hi Daniel, here is the link to my website: ',
     pricing: 'Hi Daniel, I would like a free review of my website: ',
+    product: "Hi Daniel, I'd like to talk about a product project.",
   },
 
   mail: {
     subject: 'Free review of my website',
     body: 'Hi Daniel,\n\nHere is my website: ',
+    productSubject: 'Product idea',
+    productEmail: 'daniel@tirenify.app',
   },
 };
 

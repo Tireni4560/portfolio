@@ -1696,3 +1696,218 @@ img, svg, video { display: block; max-width: 100%; }
 @media (max-width: 32rem) {
   .container { padding-inline: 1.25rem; }
 }
+
+/* ============================================================
+   LANGUAGE HINT — bottom-left pill offering the other language.
+   Fixed positioning (no layout shift), reuses existing tokens:
+   border, surface, accent, radii and durations.
+   ============================================================ */
+.language-hint {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  max-width: min(24rem, calc(100vw - 2.5rem));
+  padding: 0.3rem 0.35rem 0.3rem 0.5rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-bg-elevated);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-out),
+              border-color var(--duration-short) var(--ease-out);
+}
+.language-hint.is-visible { opacity: 1; pointer-events: auto; }
+.language-hint:hover { border-color: var(--color-border-hover); }
+
+.language-hint-action {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 0.4rem 0.75rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.35;
+  text-align: left;
+  transition: color var(--duration-short) var(--ease-out);
+}
+.language-hint-action:hover { color: var(--color-accent-hover); }
+
+.language-hint-close {
+  appearance: none;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--color-text-tertiary);
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: color var(--duration-short) var(--ease-out),
+              background-color var(--duration-short) var(--ease-out);
+}
+.language-hint-close:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.language-hint-action:focus-visible,
+.language-hint-close:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Mobile: full width minus 12px side margins, clear of the floating WhatsApp
+   CTA (bottom-right) and of the home-indicator safe area. */
+@media (max-width: 767px) {
+  .language-hint {
+    left: 12px;
+    right: 12px;
+    max-width: none;
+    bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .language-hint { transition: none; }
+}
+
+/* ============================================================
+   FULL-STACK PRODUCT DEVELOPMENT — compact credibility block
+   ============================================================ */
+.product-section .section-header {
+  margin-bottom: 2rem;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.product-points {
+  display: grid;
+  gap: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .product-points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 2.5rem;
+  }
+}
+
+.product-points li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.product-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+}
+
+/* Comfortable touch targets on the new CTAs. */
+.product-actions .button {
+  min-height: 44px;
+}
+
+.product-actions .button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Compact band sitting directly under the fixed header, above the hero:
+   tighter vertical rhythm than a full section. */
+.product-section {
+  padding-block: 0;
+}
+.product-section > .container {
+  padding-block: clamp(5.5rem, 8vw, 6.75rem) clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* Stack chips — mirror the mono pill used in the project cards. */
+.product-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.product-chips li {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+}
+
+/* Tertiary text link: anchors back to the existing Trabajos section. */
+.product-tertiary {
+  align-self: flex-start;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: color var(--duration-short) var(--ease-out);
+}
+.product-tertiary:hover {
+  color: var(--color-accent-hover);
+}
+.product-tertiary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Contact: second path for product/app enquiries (service CTAs unchanged). */
+.contact-product-nudge {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+.contact-product-nudge a {
+  color: var(--color-accent);
+  font-weight: 600;
+  transition: color var(--duration-short) var(--ease-out);
+}
+.contact-product-nudge a:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+.contact-product-nudge a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}

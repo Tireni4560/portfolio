@@ -8,13 +8,15 @@ import LoadingScreen from './components/LoadingScreen';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
-import WhoWorkWith from './components/WhoWorkWith';
+import Services from './components/Services';
 import Process from './components/Process';
 import Skills from './components/Skills';
 import Availability from './components/Work';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import LanguageSwitcher from './components/LanguageSwitcher';
+import LanguageHint from './components/LanguageHint';
+import ProductDevelopment from './components/ProductDevelopment';
 import I18nProvider, { useI18n } from './i18n/I18nProvider';
 import { captureUtm, whatsappLink, trackEvent } from './lib/contact';
 
@@ -40,7 +42,8 @@ function Site() {
 
   const navItems = [
     { href: '#home', label: t.nav.home },
-    { href: '#about', label: t.nav.about },
+    { href: '#product', label: t.nav.product },
+    { href: '#services', label: t.nav.services },
     { href: '#projects', label: t.nav.projects },
     { href: '#stack', label: t.nav.stack },
     { href: '#contact', label: t.nav.contact },
@@ -339,9 +342,10 @@ function Site() {
         transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       >
         <Hero />
+        <ProductDevelopment />
+        <Services />
         <About />
         <Projects />
-        <WhoWorkWith />
         <Process />
         <Skills />
         <Availability />
@@ -365,6 +369,9 @@ function Site() {
       </motion.a>
 
       <Footer />
+
+      {/* One-off offer to switch language, bottom-left (see LanguageHint.jsx) */}
+      <LanguageHint />
     </div>
   );
 }

@@ -37,6 +37,8 @@ function About() {
             </motion.div>
 
             <div className="about-body">
+              {/* Founder paragraph (moved from above the Tirenify card). */}
+              <p>{t.whoWorkWith.pipeline}</p>
               {t.about.body.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}

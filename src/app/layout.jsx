@@ -2,14 +2,14 @@ import '../styles/global.css';
 
 export const metadata = {
   metadataBase: new URL('https://leye.me'),
-  title: 'Webs rápidas para fontaneros, electricistas y clínicas | Daniel Adeleye',
+  title: 'Daniel Adeleye | Full-Stack Developer & Founder of Tirenify',
   description:
-    'Hago webs rápidas y modernas para fontaneros, electricistas y clínicas, para que más clientes te encuentren y te llamen. Web lista en 5–7 días. Sin tecnicismos.',
+    'Full-stack developer and founder of Tirenify. I build products, dashboards and apps end to end, plus fast websites for plumbers, electricians and clinics. Site ready in 5–7 days.',
   alternates: {
     canonical: '/',
     languages: {
-      es: 'https://leye.me/',
-      en: 'https://leye.me/?lang=en',
+      en: 'https://leye.me/',
+      es: 'https://leye.me/?lang=es',
       'x-default': 'https://leye.me/',
     },
   },
@@ -23,25 +23,26 @@ export const metadata = {
     type: 'website',
     url: 'https://leye.me/',
     siteName: 'Daniel Adeleye',
-    title: 'Webs rápidas para fontaneros, electricistas y clínicas | Daniel Adeleye',
+    title: 'Daniel Adeleye | Full-Stack Developer & Founder of Tirenify',
     description:
-      'Hago webs rápidas y modernas para fontaneros, electricistas y clínicas, para que más clientes te encuentren y te llamen. Web lista en 5–7 días. Sin tecnicismos.',
-    locale: 'es_ES',
+      'Full-stack developer and founder of Tirenify. I build products, dashboards and apps end to end, plus fast websites for plumbers, electricians and clinics. Site ready in 5–7 days.',
+    locale: 'en_US',
+    alternateLocale: ['es_ES'],
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Daniel Adeleye — webs para negocios de servicios',
+        alt: 'Daniel Adeleye — full-stack developer',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Webs rápidas para fontaneros, electricistas y clínicas | Daniel Adeleye',
+    title: 'Daniel Adeleye | Full-Stack Developer & Founder of Tirenify',
     description:
-      'Hago webs rápidas y modernas para fontaneros, electricistas y clínicas. Web lista en 5–7 días. Sin tecnicismos.',
+      'Full-stack developer and founder of Tirenify. I build products, dashboards and apps end to end, plus fast websites for plumbers, electricians and clinics. Site ready in 5–7 days.',
     images: ['/og-image.png'],
   },
   icons: {
@@ -60,7 +61,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Privacy-friendly, cookieless analytics. No tracking cookies, so no
             cookie banner is needed. Set NEXT_PUBLIC_PLAUSIBLE_DOMAIN to enable. */}
