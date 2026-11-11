@@ -5,44 +5,55 @@
    ============================================================ */
 :root {
   /* Typography */
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'SF Mono', 'Fira Mono', 'Cascadia Mono', 'Consolas', monospace;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Mono', 'Consolas', monospace;
 
-  /* Backgrounds */
-  --color-bg: #0f0f0f;
-  --color-bg-deep: #0a0a0a;
-  --color-bg-elevated: #161616;
-  --color-surface: #1a1a1a;
+  /* Backgrounds — deep, rich dark with subtle blue undertone */
+  --color-bg: #05050a;
+  --color-bg-deep: #020206;
+  --color-bg-elevated: #0d0d14;
+  --color-surface: #12121c;
+  --color-surface-2: #1a1a28;
 
   /* Text */
-  --color-text: #f5f0e8;
-  --color-text-secondary: #b8b3a8;
-  --color-text-tertiary: #8a8578;
-  --color-text-muted: #6b665a;
+  --color-text: #f4f4f8;
+  --color-text-secondary: #b8b8c8;
+  --color-text-tertiary: #8a8a9c;
+  --color-text-muted: #5a5a6e;
 
-  /* Accent — blue */
-  --color-accent: #3b82f6;
-  --color-accent-hover: #60a5fa;
-  --color-accent-dim: rgba(59, 130, 246, 0.12);
+  /* Accent — vivid indigo/violet */
+  --color-accent: #7c5cff;
+  --color-accent-hover: #9b85ff;
+  --color-accent-2: #22d3ee;
+  --color-accent-dim: rgba(124, 92, 255, 0.14);
+  --color-accent-glow: rgba(124, 92, 255, 0.35);
 
   /* Semantic */
-  --color-success: #6b8f6b;
-  --color-warning: #d97706;
-  --color-error: #b05a5a;
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
 
   /* Borders */
-  --color-border: rgba(245, 240, 232, 0.08);
-  --color-border-strong: rgba(245, 240, 232, 0.14);
-  --color-border-hover: rgba(245, 240, 232, 0.22);
+  --color-border: rgba(244, 244, 248, 0.08);
+  --color-border-strong: rgba(244, 244, 248, 0.16);
+  --color-border-hover: rgba(124, 92, 255, 0.5);
 
   /* Sizing */
-  --radius-sm: 4px;
-  --radius-md: 4px;
-  --radius-lg: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 40px var(--color-accent-glow);
 
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-short: 150ms;
   --duration-base: 280ms;
   --duration-long: 600ms;
