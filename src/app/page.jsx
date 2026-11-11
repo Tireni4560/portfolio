@@ -7,15 +7,14 @@ const personJsonLd = {
   '@type': 'Person',
   name: 'Daniel Adeleye',
   url: 'https://leye.me/',
-  jobTitle: 'Website creator for service businesses',
+  jobTitle: 'Security product founder',
   description:
-    'I build fast, modern websites for plumbers, electricians, roofing companies, HVAC technicians and dental clinics in Spain. I work remotely, almost on your schedule, and deliver the site in 5–7 days.',
+    'I build security products. One of them is live, and I built it alone.',
   knowsAbout: [
-    'Websites for plumbers',
-    'Websites for electricians',
-    'Websites for dental clinics',
-    'Mobile web design',
-    'Websites for service businesses',
+    'Security products',
+    'Email breach checks',
+    'MVP front ends',
+    'Landing pages',
   ],
   address: {
     '@type': 'PostalAddress',
@@ -27,12 +26,12 @@ const personJsonLd = {
 const professionalServiceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  name: 'Daniel Adeleye — Websites for service businesses',
+  name: 'Daniel Adeleye — Security product founder',
   url: 'https://leye.me/',
   image: 'https://leye.me/og-image.png',
   description:
-    'Fast, modern websites for plumbers, electricians and clinics. Site ready in 5–7 days. No tech jargon.',
-  areaServed: { '@type': 'Country', name: 'Spain' },
+    'I build security products. One of them is live, and I built it alone.',
+  areaServed: { '@type': 'Country', name: 'Nigeria' },
   availableLanguage: ['es', 'en'],
   priceRange: '€€',
 };

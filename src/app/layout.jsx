@@ -2,9 +2,9 @@ import '../styles/global.css';
 
 export const metadata = {
   metadataBase: new URL('https://leye.me'),
-  title: 'Daniel Adeleye | Full-Stack Developer & Founder of Tirenify',
+  title: 'Daniel Adeleye | Security Product Founder',
   description:
-    'Full-stack developer and founder of Tirenify. I build products, dashboards and apps end to end, plus fast websites for plumbers, electricians and clinics. Site ready in 5–7 days.',
+    'I build security products. One of them is live, and I built it alone. Landing pages in 5 days, MVP front ends in 7.',
   alternates: {
     canonical: '/',
     languages: {
@@ -23,9 +23,9 @@ export const metadata = {
     type: 'website',
     url: 'https://leye.me/',
     siteName: 'Daniel Adeleye',
-    title: 'Daniel Adeleye | Full-Stack Developer & Founder of Tirenify',
+    title: 'Daniel Adeleye | Security Product Founder',
     description:
-      'Full-stack developer and founder of Tirenify. I build products, dashboards and apps end to end, plus fast websites for plumbers, electricians and clinics. Site ready in 5–7 days.',
+      'I build security products. One of them is live, and I built it alone. Landing pages in 5 days, MVP front ends in 7.',
     locale: 'en_US',
     alternateLocale: ['es_ES'],
     images: [
@@ -33,16 +33,16 @@ export const metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Daniel Adeleye — full-stack developer',
+        alt: 'Daniel Adeleye — security product founder',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Daniel Adeleye | Full-Stack Developer & Founder of Tirenify',
+    title: 'Daniel Adeleye | Security Product Founder',
     description:
-      'Full-stack developer and founder of Tirenify. I build products, dashboards and apps end to end, plus fast websites for plumbers, electricians and clinics. Site ready in 5–7 days.',
+      'I build security products. One of them is live, and I built it alone. Landing pages in 5 days, MVP front ends in 7.',
     images: ['/og-image.png'],
   },
   icons: {
@@ -75,7 +75,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>

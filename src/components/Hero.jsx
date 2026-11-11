@@ -115,33 +115,35 @@ function Hero() {
             transition={{ duration: 0.5, delay: 0.45 }}
           >
             <a
-              href={TIRENIFY_PRODUCT_URL}
+              href={whatsappLink(t.waMessages.product)}
               target="_blank"
               rel="noopener noreferrer"
               className="button button-primary"
-              onClick={() => trackEvent('Tirenify', { location: 'hero' })}
+              onClick={() => trackEvent('WhatsApp', { location: 'hero' })}
             >
               {t.hero.ctaPrimary} ↗
             </a>
             <a
-              href={whatsappLink(t.waMessages.product)}
+              href={TIRENIFY_PRODUCT_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="button button-secondary"
-              onClick={() => trackEvent('WhatsApp', { location: 'hero' })}
+              onClick={() => trackEvent('Tirenify', { location: 'hero' })}
             >
               {t.hero.ctaSecondary}
             </a>
-            <a
-              href="#projects"
-              className="product-tertiary"
-              onClick={(e) => {
-                trackEvent('Projects anchor', { location: 'hero' });
-                scrollTo(e, '#projects');
-              }}
-            >
-              {t.hero.tertiary} →
-            </a>
+            {t.hero.tertiary && (
+              <a
+                href="#projects"
+                className="product-tertiary"
+                onClick={(e) => {
+                  trackEvent('Projects anchor', { location: 'hero' });
+                  scrollTo(e, '#projects');
+                }}
+              >
+                {t.hero.tertiary} →
+              </a>
+            )}
           </motion.div>
 
           {/* Social Links */}

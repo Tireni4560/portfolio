@@ -55,11 +55,24 @@ function ProductDevelopment() {
           <div className="trades-card">
             {/* Tirenify — content, image and both links exactly as they were. */}
             <div className="trades-screenshot">
-              <img
-                src="/images/tirenify.png"
-                alt={t.whoWorkWith.imageAlt}
-                loading="lazy"
-                decoding="async"
+              <video
+                src="/images/tirenify.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label={t.whoWorkWith.imageAlt}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }}
+                onError={(e) => {
+                  const parent = e.currentTarget.parentElement;
+                  if (parent) {
+                    e.currentTarget.style.display = 'none';
+                    const fallback = document.createElement('div');
+                    fallback.className = 'tirenify-fallback';
+                    fallback.textContent = 'Safeyard by Tirenify';
+                    parent.appendChild(fallback);
+                  }
+                }}
               />
             </div>
 
