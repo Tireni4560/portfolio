@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "label": "Cybersecurity · Full-stack development · Tirenify",
+    "heading": ["I build security products.", "One of them is live, and I built it alone."],
+    "sub": "Cybersecurity-focused developer and founder of Tirenify. React, Node, Supabase. Landing pages in 5 days, MVP front ends in 7.",
+    "lanes": [
+      {"label":"Founder","text":"Building Tirenify. Safeyard is live and free.","link":"See Safeyard →","href":"#safeyard"},
+      {"label":"Security","text":"Vulnerability assessment and secure design, built into the work.","link":"See security work →","href":"#security"},
+      {"label":"Developer","text":"Products, websites and apps for businesses and startups.","link":"See services →","href":"#services"}
+    ]
+  },
+  "safeyard": {
+    "label":"Safeyard by Tirenify",
+    "title":"A free breach checker, built end to end.",
+    "intro":"Safeyard is the first product from Tirenify, the security company I founded in March 2026. You enter an email address. It checks a third-party breach database, shows what was exposed and tells you what to change first. No account is needed for the check.",
+    "lines":["Tirenify is a digital security company for everyday internet users.","Safeyard is its first product, in public beta.","I build it alone and in public, and real user feedback decides what comes next."],
+    "shipped":[
+      {"title":"Built the core check","copy":["I connected the product to a third-party breach database, handled the response on the server and turned the result into plain language.","The check tells a person what was exposed and what to change first, without requiring an account."]},
+      {"title":"Built weekly email monitoring","copy":["A person submits an address and picks a day. A scheduled job checks it each week and emails the result through Resend, including a confirmation when nothing new is found.","I added practical tools and guides: password and PIN generators, a password strength checker and an email alias generator, plus guides on phishing, data breaches and WhatsApp security."]},
+      {"title":"Built product analytics","copy":["I track visits, completed checks and monitoring signups in Supabase.","Events are written only through a Postgres function. The table has row-level security and no public read access, so the browser can write events but can never read anyone else's.","A session ID and a campaign source tag from the URL tie each check back to where the visitor came from. A failed log call never blocks the check itself.","I found and fixed a double-counting bug caused by React StrictMode, and confirmed the fix on the deployed site."]},
+      {"title":"Built and manage Tirenify","copy":["I founded Tirenify in March 2026 and run product, positioning, feedback and early distribution as a solo founder and student.","I run a daily measurement routine: every link is tagged by source, and I review the results weekly."]},
+      {"title":"Validated the product with real users","copy":["I put Safeyard in front of beta testers and acted on what they said. I reworked the mobile navigation and the results layout within two days of a tester's report."]}
+    ]
+  },
+  "security": {
+    "title":"Security comes with the build.",
+    "intro":"My main work is building products, websites and apps for businesses and startups. Security is the extra you get on top. Plenty of developers only build. I also check what I build for weaknesses, and that is the edge I offer.",
+    "applied":[
+      {"name":"Secret handling","text":"The database service key stays on the server. I scan the built front-end files before each release to confirm no key has leaked into them."},
+      {"name":"Row-level security","text":"Tables are locked down with row-level security. The browser can write analytics events but cannot read them back."},
+      {"name":"Protected endpoints","text":"The scheduled monitoring job sits behind a secret bearer token and returns 401 without it."},
+      {"name":"Input validation and rate limiting","text":"Email input is trimmed and validated on the server, and the monitoring signup is rate-limited per IP."},
+      {"name":"Content Security Policy","text":"A CSP in the deployment config limits where the app can send data."},
+      {"name":"Privacy by design","text":"The monitoring code does not log email addresses, and stored breach summaries are masked."},
+      {"name":"Breach analysis","text":"I read breach records, map what was exposed to a severity rating, and turn it into plain steps a non-technical person can follow."},
+      {"name":"Security awareness","text":"I write recovery guides and short lessons on phishing, data breaches and WhatsApp account safety."}
+    ],
+    "extra":[
+      {"name":"Vulnerability assessment","text":"I check your site or app for common weaknesses, starting with the OWASP Top 10, and tell you what to fix first. I only test systems you own or have authorised me to test."},
+      {"name":"Log and alert review","text":"I know the basics of how security operations work: reading logs, triaging alerts and writing up what happened in plain language."},
+      {"name":"Threat modelling","text":"Before I build a feature, I ask who would attack it and how, then design around the answer."},
+      {"name":"Secure code review","text":"I review code for injection, broken access control and exposed secrets before it ships."},
+      {"name":"Plain-language guidance","text":"I write short guides for your users or your team on phishing, passwords and account safety."}
+    ],
+    "closing":"I am not a full-time penetration tester or SOC analyst. I know enough to find the common problems, and I will tell you when something needs a specialist."
+  },
+  "services": {
+    "title":"What I build, and what it costs.",
+    "intro":"I build products, websites and apps for businesses and startups. You get a price before I start, not after.",
+    "cards":[
+      {"type":"Landing page","title":"You need to exist online.","text":"A single page that says what you do, who it is for and how to reach you. Fast, mobile-first and yours.","price":"$150 – $300 · 5 days"},
+      {"type":"MVP front end","title":"You have a product idea.","text":"A working front end connected to your backend, your auth and your database. Something you can show, test and improve.","price":"$500 – $1,200 · 7 days"},
+      {"type":"Full-stack product","title":"You need the whole thing built.","text":"Front end, backend, database, auth and third-party APIs. I scope it, build it and hand it over. This is how I built Safeyard.","price":"Scoped on a call"},
+      {"type":"Vulnerability assessment","title":"You want to know what is weak before someone else finds it.","text":"A check of your site or app for common weaknesses: exposed keys, missing security headers, weak form and API handling, and risky dependencies. You get a plain-language report that says what to fix first. Add it to any build, or order it on its own. It is an assessment, not a full penetration test.","price":"Scoped on a call"}
+    ],
+    "how":[
+      {"title":"Paid when you are satisfied.","text":"I only ask for payment when you are satisfied with the project. We agree in writing what finished means before I start."},
+      {"title":"Priced before we start.","text":"You get a scope and a price in writing before I write a line of code."},
+      {"title":"You own it.","text":"The code, the domain and the logins are yours."},
+      {"title":"No going quiet.","text":"You see progress as it takes shape, and I tell you early if something is going wrong."}
+    ]
+  },
+  "work": {
+    "title":"Reference builds.",
+    "intro":"Five reference builds. I made them to show what I can do, so treat them as samples, not client work. Each one is live.",
+    "cards":[
+      {"image":"/images/bizdash.png","alt":"Screenshot of the business dashboard","type":"Product · Dashboard","title":"Business dashboard","text":"A clear dashboard for tracking the information a business needs to act on.","tags":["Data tables","Filters","Responsive layout"],"url":"https://bizdash.vercel.app"},
+      {"image":"/images/upwork-showcase.png","alt":"Screenshot of a website built to win clients","type":"Freelance · Getting clients","title":"Website that wins clients","text":"A site designed so a visitor understands what the business does within two clicks, with a contact button that is always in view.","tags":["Click to call","Testimonials","Direct contact"],"url":"https://upwork-showcase.vercel.app"},
+      {"image":"/images/miniecom.png","alt":"Screenshot of an online shop","type":"Online shop","title":"Straightforward online shop","text":"A shop where finding a product and ordering it takes a few steps.","tags":["Quick checkout","Filters","Email updates"],"url":"https://miniecom-pi.vercel.app/"},
+      {"image":"/images/business-landing-demo.png","alt":"Screenshot of a services page for a business","type":"Services · Single page","title":"Services page for a business","text":"Services, past jobs and customer reviews on one screen, with a form that lands on the phone.","tags":["Jobs with photos","Reviews","Light and dark mode"],"url":"https://business-landing-demo.vercel.app"},
+      {"image":"/images/vedal.png","alt":"Screenshot of a metal trading company website","type":"Company · Catalogue site","title":"Website for a metal trading company","text":"A catalogue sorted by metal type with a direct contact, so visitors who know what they need can write straight away.","tags":["Catalogue","One-click enquiry","Contacts up top"],"url":"https://vedal-two.vercel.app/"}
+    ]
+  },
+  "sites":{"title":"Sites I have worked on.","intro":"A list of websites I have worked on over the last few years. To be clear about what that means: I built a few of them on my own. Most were team projects where I collaborated with several people, so they were not my own projects. Some were existing sites that I helped refresh."},
+  "about":{"title":"The honest version.","paragraphs":["You have probably seen a lot of portfolios by now. I am not going to tell you I am the best at what I do. That would be a lie, and I would rather you hired me for the truth.","What I am is wide. I build products, websites and apps. I work on the front end, the back end and the database, and I look at security as well. I may not be the strongest at any one of those. What makes me a good fit for your project is that I adapt. I enjoy learning whatever a project needs, and if I do not know something yet, I will learn it and tell you while I do.","I'm Daniel. I am a self-taught developer based in Nigeria. I study Industrial Engineering at FUTA, I learned to code through The Odin Project, and I founded Tirenify in March 2026. I built Safeyard on my own.","I take on a small number of client projects alongside Tirenify. I work fast, I communicate clearly, and I do not take on work I cannot finish. If your project needs a specialist I am not, I will say so before we start."],"tags":["React","Node.js","Supabase","Resend","Vercel"]},
+  "contact":{"title":"Tell me what you're building.","note":"If I am not the right person for the job, I will say so.","subjectLabel":"Choose the subject that fits","subjects":[{"label":"Client work","href":"mailto:daniel@tirenify.app?subject=Project%20enquiry"},{"label":"Security","href":"mailto:daniel@tirenify.app?subject=Security%20conversation"},{"label":"Tirenify","href":"mailto:daniel@tirenify.app?subject=Tirenify"}]}
+}

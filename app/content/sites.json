@@ -1,0 +1,2476 @@
+﻿[
+    {
+        "name":  "Pet grooming",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.groomieschicago.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.prideingrooming.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.uptownpetgrooming.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.wooof.com.au",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.mrpottsgrooming.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.upstatemeow.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://kibblepet.com/grooming",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.wooftheoriginal.com.au",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.nowyoureclean.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://thebarkshoppe.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.barkbus.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://gohollywoodgrooming.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.groomit.me",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "CrossFit and gyms",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://crossfithollywood.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.crossfitunionsquare.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.crossfitechopark.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://crossfitcitylimits.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.smashboxfit.ca",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.triforcemma.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://crossfitamsterdam.nl",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.mayhemnation.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.laxcrossfit.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.westlaathletics.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.crossfitmuse.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://crossfitqueensny.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://estlr.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://crossfitaldgate.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.crossfitunit.sg",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.crossfitbondi.com.au",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.crossfitcolosseum.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://invictusfitness.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.crossfithawthorneast.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Tutoring",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.tutoredbydesign.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.socratictutoring.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.katestutoring.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.oxfordelitetutoring.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.applerouth.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.mytutor.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.learner.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.stemtutoringottawa.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.testmagic.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.revolutionprep.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.compassprep.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://soflotutors.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://alchemytuition.com.au",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://oxfordtutors.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://tutoringclub.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://summitprep.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.arborbridge.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://prepmaven.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://gradepowerlearning.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.elitehometutoring.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Fashion blogs",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.johnfrieda.com/fr-fr/accueil/",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://goodonyou.eco",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.nssmag.com/en",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.elle.com/in-the-mag/",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.whowhatwear.com/uk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://weworewhat.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://notyourstandard.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.stylerave.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://sincerelyjules.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://withlovefromkat.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.jadore-fashion.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Fashion",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://rino-pelle.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://bouguessa.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://madinavisconti.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.paolita.co.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://lassepedersen.biz",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://limnia.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.sezane.com/us-en",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.aninebing.com/en-ng",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://pangaia.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://staud.clothing",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://rachelcomey.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.taylorstitch.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.consciousclothing.net",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Schools",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.newschool.edu",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://oceanschool.nfb.ca",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://world-schools.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.igssyd.nsw.edu.au",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.pbs.up.pt",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.westbournegrammar.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://cisedu.com/en-gb/",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.msmnyc.edu",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.uncsa.edu",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.parisamericanacademy.fr",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://dschool.stanford.edu",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://woodhousegrove.co.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://arts.vcu.edu",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.thewalkerschool.org",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Wellness",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.yogajournal.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://avocadu.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://artofhealthyliving.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.eatingbirdfood.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://wellnessmama.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://nutritionstripped.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.everydayhealth.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://youaligned.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://mantrawell.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.thrivemagazine.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.isawellness.co",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.roczen.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.12minuteathlete.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.bornfitness.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://thechalkboardmag.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.abathhouse.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.mindbodygreen.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://therealfooddietitians.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Lifestyle blogs",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.fleurdeforce.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.amodelrecommends.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://thedaileigh.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://camillestyles.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://cupofjo.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://witanddelight.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.housethatlarsbuilt.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://territorysupply.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://bucketlistly.blog",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://travelingmitch.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://dreamsandjeans.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://meandmrdarcy.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://ignant.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.juliaberolzheimer.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://thegoodtrade.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.emmamartiny.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.loversmagazine.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Recipe blogs",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.marthastewart.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.thekitchn.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://101cookbooks.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://cookieandkate.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.veganricha.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://sailusfood.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://kawalingpinoy.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.sproutedkitchen.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://greenkitchenstories.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://pinchofyum.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://budgetbytes.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://minimalistbaker.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://flourist.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://willowbirdbaking.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://cookincanuck.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://nourishedkitchen.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.thereciperebel.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://fortheloveofcooking.net",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://lifemadesweeter.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://lafujimama.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.mynameisyeh.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.aforkandapencil.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Tailors",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://kripalanitailors.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://tailorskeep.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://legacytailor.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://andreitailors.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://lanieri.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.anatolys.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://kennyandharlow.co.nz",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://hiveandcolony.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://sonofatailor.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://tailorstore.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://galard.cz",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://gaetanoaloisio.it",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://mond.dk",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Coaching",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.allirizacos.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://lindsaymaloney.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.gemmagilbert.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.jencarrington.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://coachfarrah.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://hayleyluckadoo.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.pinwheelstrategies.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://lauracalandrella.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Service businesses",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.ryucreative.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://gretelny.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://seattledentalco.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.harperconstruction.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.kelseyohalloran.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.shanleycox.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://jessicamanning.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.packupgo.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.weddingsbylisanicole.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://mattdavella.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://olgamiljko.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.ginakirlew.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.earthbounddesigns.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.solo-salon.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Veterinary",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://thebondbetween.org",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://vet.bg.ac.rs",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://bondvet.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://somersanimalhospital.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://bluepearlvet.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://gallatinvethospital.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://guelphcat.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://petcureoncology.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://petpoisonhelpline.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://heartandpaw.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://modernanimal.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Dog grooming",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://thegroomingshed.co.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.shampoochgahanna.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.qcpetstudies.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.rubold.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://scenthound.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.dogtopia.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.petbarn.com.au",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://healthyspot.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Carpentry",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.lidauer.at",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://acarpenterssondesignco.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.vorrathwoodworks.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://offermanwoodshop.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://gsg.it",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://nbss.edu",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.swctf.org",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://carpentersworkshopgallery.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://kevincarpenterinteriors.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://ctcarpentry.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Preschools and kindergartens",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://nykidsclub.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.mylittleschoolnyc.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.brighthorizons.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.miamivalleyschool.org",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.eurokidsindia.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://kinderberryhill.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Party and event planners",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.chappelowevents.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.eventique.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.littlemisspartyplanner.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.bluellama.events",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.eventsbyknight.co.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://anntravisevents.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.caspecialoccasions.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://luxevents.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.theeffortlessaffair.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://calderclark.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.petiteluxeparties.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.meredithevents.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Ice cream",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://pierres.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.judes.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.oatandmill.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.icecream.com/us/en/brands/haagen-dazs",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://kindkones.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://paradisicecream.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://saltandstraw.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Weebly sites",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.chairigami.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://ashleighgreen.ca",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://redriver.intervarsity.org",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://coloradomarketandbakery.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.stanleyhotel.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://schonell.co",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://whiskeyball.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.stayarrowhead.ca",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.hannyallston.com.au",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.merchantmethod.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.tourwithxuan.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Bed and breakfasts",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.pyttshouse.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.gastonian.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.kehoehouse.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.old-hall-inn.co.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.lansdownevilla.co.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.alittleinnonpleasantbay.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://thenicholas.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://vinehousebedandbreakfast.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://crowhow.co.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.cdvnapavalley.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://graysbath.co.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.bellwether.house",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://azaleainn.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.labastidebandb.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Hair salons",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.salonsck.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.grandnoirsalon.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.clipjointsalon.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.ivymaneco.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://alldolledupfl.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://maneivy.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://societysalons.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.121-salon.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://livefreeanddyesalon.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.haircomesthebride.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.hiroshibeverlyhills.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.crowsnestbarbershop.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.bellamihair.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.igkhair.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.toniguy.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://jetrhys.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.andylecomptesalon.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://hareandbone.co.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://mechesalonla.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://moxieroots.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://steelandlacquer.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.drybar.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.zoyag.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://lavishsalon.ca",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.fabiodotisalon.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://theparlour.net",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Spas",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://spabelles.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.pressmodernmassage.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.thewellnessspotatl.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.vitalityfloatspa.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.hazelsalon.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.brickcanvas.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://getglasskin.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://bloomspaday.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://visage-salon-spa.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://shevet.me",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://therefugespa.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.castlethaispa.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.grottagiustispa.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "http://bodyworksdayspa.net/",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Moving companies",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://zenmovers.info",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://gentlegiant.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://meatheadmovers.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Tattoo studios",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.electrikneedletattoo.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.ironthorntattoo.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.lovealwaystattoo.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.oldrosetattoo.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.noamyonatattoos.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.darkagetattoostudio.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.twosnakestattoo.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.holyshowtattoo.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.temperancetattoocollective.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Real estate",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.powerproperties.net",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://midwestcashoffer.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://dwellwesthomes.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://haistingsre.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.westcoastmodern.ca",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Membership sites",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://sapphiresocietyboise.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.tennisbusinessacademy.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.linkoutdoor.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.natashabaradaran.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.practiceyogawitherika.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://ascendleadership.org",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Dental",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://www.dentalcareseattle.com/home",
+                          "show":  true
+                      },
+                      {
+                          "url":  "http://northbeachdentist.com/",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.sleepdentistryspokane.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://pittonpenn.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.cameronandco.com.au",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.burkettfamilydentistry.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://dentistscherervillein.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.beampediatricdentalstudio.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.geissefamilydental.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.northernheightsdental.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://totalhealthdentalcare.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Artists",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://mindynguyen.me",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.claradelorenzi.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.ashleyidell.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://anngagliano.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.alicexz.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.bymarklange.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.hellolucyblooms.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.bdfeliz.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://justjoeyrose.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.malenebarnett.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.elissamedina.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Workshops and classes",
+        "show":  true,
+        "sites":  [
+                      {
+                          "url":  "https://pottery-nyc.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://bklynclay.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.artimebarro.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.signalreturnpress.org",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.publicglass.org",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.atlantaclayworks.org",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.halfbakedart.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.wheelhouseclay.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.iheartresin.art",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.cheekystudio.uk",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.novacommunityarts.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.studiofloras.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.theartstudiony.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.jorybrighamworkshop.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://loopoftheloom.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://www.glassacademy.com",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://northhouse.org",
+                          "show":  true
+                      },
+                      {
+                          "url":  "https://glassclassdenver.com",
+                          "show":  true
+                      }
+                  ]
+    },
+    {
+        "name":  "Casinos",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.napoleons-casinos.co.uk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://casinojungel.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.palms.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.everygame.eu",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.casinoroom.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.casinomidas.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.jackmillion.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.montecarlosbm.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.casinohelsinki.fi",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.casinocanberra.com.au",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.dreamvegas.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.cahuillacasino.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://gratonresortcasino.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.countryclubtasmania.com.au",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.casinom8trix.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.treasurybrisbane.com.au",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.speedycasino.com",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "DJs",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.jauzofficial.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.djkarala.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.fromourminds.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.jameshype.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.timmytrumpet.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.noraenpure.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.babyvanbeezly.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.sharam.com",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Museums",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.nhm.ac.uk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.britishmuseum.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://nmaahc.si.edu",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://airandspace.si.edu",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.nationalgallery.org.uk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.moma.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.metmuseum.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.fieldmuseum.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.vangoghmuseum.nl",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.museum-brandhorst.de",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.npg.org.uk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://franshalsmuseum.nl",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.msichicago.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://asia.si.edu",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://nationalmuseumsni.org.uk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://visit.brussels",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Showcase sites",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.notarize.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.objective.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://etq.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://feastables.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://huel.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.oatly.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.arlenmccluskey.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://pando.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://minrims.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://keynest.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.passionfroot.me",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.bain.com",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Theatres",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.sydneyoperahouse.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.gorki.de",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.operaballet.nl",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://dragone.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.unicorntheatre.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.youngvic.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.bushtheatre.co.uk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.victorianopera.com.au",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://drang.nl",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.nieteatr.pl",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://labtheater.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://silotheatre.co.nz",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://statetheatrecompany.com.au",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.capitoltheatre.com.au",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.peopleslight.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://ddsks.dk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.headlong.co.uk",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Libraries",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.nypl.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://carnegielibrary.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.westervillelibrary.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.loa.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://aadl.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.calgarylibrary.ca",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.spl.org",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.harrisonpl.org",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Art galleries",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.grandimage.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://rzcollection.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://sageculture.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.petzel.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.pacegallery.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.mauritshuis.nl",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://ateneum.fi/en/?lang=en",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://gagosian.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.davidzwirner.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "http://saatchiart.com/",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Art platforms",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://artbox.nl",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.artic.edu",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.artandhistory.museum",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.artsy.net",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.minted.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.artstar.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://citizenatelier.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.singulart.com/en/",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.ugallery.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.upriseart.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.whitecube.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.tappancollective.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.artfinder.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.thisiscolossal.com",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Personal brands",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.aaronward.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://charlimarie.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://markmanson.net",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.alicethorpe.co.uk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://garyvaynerchuk.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://backlinko.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.tonyrobbins.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.melyssagriffin.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://tim.blog",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://robertoblake.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://neilpatel.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.marieforleo.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://simonsinek.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.virgin.com/branson-family/richard-branson",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.vibratehigherdaily.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://aliabdaal.com",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Dark-theme sites",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.quantox.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.darkroom.au",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.studiobe4.it",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.nathansmith.design",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://thefurrow.tv",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://carlcox.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.raycast.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.reelcrafter.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://unseen.co",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Magento stores",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.fredperry.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.omegawatches.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.hellyhansen.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.vivobarefoot.com/rw/",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.barbour.com/row/",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://sigmabeauty.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.nespresso.com/us/en",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.shinola.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://us.christianlouboutin.com/us_en/",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.coxandcox.co.uk",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.sigsauer.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.tomdixon.net",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.bulk.com/eu/",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.catbirdnyc.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.byredo.com/se_en",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.vionicshoes.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.vitamix.com/vr/en_us/",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "BigCommerce stores",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.skullcandy.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://blackdiamondequipment.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://spinning.eu",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.theartofshaving.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.blissworld.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.onekingslane.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.kingarthurbaking.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.anchorandcrew.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.getarculus.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://gillette.ca/en-ca",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://auvere.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.americanleather.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://beercartel.com.au",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.bellacoastaldecor.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.cuttingboard.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://us.davidoffgeneva.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.upliftdesk.com",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Dropshipping stores",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://warmlydecor.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://mooshwalks.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://balls.co",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://notebooktherapy.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://kawaiibloom.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://littlecrystals.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://mother.ly",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://thekoreanfashion.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://sageandsill.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.brookstone.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://venettodesign.com",
+                          "show":  false
+                      }
+                  ]
+    },
+    {
+        "name":  "Corporate training",
+        "show":  false,
+        "sites":  [
+                      {
+                          "url":  "https://www.learntoimproveit.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://collaborativeleadershipteam.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.edstellar.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.franklincovey.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.blanchard.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://cruciallearning.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.trainsmartinc.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://stewartleadership.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.maxwellleadership.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.lifelabslearning.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://crestcom.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.bizlibrary.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.infoprolearning.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://torch.io",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.truecolorsintl.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.hemsleyfraser.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://skillpath.com",
+                          "show":  false
+                      },
+                      {
+                          "url":  "https://www.ccoleadership.com",
+                          "show":  false
+                      }
+                  ]
+    }
+]

@@ -1,19 +1,5 @@
-# Dependencies
-node_modules/
-.next/
-dist/
-
-# Large media files
-*.pdf
-images/*.pdf
-public/images/*.pdf
-
-# System files
+node_modules
+.next
+.env*
 .DS_Store
-Thumbs.db
-
-# Environment
-.env
-.env.local
-
-.vscode
+*.log
