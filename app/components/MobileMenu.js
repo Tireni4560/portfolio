@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 const links = [['Safeyard', '#safeyard'], ['Security', '#security'], ['Services', '#services'], ['Work', '#work'], ['Contact', '#contact']]
 
@@ -8,6 +9,13 @@ export default function MobileMenu() {
   const [open, setOpen] = useState(false)
   const menuButton = useRef(null)
   const closeButton = useRef(null)
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setOpen(false)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
   useEffect(() => {
     if (!open) return
     document.body.style.overflow = 'hidden'
@@ -27,10 +35,10 @@ export default function MobileMenu() {
   }, [open])
   const close = () => { setOpen(false); menuButton.current?.focus() }
   return <>
-    <button ref={menuButton} className="menu-button" onClick={() => setOpen(true)} aria-expanded={open}>Menu</button>
-    {open && <div className="mobile-overlay" role="dialog" aria-modal="true">
+    <button ref={menuButton} className="menu-button" onClick={() => setOpen(true)} aria-expanded={open} aria-label="Open menu" aria-controls="mobile-navigation"><span className="menu-icon" aria-hidden="true" /></button>
+    {open && typeof document !== 'undefined' && createPortal(<div id="mobile-navigation" className="mobile-overlay" role="dialog" aria-modal="true" aria-label="Mobile navigation">
       <button ref={closeButton} className="close-button" onClick={close}>Close</button>
       <nav aria-label="Mobile navigation">{links.map(([label, href]) => <a key={href} href={href} onClick={close}>{label}</a>)}</nav>
-    </div>}
+    </div>, document.body)}
   </>
 }

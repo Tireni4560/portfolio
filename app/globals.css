@@ -33,7 +33,7 @@ p{max-width:62ch}
 .container{width:min(1200px,calc(100% - 48px));margin:auto}
 .dark{background:var(--dark);color:var(--dark-text)}
 .paper{background:var(--paper);color:var(--ink)}
-.section{padding:88px 0}
+.section{position:relative;isolation:isolate;padding:112px 0}
 .eyebrow,.price,.site-total,.video-bar,.tags,.site-links,.lane .accent,.wordmark small,summary b{
 font:500 0.75rem/1.35 var(--font-jbm),'JetBrains Mono',monospace;
 letter-spacing:0.14em;
@@ -51,14 +51,14 @@ color:var(--dark-tertiary)
 h1,h2,h3,h4,p{margin-top:0}
 h1,h2,h3,h4{letter-spacing:-0.03em}
 h1{
-font-size:clamp(2.5rem,7vw,5.5rem);
+font-size:clamp(2.5rem,7.6vw,7rem);
 font-weight:700;
-line-height:1.04;
-letter-spacing:-0.035em;
+line-height:0.98;
+letter-spacing:-0.045em;
 margin:0 0 24px;
 max-width:18em
 }
-h1 span{display:block}
+h1 span{display:inline-block}
 h1 em{display:block;color:var(--dark-secondary);font-style:normal}
 h2{
 font-size:clamp(2rem,4.6vw,3.5rem);
@@ -124,10 +124,13 @@ border-radius:4px
 height:64px;
 position:fixed;
 inset:0 0 auto;
-z-index:10;
-background:rgba(10,12,11,0.85);
-backdrop-filter:blur(12px);
-border-bottom:1px solid var(--hair)
+z-index:100;
+background:rgba(10,12,11,0.78);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+border-bottom:1px solid var(--hair);
+box-shadow:0 8px 32px rgba(0,0,0,0.18);
+transition:background 0.2s ease,border-color 0.2s ease
 }
 .nav-inner{
 height:64px;
@@ -162,29 +165,77 @@ min-height:44px;
 font:inherit;
 padding:0 12px
 }
+.menu-button{position:relative;width:44px;padding:0}
+.menu-icon,.menu-icon::before,.menu-icon::after{
+position:absolute;
+display:block;
+width:20px;
+height:2px;
+background:currentColor;
+content:''
+}
+.menu-icon{left:12px;top:21px}
+.menu-icon::before{top:-6px}
+.menu-icon::after{top:6px}
 .mobile-overlay{
 position:fixed;
 inset:0;
-background:var(--dark);
-z-index:30;
+background:rgba(10,12,11,0.78);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+border:1px solid rgba(232,238,242,0.16);
+box-shadow:0 24px 80px rgba(0,0,0,0.42);
+z-index:110;
 display:flex;
 flex-direction:column;
-padding:24px
+padding:24px;
+animation:mobile-menu-in 220ms ease-out both
 }
+@keyframes mobile-menu-in{from{opacity:0;transform:translate3d(0,10px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
 .mobile-overlay nav{
 margin:auto;
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:24px;
-font-size:2rem
+gap:12px;
+font-size:clamp(1.75rem,7vw,2.5rem)
 }
-.mobile-overlay a{text-decoration:none;color:inherit}
+.mobile-overlay nav a{
+padding:8px 20px;
+border-radius:8px;
+text-decoration:none;
+color:inherit;
+transition:background 180ms ease,transform 180ms ease
+}
+.mobile-overlay nav a:hover{background:rgba(232,238,242,0.1);transform:translate3d(0,-2px,0)}
 .mobile-overlay .close-button{display:block;align-self:flex-end;margin-bottom:8px}
 .hero{
+position:relative;
+isolation:isolate;
 min-height:100svh;
 padding-top:64px
 }
+.ambient-shapes{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.section > .container{position:relative;z-index:1}
+.text-band{
+overflow:hidden;
+border-top:1px solid var(--hair);
+border-bottom:1px solid var(--hair);
+padding:clamp(28px,5vw,48px) 0
+}
+.track{display:flex;width:max-content;white-space:nowrap}
+.marquee-group{display:flex;flex:0 0 auto;align-items:center;gap:8px;padding-right:24px}
+.word{font-size:clamp(1.5rem,4vw,3rem);font-weight:600;letter-spacing:-0.03em;color:var(--dark-secondary)}
+.accent{font-size:clamp(1.5rem,4vw,3rem);font-weight:600;color:var(--accent)}
+.marquee-track{animation:marquee 42s linear infinite}
+.text-band:hover .marquee-track{animation-play-state:paused}
+.filmstrip{position:relative;margin:28px 0 24px;overflow:hidden;border-radius:10px}
+.filmstrip-track{display:flex;width:max-content;animation:filmstrip 42s linear infinite;will-change:transform}
+.filmstrip-frame{flex-shrink:0;overflow:hidden}
+.filmstrip:hover .filmstrip-track{animation-play-state:paused}
+@keyframes marquee{to{transform:translate3d(-50%,0,0)}}
+@keyframes filmstrip{to{transform:translate3d(-50%,0,0)}}
 .hero-inner{
 min-height:calc(100svh - 64px);
 display:flex;
@@ -424,10 +475,25 @@ gap:20px
 .footer-inner a{text-decoration:none;color:inherit}
 .reveal{
 opacity:0;
-transform:translateY(8px);
-transition:opacity 400ms ease,transform 400ms ease
+transform:translate3d(0,30px,0);
+transition:opacity 600ms cubic-bezier(0.2,0.7,0.2,1),transform 600ms cubic-bezier(0.2,0.7,0.2,1)
 }
 .reveal.is-visible{opacity:1;transform:none}
+.stagger-group > *{
+opacity:0;
+transform:translate3d(0,18px,0);
+transition:opacity 520ms ease,transform 520ms cubic-bezier(0.2,0.7,0.2,1);
+transition-delay:calc(var(--stagger-index,0) * 70ms)
+}
+.reveal.is-visible .stagger-group > *{opacity:1;transform:translate3d(0,0,0)}
+.stagger-group > :nth-child(1){--stagger-index:0}
+.stagger-group > :nth-child(2){--stagger-index:1}
+.stagger-group > :nth-child(3){--stagger-index:2}
+.stagger-group > :nth-child(4){--stagger-index:3}
+.stagger-group > :nth-child(5){--stagger-index:4}
+.stagger-group > :nth-child(6){--stagger-index:5}
+.stagger-group > :nth-child(7){--stagger-index:6}
+.stagger-group > :nth-child(8){--stagger-index:7}
 @media (min-width: 640px){
 .lanes{grid-template-columns:repeat(3,1fr)}
 .lane{
@@ -447,10 +513,11 @@ padding-bottom:32px
 @media (min-width: 1024px){
 .container{width:min(1200px,calc(100% - 80px))}
 .nav-inner{width:min(1200px,calc(100% - 80px))}
-.section{padding:128px 0}
+.section{padding:176px 0}
 .hero-inner{padding-top:120px}
 .desktop-nav{display:flex}
 .menu-button,.close-button{display:none}
+.mobile-overlay{display:none}
 .wordmark small{display:inline}
 .hero .button-row{margin-top:24px}
 .hero .button{width:auto}
@@ -465,7 +532,315 @@ padding-bottom:32px
 }
 @media (prefers-reduced-motion:reduce){
 html{scroll-behavior:auto}
-.reveal{opacity:1;transform:none;transition:none}
+.reveal,.stagger-group > *{opacity:1;transform:none;transition:none}
 .video-frame video{display:none}
 .video-fallback{display:flex}
+}
+/* ==========================================
+   GLASSMORPHISM TOKENS & RECIPES
+   ========================================== */
+/* Glass panel base class - applies glass effect with fallback */
+.glass-dark {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  border: 1px solid rgba(232,238,242,0.18);
+  border-top: 1px solid rgba(232,238,242,0.28);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.28);
+}
+.glass-dark.no-backdrop {
+  background: #111413;
+}
+.glass-paper {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  border: 1px solid rgba(10,12,11,0.12);
+  border-top: 1px solid rgba(255,255,255,0.9);
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(10,12,11,0.08);
+}
+.glass-paper.no-backdrop {
+  background: #F5F5F2;
+}
+.glass-imagery {
+  background: rgba(10,12,11,0.62);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(10,12,11,0.12);
+  border-top: 1px solid rgba(10,12,11,0.22);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* ==========================================
+   AMBIENT SHAPES
+   ==========================================
+   Shape is a circle with blur(84px), absolutely positioned
+   behind content (z-index below content), clipped inside its section.
+   Drift: scroll-linked transform when supported.
+   No drift under prefers-reduced-motion.
+   Maximum two shapes per section.
+============================================ */
+.shape-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(84px);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero .shape-circle{will-change:transform}
+.shipped article.glass-paper{padding:22px}
+.security-card,.service-card,.work-card{transition:transform 220ms ease,border-color 220ms ease,box-shadow 220ms ease}
+.security-card:hover,.service-card:hover,.work-card:hover{transform:translate3d(0,-3px,0);box-shadow:0 20px 52px rgba(0,0,0,0.18)}
+.site-list details.glass-paper{margin:12px 0}
+.site-list details.glass-paper summary{padding:18px 20px}
+.site-list details.glass-paper .site-links{padding:0 20px 20px}
+.how-grid > .glass-paper{padding:24px}
+.subjects.glass-paper{padding:24px}
+.mobile-overlay .close-button{border:1px solid rgba(232,238,242,0.2);border-radius:8px}
+
+@supports not (backdrop-filter:blur(1px)){
+  .glass-dark{background:rgba(17,20,19,0.96)}
+  .glass-paper{background:rgba(245,245,242,0.98)}
+  .site-nav{background:rgba(10,12,11,0.96)}
+  .mobile-overlay{background:rgba(10,12,11,0.96)}
+}
+
+/* Hero (dark): teal #45C4B0 at 14% opacity, 560px, top right;
+   silver #9FB0B8 at 9% opacity, 440px, bottom left */
+.hero .shape-1 {
+  width: 560px;
+  height: 560px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  top: -280px;
+  right: -280px;
+}
+.hero .shape-2 {
+  width: 440px;
+  height: 440px;
+  background: color-mix(in srgb, var(--paper-secondary) 9%, transparent);
+  bottom: -220px;
+  left: -220px;
+}
+
+/* Security (dark): teal at 12%, 520px, behind the right card;
+   silver at 8%, 420px, behind the left card */
+.security .shape-1 {
+  width: 520px;
+  height: 520px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  top: -260px;
+  right: -260px;
+}
+.security .shape-2 {
+  width: 420px;
+  height: 420px;
+  background: color-mix(in srgb, var(--paper-secondary) 8%, transparent);
+  bottom: -210px;
+  left: -210px;
+}
+
+/* Work (dark): teal at 10%, 600px, centre right */
+.work .shape-1 {
+  width: 600px;
+  height: 600px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* About (dark): silver at 10%, 480px, behind the photo;
+   teal at 8%, 400px, lower right */
+.about .shape-1 {
+  width: 480px;
+  height: 480px;
+  background: color-mix(in srgb, var(--paper-secondary) 10%, transparent);
+  top: -240px;
+  left: -240px;
+}
+.about .shape-2 {
+  width: 400px;
+  height: 400px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  bottom: -200px;
+  right: -200px;
+}
+
+/* Safeyard (paper): teal at 22%, 520px, behind the video frame */
+.safeyard .shape-1 {
+  width: 520px;
+  height: 520px;
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  top: -260px;
+  right: -260px;
+}
+
+/* Services (paper): silver #9FB0B8 at 30%, 480px, centre */
+.services .shape-1 {
+  width: 480px;
+  height: 480px;
+  background: color-mix(in srgb, var(--paper-accent) 30%, transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Contact (paper): teal at 18%, 440px, right */
+.contact .shape-1 {
+  width: 440px;
+  height: 440px;
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  top: -220px;
+  right: -220px;
+}
+
+/* Scroll progress line */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  z-index: 50;
+  opacity: 0;
+  transform: scaleX(0);
+}
+/* ==========================================
+   MOTION UTILITIES (CSS only, no JS, no library)
+   Active only inside @supports (animation-timeline: view()) 
+   AND @media (prefers-reduced-motion: no-preference).
+   Everywhere else the element is simply visible and static.
+   Elements are visible by default, so nothing can stay hidden if a feature is missing.
+============================================ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero .shape-1,.hero .shape-2{
+      animation-duration:1s;
+      animation-timing-function:linear;
+      animation-fill-mode:both;
+      animation-timeline:view();
+      animation-range:exit 0% exit 100%;
+    }
+    .hero .shape-1{animation-name:hero-parallax-slow}
+    .hero .shape-2{animation-name:hero-parallax-fast}
+    @keyframes hero-parallax-slow{
+      from{transform:translate3d(0,0,0)}
+      to{transform:translate3d(0,120px,0)}
+    }
+    @keyframes hero-parallax-fast{
+      from{transform:translate3d(0,0,0)}
+      to{transform:translate3d(0,-72px,0)}
+    }
+
+    /* ---- reveal-up: opacity 0 to 1 and a 24px rise ---- */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: reveal-up 0.8s ease forwards;
+      animation-timeline: view();
+      animation-range: entry 5% to entry 55%;
+    }
+    @keyframes reveal-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- reveal-fade: opacity only ---- */
+    .reveal-fade {
+      opacity: 0;
+      animation: reveal-fade 0.8s ease forwards;
+      animation-timeline: view();
+      animation-range: entry 5% to entry 55%;
+    }
+    @keyframes reveal-fade {
+      to { opacity: 1; }
+    }
+
+    /* ---- reveal-line: scaleX 0 to 1 from the left ---- */
+    .reveal-line {
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: reveal-line 0.8s ease forwards;
+      animation-timeline: view();
+      animation-range: entry 5% to entry 55%;
+    }
+    @keyframes reveal-line {
+      to { transform: scaleX(1); }
+    }
+
+    /* ---- reveal-clip: clip-path from inset(12% round 10px) to inset(0 round 10px) ---- */
+    .reveal-clip {
+      clip-path: inset(12% round 10px);
+      animation: reveal-clip 0.8s ease forwards;
+      animation-timeline: view();
+      animation-range: 0% to entry 70%;
+    }
+    @keyframes reveal-clip {
+      to { clip-path: inset(0 round 10px); }
+    }
+
+    /* ---- parallax-y: translateY from +-40px across whole view range ---- */
+    .parallax-y {
+      animation: parallax-y 26s ease-in-out alternate infinite;
+      animation-timeline: view();
+      animation-range: entry 0% to entry 100%;
+    }
+    @keyframes parallax-y {
+      from { transform: translateY(40px); }
+      to { transform: translateY(-40px); }
+    }
+
+    /* ---- stagger: handled via animation-range per element in markup ---- */
+    /* Each element gets an index; its animation-range start becomes entry (5% + index * 4%) */
+
+    /* ---- Hero headline word fade-up (0.8s with 0.05s stagger) ---- */
+    /* Markup: one wrapper per word, spaces kept in server markup */
+    .headline-word {
+      display: inline-block;
+      animation: headline-word 0.8s ease forwards;
+      animation-timeline: view();
+      animation-range: entry 5% to entry 55%;
+    }
+    @keyframes headline-word {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- Scroll progress line ---- */
+    .scroll-progress {
+      animation: scroll-progress 1s linear forwards;
+      animation-timeline: root;
+    }
+    @keyframes scroll-progress {
+      to { transform: scaleX(1); }
+    }
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION: full visibility
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-up, .reveal-fade, .reveal-line, .reveal-clip,
+    .parallax-y, .headline-word, .marquee-track, .filmstrip-track,
+    .scroll-progress {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  .shape-circle {
+    animation: none !important;
+  }
+}
+
+/* ==========================================
+   MAX 6 BLURRED PANELS LIMIT
+   ========================================== */
+@media (min-width: 1024px) {
+  /* At most six blurred panels visible at the same time */
+  /* Counted by visual inspection per section */
 }

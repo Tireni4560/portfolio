@@ -15,7 +15,7 @@ export default function Reveal({ children, className = '' }) {
         node.classList.add('is-visible')
         observer.disconnect()
       }
-    }, { threshold: 0.08 })
+    }, { threshold: 0.2 })
     observer.observe(node)
     return () => observer.disconnect()
   }, [])
