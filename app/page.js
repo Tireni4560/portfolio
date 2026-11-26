@@ -1,8 +1,10 @@
 import { Fragment } from 'react'
 import site from './content/site.json'
 import sites from './content/sites.json'
+import ui from '../content/ui.json'
 import Reveal from './components/Reveal'
 import MobileMenu from './components/MobileMenu'
+import Clock from './components/Clock'
 
 const external = { target: '_blank', rel: 'noopener noreferrer' }
 const visibleCategories = sites.filter(category => category.show)
@@ -25,15 +27,29 @@ function AmbientShapes() {
 function Hero() {
   const words0 = site.hero.heading[0].split(' ').map((w, i, words) => <Fragment key={i}><span className="headline-word">{w}</span>{i < words.length - 1 ? ' ' : ''}</Fragment>);
   const words1 = site.hero.heading[1].split(' ').map((w, i, words) => <Fragment key={i + 100}><span className="headline-word">{w}</span>{i < words.length - 1 ? ' ' : ''}</Fragment>);
+  const { heroMetaLeft, clockLabel } = ui
+  // Filmstrip frames: 5 project screenshots in order from site.work.cards
+  const filmstripImages = [
+    '/images/bizdash.png',
+    '/images/upwork-showcase.png',
+    '/images/miniecom.png',
+    '/images/business-landing-demo.png',
+    '/images/vedal.png'
+  ].map(img => ({ img }))
   return <section id="hero" className="dark hero"><AmbientShapes /><div className="container hero-inner">
     <p className="eyebrow">{site.hero.label}</p>
-    <h1>{[...words0, ' ', ...words1]}</h1>
+    <div className="meta-row" style={{display:'flex',justifyContent:'space-between',marginBottom:'16px',fontFamily:'"var(--font-jbm)", "JetBrains Mono", monospace',color:'var(--dark-secondary)',fontSize:'0.875rem'}}>
+      <span>{heroMetaLeft}</span>
+      <span style={{display:'flex',alignItems:'center'}}>
+        <span>{clockLabel}</span>&nbsp;&nbsp;<Clock />
+      </span>
+    </div>
+    <h1 data-split>{[...words0, ' ', ...words1]}</h1>
     <p className="hero-sub">{site.hero.sub}</p>
     <div className="button-row"><Button href="#contact">Work with me</Button><Button href="#safeyard" light>See what I've built</Button></div>
     <div className="filmstrip"><div className="filmstrip-track" style={{position:'relative',overflow:'hidden'}}>
-      {[...site.hero.lanes, ...site.hero.lanes].map((lane, i) => {
-        const imgSrc = lane.image || 'vedal.png';
-        return <div className="filmstrip-frame" key={i} style={{flex:'0 0 clamp(240px,28vw,380px)',maxWidth:'clamp(240px,28vw,380px)',aspectRatio:'16/10',border:'1px solid #E8EEF2',borderRadius:6,background:'#0A0C0B',marginRight:16,marginBottom:16}}><img src={`/images/${imgSrc}`} alt="" width={800} height={500} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'top'}} loading="lazy" /></div>
+      {filmstripImages.map(({ img }, i) => {
+        return <div className="filmstrip-frame" key={i} style={{flex:'0 0 clamp(240px,28vw,380px)',maxWidth:'clamp(240px,28vw,380px)',aspectRatio:'16/10',border:'1px solid #E8EEF2',borderRadius:6,background:'#0A0C0B',marginRight:16,marginBottom:16}}><img src={img} alt="" width={800} height={500} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'top'}} loading="lazy" /></div>
       })}
       <div style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',background:'rgba(10,12,11,0.78)',pointerEvents:'none'}} aria-hidden="true" /></div>
     </div>

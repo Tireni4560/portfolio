@@ -1,5 +1,8 @@
 import './globals.css'
 import { Manrope, JetBrains_Mono } from 'next/font/google'
+import ui from '../content/ui.json'
+import MotionController from './components/MotionController'
+import Preloader from './components/Preloader'
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -40,7 +43,12 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${manrope.className} ${jetBrainsMono.className}`}>{children}</body>
+      <body className={`${manrope.className} ${jetBrainsMono.className}`}>
+        <Preloader name={ui.preloaderName} label={ui.preloaderLabel} />
+        <div className="scroll-progress" aria-hidden="true" />
+        <MotionController />
+        {children}
+      </body>
     </html>
   )
 }
