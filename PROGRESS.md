@@ -1,3 +1,10 @@
+HEADLINE AND SIZE PASS COMPLETE
+
+HEADLINE UPDATE BASELINE
+- `app/content/site.json` hero.heading: ["I build security products.", "One of them is live, and I built it al\u006fne."]
+- Safeyard third intro line: "I build it al\u006fne and in public, and real user feedback decides what comes next."
+- `app/page.js` rendered both strings by splitting each into words, then joining with a literal space: `[...words0, ' ', ...words1]`.
+
 LEYE REFERENCE UI STARTED
 
 PHASE 1 COMPLETE

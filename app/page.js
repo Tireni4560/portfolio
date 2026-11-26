@@ -26,7 +26,7 @@ function AmbientShapes() {
 
 function Hero() {
   const words0 = site.hero.heading[0].split(' ').map((w, i, words) => <Fragment key={i}><span className="headline-word">{w}</span>{i < words.length - 1 ? ' ' : ''}</Fragment>);
-  const words1 = site.hero.heading[1].split(' ').map((w, i, words) => <Fragment key={i + 100}><span className="headline-word">{w}</span>{i < words.length - 1 ? ' ' : ''}</Fragment>);
+  const words1 = site.hero.heading[1] ? site.hero.heading[1].split(' ').map((w, i, words) => <Fragment key={i + 100}><span className="headline-word">{w}</span>{i < words.length - 1 ? ' ' : ''}</Fragment>) : [];
   const { heroMetaLeft, clockLabel } = ui
   // Filmstrip frames: 5 project screenshots in order from site.work.cards
   const filmstripImages = [
@@ -38,13 +38,13 @@ function Hero() {
   ].map(img => ({ img }))
   return <section id="hero" className="dark hero"><AmbientShapes /><div className="container hero-inner">
     <p className="eyebrow">{site.hero.label}</p>
-    <div className="meta-row" style={{display:'flex',justifyContent:'space-between',marginBottom:'16px',fontFamily:'"var(--font-jbm)", "JetBrains Mono", monospace',color:'var(--dark-secondary)',fontSize:'0.875rem'}}>
+    <div className="meta-row">
       <span>{heroMetaLeft}</span>
       <span style={{display:'flex',alignItems:'center'}}>
         <span>{clockLabel}</span>&nbsp;&nbsp;<Clock />
       </span>
     </div>
-    <h1 data-split>{[...words0, ' ', ...words1]}</h1>
+    <h1 data-split>{[...words0, ...(words1.length ? [' ', ...words1] : [])]}</h1>
     <p className="hero-sub">{site.hero.sub}</p>
     <div className="button-row"><Button href="#contact">Work with me</Button><Button href="#safeyard" light>See what I've built</Button></div>
     <div className="filmstrip"><div className="filmstrip-track" style={{position:'relative',overflow:'hidden'}}>
@@ -53,7 +53,7 @@ function Hero() {
       })}
       <div style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',background:'rgba(10,12,11,0.78)',pointerEvents:'none'}} aria-hidden="true" /></div>
     </div>
-    <div className="lanes" style={{borderTop:'1px solid var(--hair)',display:'grid',gridTemplateColumns:'1fr',gap:16,padding:'28px 0 0'}}>{site.hero.lanes.map((lane, index) => <div className="lane glass-dark" key={`${lane.label}-${index}`} style={{padding:'24px 0 0',borderTop:'1px solid var(--hair)'}}><span className="accent">{lane.label}</span><p>{lane.text}</p><a href={lane.href}>{lane.link}</a></div>)}</div>
+    <div className="lanes">{site.hero.lanes.map((lane, index) => <div className="lane glass-dark" key={`${lane.label}-${index}`}><span className="accent">{lane.label}</span><p>{lane.text}</p><a href={lane.href}>{lane.link}</a></div>)}</div>
     <div className="scroll-cue" style={{marginTop:'auto',fontSize:'0.875rem',color:'var(--dark-secondary)'}}>Scroll</div>
   </div></section>
 }

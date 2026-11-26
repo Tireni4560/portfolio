@@ -1,7 +1,7 @@
 {
   "hero": {
     "label": "Cybersecurity · Full-stack development · Tirenify",
-    "heading": ["I build security products.", "One of them is live, and I built it alone."],
+    "heading": ["I build software and security tools people can use.", ""],
     "sub": "Cybersecurity-focused developer and founder of Tirenify. React, Node, Supabase. Landing pages in 5 days, MVP front ends in 7.",
     "lanes": [
       {"label":"Founder","text":"Building Tirenify. Safeyard is live and free.","link":"See Safeyard →","href":"#safeyard"},
@@ -13,7 +13,7 @@
     "label":"Safeyard by Tirenify",
     "title":"A free breach checker, built end to end.",
     "intro":"Safeyard is the first product from Tirenify, the security company I founded in March 2026. You enter an email address. It checks a third-party breach database, shows what was exposed and tells you what to change first. No account is needed for the check.",
-    "lines":["Tirenify is a digital security company for everyday internet users.","Safeyard is its first product, in public beta.","I build it alone and in public, and real user feedback decides what comes next."],
+    "lines":["Tirenify is a digital security company for everyday internet users.","Safeyard is its first product, in public beta.","I build it in public, and real user feedback decides what comes next."],
     "shipped":[
       {"title":"Built the core check","copy":["I connected the product to a third-party breach database, handled the response on the server and turned the result into plain language.","The check tells a person what was exposed and what to change first, without requiring an account."]},
       {"title":"Built weekly email monitoring","copy":["A person submits an address and picks a day. A scheduled job checks it each week and emails the result through Resend, including a confirmation when nothing new is found.","I added practical tools and guides: password and PIN generators, a password strength checker and an email alias generator, plus guides on phishing, data breaches and WhatsApp security."]},
